@@ -8,8 +8,8 @@ services:
         uid: 1000
       context: ./
       dockerfile: ./docker-compose/app/Dockerfile
-    image: 2v2
-    container_name: 2v2-app
+    image: solar
+    container_name: solar-app
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
@@ -18,42 +18,42 @@ services:
     environment:
       - TZ=America/Santarem
     networks:
-      2v2:
-        ipv4_address: 172.16.14.4
+      solar:
+        ipv4_address: 172.16.17.4
   db:
     image: postgres:13-alpine
     ports:
-      - "5014:5432"
-    container_name: 2v2-db
+      - "5017:5432"
+    container_name: solar-db
     restart: unless-stopped
     environment:
       POSTGRES_DB: ${DB_DATABASE}
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - /home/data/2v2:/var/lib/postgresql/data
+      - /home/data/solar:/var/lib/postgresql/data
     networks:
-      2v2:
-        ipv4_address: 172.16.14.2
+      solar:
+        ipv4_address: 172.16.17.2
 
   nginx:
     image: nginx:alpine
-    container_name: 2v2-nginx
+    container_name: solar-nginx
     restart: unless-stopped
     ports:
-      - "8014:80"
+      - "8017:80"
     volumes:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
     environment:
       - TZ=America/Santarem
     networks:
-      2v2:
-        ipv4_address: 172.16.14.3
+      solar:
+        ipv4_address: 172.16.17.3
 
 networks:
-  2v2:
+  solar:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.16.14.0/28
+        - subnet: 172.16.17.0/28
