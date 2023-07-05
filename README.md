@@ -20,4 +20,4 @@
 
 ====
 rodando o banco e os seeds
-* docker-compose exec app php artisan migarte --seed
+* docker-compose exec app php artisan migrate --seed
