@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\{
+    HomeUser,
     ShowUser,
     ShowDijuntor,
     ShowUsers,
@@ -31,9 +32,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', ShowUser::class)->name('dashboard');
-    Route::get('/dijuntor', ShowDijuntor::class)->name('dijuntor');
+    Route::get('/home', HomeUser::class)->name('home');
     Route::get('/usuarios', ShowUsers::class)->name('usuarios');
+    Route::get('/dijuntor', ShowDijuntor::class)->name('dijuntor');
 });
 
 require __DIR__ . '/auth.php';

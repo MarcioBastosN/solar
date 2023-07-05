@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header mb-4">
-        <h1>@lang('Dashboard')</h1>
+        <h1>@lang('home')</h1>
     </div>
 
     <div class="row">
@@ -12,7 +12,7 @@
 
         <div class="col-md-6 col-lg-9">
             <div class="row">
-                @foreach($percents as $level => $item)
+                @foreach ($percents as $level => $item)
                     <div class="col-sm-6 col-md-12 col-lg-4 mb-3">
                         <div class="box level-{{ $level }} {{ $item['count'] === 0 ? 'empty' : '' }}">
                             <div class="box-icon">

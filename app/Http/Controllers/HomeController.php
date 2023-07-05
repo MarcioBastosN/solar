@@ -11,7 +11,5 @@ class HomeController extends Controller
 
     public function index()
     {
-        $user = User::find(Auth::user()->id);
-        return view('livewire.show-user')->with(compact('user'));
     }
 }

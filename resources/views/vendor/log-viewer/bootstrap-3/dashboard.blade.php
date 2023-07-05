@@ -1,7 +1,7 @@
 @extends('log-viewer::bootstrap-3._master')
 
 @section('content')
-    <h1 class="page-header">@lang('Dashboard')</h1>
+    <h1 class="page-header">@lang('home')</h1>
 
     <div class="row">
         <div class="col-md-3">
@@ -10,9 +10,10 @@
         <div class="col-md-9">
             <section class="box-body">
                 <div class="row">
-                    @foreach($percents as $level => $item)
+                    @foreach ($percents as $level => $item)
                         <div class="col-md-4">
-                            <div class="info-box level level-{{ $level }} {{ $item['count'] === 0 ? 'level-empty' : '' }}">
+                            <div
+                                class="info-box level level-{{ $level }} {{ $item['count'] === 0 ? 'level-empty' : '' }}">
                                 <span class="info-box-icon">
                                     {{ log_styler()->icon($level) }}
                                 </span>
