@@ -9,15 +9,19 @@ use Spatie\Permission\Models\Role;
 class ShowUsers extends Component
 {
 
-    public $users;
+    public $search;
 
-    public function mount()
-    {
-        $this->users = Role::where('name', 'user')->first()->users;
-    }
+    protected $queryString = ['search'];
+
+    // public function mount()
+    // {
+    //     $this->users = User::with('roles')->where('email', 'ilike', '%' . $this->search . '%')->get();
+    //     // Role::where('name', 'user')->first()->users;
+    // }
 
     public function render()
     {
-        return view('livewire.show-users');
+        $users = User::with('roles')->where('email', 'ilike', '%' . $this->search . '%')->get();
+        return view('livewire.show-users')->with(compact('users'));
     }
 }

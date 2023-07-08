@@ -1,8 +1,8 @@
 <div>
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     <div class="bg-white">
-        <div class="max-w-xl mx-auto p-8">
-            <form wire:submit.prevent="save">
+        <form wire:submit.prevent="save" class="max-w-xl mx-auto p-8">
+            <div class="max-w-xl mx-auto p-8">
                 <div class="flow-root">
                     <ul class="-mb-8">
                         {{-- step 1 --}}
@@ -42,7 +42,11 @@
                                         <div class="mt-2 text-gray-700">
                                             <x-input-label for="telefone" :value="__('telefone')" />
                                             <x-text-input id="telefone" class="block mt-1 w-full" type="text"
-                                                name="telefone" :value="old('telefone')" required autofocus />
+                                                :value="old('telefone')" wire:model="telefone" />
+                                            @error('telefone')
+                                                <br>
+                                                <p>{{ $message }}</p>
+                                            @enderror
                                             {{-- uploads --}}
                                         </div>
                                     </div>
@@ -101,6 +105,7 @@
                                             @endif
 
                                             @error('photo')
+                                                <br>
                                                 <span class="error">{{ $message }}</span>
                                             @enderror
 
@@ -159,9 +164,10 @@
                     </ul>
                 </div>
 
-                <button type="submit">Salvar</button>
-            </form>
-        </div>
+                {{-- <button type="submit">Salvar</button> --}}
+            </div>
+            <x-primary-button type="submit">Slavar</x-primary-button>
+        </form>
 
     </div>
 </div>

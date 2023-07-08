@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\{
     HomeUser,
-    ShowUser,
     ShowDijuntor,
     ShowUsers,
 };

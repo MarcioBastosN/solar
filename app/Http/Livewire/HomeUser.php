@@ -11,14 +11,15 @@ class HomeUser extends Component
 
     use WithFileUploads;
     // arquivos
-    public $photo, $identidade, $cnpj, $procuracao;
+    public $photo, $identidade, $cnpj, $procuracao, $telefone;
     //
     public $kwp, $fotovoltaico, $inversor, $datasheet;
     //
     public $dijuntores;
 
     protected $rules = [
-        'photo' => 'image|max:1024',
+        'photo' => 'required|image|max:1024',
+        'telefone' => "required|min:10"
     ];
 
     protected $messages = [
@@ -30,7 +31,6 @@ class HomeUser extends Component
     {
         $this->validate();
     }
-
 
     public function mount()
     {

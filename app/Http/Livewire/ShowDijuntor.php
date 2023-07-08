@@ -13,6 +13,7 @@ class ShowDijuntor extends Component
     public function mount()
     {
         $this->dijuntores = Dijuntor::all();
+        // session()->flash('message', 'Post successfully updated.');
     }
 
     public function render()
