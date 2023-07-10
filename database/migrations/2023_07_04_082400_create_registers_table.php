@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('dijuntor_id');
             $table->foreign('dijuntor_id')->references('id')->on('dijuntors');
 
-            $table->unsignedInteger('user_kit_id');
+            $table->unsignedInteger('user_kit_id')->nullable();
             $table->foreign('user_kit_id')->references('id')->on('user_kits');
 
             $table->timestamps();

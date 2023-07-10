@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\StatusProjet;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionSeeders::class);
         $this->call(AdminSeeders::class);
         $this->call(DijuntorsSeeders::class);
+        $this->call(StatusProjet::class);
     }
 }
