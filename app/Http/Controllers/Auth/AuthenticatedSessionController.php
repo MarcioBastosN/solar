@@ -34,14 +34,14 @@ class AuthenticatedSessionController extends Controller
 
         switch (auth()->user()->getRoleNames()->first()) {
             case 'admin':
-                return redirect()->route('home');
+                return redirect()->route('admin.clientes');
                 break;
             case 'user':
                 // varifica se possui projetos;
-                return redirect()->route('usuarios');
+                return redirect()->route('cliente.home');
                 break;
             default:
-                return redirect()->route('usuarios');
+                return redirect()->route('cliente.home');
                 break;
         }
 

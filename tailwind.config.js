@@ -30,8 +30,9 @@ export default {
               DEFAULT: '#0082C9',
             },
             secondary: '#fee2e2',
-            dark_primary : '#0082C9',
-            dark_bg: '#0082C9',
+            dark_primary : '#fee2e2',
+            dark_bg: '#000000',
+            text_error: '#ff0000',
           },
     },
 

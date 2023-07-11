@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\{
     HomeUser,
     ShowDijuntor,
+    ShowProjectUser,
     ShowUsers,
 };
 use Illuminate\Support\Facades\Route;
@@ -30,10 +31,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/home', HomeUser::class)->name('home');
-    Route::get('/usuarios', ShowUsers::class)->name('usuarios');
-    Route::get('/dijuntor', ShowDijuntor::class)->name('dijuntor');
-});
+Route::middleware(['auth', 'verified'])
+    ->prefix('cliente')
+    ->group(function () {
+        Route::get('/home', HomeUser::class)->name('cliente.home');
+        Route::get('/projects', ShowProjectUser::class)->name('cliente.porjects');
+    });
+
+Route::middleware(['auth', 'verified'])
+    ->prefix('admin')
+    ->group(function () {
+        Route::get('/dijuntor', ShowDijuntor::class)->name('admin.dijuntor');
+        Route::get('/clientes', ShowUsers::class)->name('admin.clientes');
+    });
 
 require __DIR__ . '/auth.php';

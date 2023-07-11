@@ -13,12 +13,6 @@ class ShowUsers extends Component
 
     protected $queryString = ['search'];
 
-    // public function mount()
-    // {
-    //     $this->users = User::with('roles')->where('email', 'ilike', '%' . $this->search . '%')->get();
-    //     // Role::where('name', 'user')->first()->users;
-    // }
-
     public function render()
     {
         $users = User::with('roles')->where('email', 'ilike', '%' . $this->search . '%')->get();

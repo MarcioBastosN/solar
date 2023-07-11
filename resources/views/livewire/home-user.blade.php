@@ -1,8 +1,9 @@
 <div>
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     <div class="bg-white">
-        <form wire:submit.prevent="save" class="max-w-xl mx-auto p-8">
-            <div class="max-w-xl mx-auto p-8">
+        <form wire:submit.prevent="save" class="max-w-xl mx-auto p-4 shadow-xl bg-primary-50">
+
+            <div class="max-w-xl mx-auto p-4">
                 <div class="flow-root">
                     <ul class="-mb-8">
                         {{-- step 1 --}}
@@ -40,12 +41,24 @@
                                             <span class="whitespace-nowrap text-sm">Complete seus dados</span>
                                         </div>
                                         <div class="mt-2 text-gray-700">
-                                            <x-input-label for="telefone" :value="__('telefone')" />
-                                            <x-text-input id="telefone" class="block mt-1 w-full" type="text"
-                                                :value="old('telefone')" wire:model="telefone" />
+                                            <div class="relative">
+                                                <input type="text" id="floating_filled"
+                                                    class="block rounded-t-lg px-2.5 pb-1.5 pt-5 w-full
+                                                    text-sm text-gray-900 bg-primary-100 dark:bg-gray-700 border-0
+                                                    border-b-2 border-gray-300 appearance-none dark:text-white
+                                                    dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none
+                                                    focus:ring-0 focus:border-blue-600 peer"
+                                                    placeholder=" " wire:model="telefone"
+                                                    wire:change="formatPhoneNumber" />
+                                                <label for="floating_filled"
+                                                    class="absolute text-sm text-gray-500 dark:text-gray-400
+                                                    duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5
+                                                    peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100
+                                                    peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+                                                    Telefone</label>
+                                            </div>
                                             @error('telefone')
-                                                <br>
-                                                <p>{{ $message }}</p>
+                                                <span class="text-text_error">{{ $message }}</span>
                                             @enderror
                                             {{-- uploads --}}
                                         </div>
@@ -88,25 +101,21 @@
                                             </div>
                                             <span class="whitespace-nowrap text-sm">arquivos diversos</span>
                                         </div>
-                                        <div class="mt-2 text-gray-700">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt nunc
-                                                ipsum
-                                                tempor purus vitae id. Morbi in vestibulum nec varius. Et diam cursus
-                                                quis
-                                                sed purus nam. Scelerisque amet elit non sit ut tincidunt condimentum.
-                                                Nisl
-                                                ultrices eu venenatis diam.</p>
+                                        {{-- overflow-y-scroll --}}
+                                        <div class="mt-2 text-gray-700  ">
 
-                                            <input type="file" wire:model="photo">
-
-                                            @if ($photo)
+                                            <input wire:model="photo" accept="image/*,.pdf"
+                                                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg
+                                                cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none
+                                                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                                aria-describedby="file_input_help" id="file_input" type="file">
+                                            {{-- @if ($photo)
                                                 Photo Preview:
                                                 <img src="{{ $photo->temporaryUrl() }}" width="200" height="200">
-                                            @endif
-
+                                            @endif --}}
                                             @error('photo')
                                                 <br>
-                                                <span class="error">{{ $message }}</span>
+                                                <span class="text-text_error">{{ $message }}</span>
                                             @enderror
 
                                             <div wire:loading wire:target="photo">Uploading...</div>
@@ -153,9 +162,12 @@
                                         </div>
                                         <div class="mt-2 text-gray-700">
                                             {{-- entradas --}}
-                                            @foreach ($dijuntores as $item)
-                                                <p>{{ $item->id }} - {{ $item->name }}</p>
-                                            @endforeach
+                                            {{-- <select wire:model='dijuntores'>
+                                                @foreach ($dijuntores as $item)
+                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                @endforeach
+
+                                            </select> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -163,10 +175,14 @@
                         </li>
                     </ul>
                 </div>
-
-                {{-- <button type="submit">Salvar</button> --}}
             </div>
-            <x-primary-button type="submit">Slavar</x-primary-button>
+            <div class="flex">
+                <button type="submit"
+                    class="w-full bg-primary-200 h-8 rounded-lg border-spacing-1 border-l-secondary text-center shadow-xl hover:bg-primary hover:text-secondary">
+                    Slavar
+                </button>
+            </div>
+
         </form>
 
     </div>
