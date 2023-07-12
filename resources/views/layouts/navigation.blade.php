@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('cliente.home')" :active="request()->routeIs('cliente.home')">
                         {{ __('Home') }}
                     </x-nav-link>
-                    @if (auth()->user()->pojectsUser()->count() > 0)
+                    @if (auth()->user()->register()->count() > 0)
                         <x-nav-link :href="route('cliente.porjects')" :active="request()->routeIs('cliente.porjects')">
                             {{ __('Meus projetos') }}
                         </x-nav-link>

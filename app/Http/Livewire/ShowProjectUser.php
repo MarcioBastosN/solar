@@ -8,6 +8,7 @@ class ShowProjectUser extends Component
 {
     public function render()
     {
-        return view('livewire.show-project-user');
+        $register = auth()->user()->register()->get();
+        return view('livewire.show-project-user')->with(compact('register'));
     }
 }

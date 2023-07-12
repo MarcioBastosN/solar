@@ -103,23 +103,34 @@
                                         </div>
                                         {{-- overflow-y-scroll --}}
                                         <div class="mt-2 text-gray-700  ">
-
-                                            <input wire:model="photo" accept="image/*,.pdf"
+                                            <label for="file_input">Identidade ou CNH</label>
+                                            <input wire:model="rg_cnh" accept="image/*,.pdf"
                                                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg
                                                 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none
                                                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                                 aria-describedby="file_input_help" id="file_input" type="file">
-                                            {{-- @if ($photo)
-                                                Photo Preview:
-                                                <img src="{{ $photo->temporaryUrl() }}" width="200" height="200">
-                                            @endif --}}
-                                            @error('photo')
+                                            @error('rg_cnh')
                                                 <br>
                                                 <span class="text-text_error">{{ $message }}</span>
                                             @enderror
 
-                                            <div wire:loading wire:target="photo">Uploading...</div>
+                                            <div wire:loading wire:target="rg_cnh">Uploading...</div>
+                                        </div>
+                                        {{-- contrato social CNPJ --}}
+                                        <div class="mt-2 text-gray-700  ">
+                                            <label for="file_input_cnpj">CONTRATO SOCIAL (CASO TITULAR SEJA CNPJ)
+                                            </label>
+                                            <input wire:model="cnpj" accept="image/*,.pdf"
+                                                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg
+                                                cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none
+                                                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                                aria-describedby="file_input_help" id="file_input_cnpj" type="file">
+                                            @error('cnpj')
+                                                <br>
+                                                <span class="text-text_error">{{ $message }}</span>
+                                            @enderror
 
+                                            <div wire:loading wire:target="cnpj">Uploading...</div>
                                         </div>
                                     </div>
                                 </div>
@@ -162,7 +173,8 @@
                                         </div>
                                         <div class="mt-2 text-gray-700">
                                             {{-- entradas --}}
-                                            {{-- <select wire:model='dijuntores'>
+                                            {{ $dijuntores }}
+                                            {{-- <select>
                                                 @foreach ($dijuntores as $item)
                                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                                 @endforeach
