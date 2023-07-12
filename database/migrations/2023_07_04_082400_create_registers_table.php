@@ -13,10 +13,20 @@ return new class extends Migration
     {
         Schema::create('registers', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
             // todos os arquivos do cliente
             // definir junto no model
 
-            $table->unsignedInteger('dijuntor_id');
+            $table->text('cnpj')->nullable();
+            $table->text('rg_cnh')->nullable();
+            $table->text('procuracao')->nullable();
+            $table->text('fatura_da_uc')->nullable();
+            $table->text('padrao_de_entrada')->nullable();
+
+            $table->unsignedInteger('dijuntor_id')->nullable();
             $table->foreign('dijuntor_id')->references('id')->on('dijuntors');
 
             $table->unsignedInteger('user_kit_id')->nullable();
