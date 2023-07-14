@@ -12,12 +12,17 @@
                     <img class="h-48 w-full object-cover md:h-full md:w-48" src="/img/store.jpg"
                         alt="Man looking at item at a store">
                 </div>
-                <div class="p-8">
+                <div class="p-6 w-full">
                     <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
                         {{ !empty($user->roles->first()) ? $user->roles->first()->name : 'ops' }}</div>
                     <a href="#"
                         class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ $user->name }}</a>
                     <p class="mt-2 text-gray-500">{{ $user->email }}</p>
+                </div>
+                <div class="p-2 w-full ">
+                    <p class="text-center  align-middle scale-150">
+                        {{ $user->register->count() }}
+                    </p>
                 </div>
             </div>
         </div>

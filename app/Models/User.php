@@ -46,7 +46,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function pojectsUser(): BelongsTo
+    public function projectsUser(): BelongsTo
     {
         return $this->belongsTo(Project::class, 'user_request_id');
     }
