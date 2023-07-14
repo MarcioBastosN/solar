@@ -1,12 +1,12 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
-    <input wire:model="search" type="search" placeholder="Search users..." class="bg-primary bg-opacity-70 ">
-    <p>Lista de clientes registrados</p>
+    <div class="max-w-lg mx-auto ">
+        <input wire:model="search" type="search" placeholder="Procura email..." class="bg-primary-200 bg-opacity-70 ">
+        <p>Lista de clientes registrados</p>
+    </div>
 
     @foreach ($users as $user)
-        {{-- <p>{{ $user->name }} - {{ $user->email }} - Level
-            {{ !empty($user->roles->first()) ? $user->roles->first()->name : 'ops' }}</p> --}}
-        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-2">
             <div class="md:flex">
                 <div class="md:flex-shrink-0">
                     <img class="h-48 w-full object-cover md:h-full md:w-48" src="/img/store.jpg"
@@ -19,8 +19,8 @@
                         class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ $user->name }}</a>
                     <p class="mt-2 text-gray-500">{{ $user->email }}</p>
                 </div>
-                <div class="p-2 w-full ">
-                    <p class="text-center  align-middle scale-150">
+                <div class="w-full bg-primary-200">
+                    <p class="text-center align-middle text-2xl scale-150 my-8">
                         {{ $user->register->count() }}
                     </p>
                 </div>

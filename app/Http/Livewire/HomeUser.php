@@ -13,6 +13,9 @@ class HomeUser extends Component
 {
 
     use WithFileUploads;
+    //controller exibir campos da view
+    public $exibir_empresa = false;
+
     // arquivos
     public $rg_cnh, $cnpj, $procuracao, $fatura_da_uc, $padrao_de_entrada;
     // nao obrigatorios
@@ -27,10 +30,8 @@ class HomeUser extends Component
 
     protected $messages = [
         'rg_cnh.max' => 'Arquivo e maior que 1 mb',
-        // 'rg_cnh.file' => 'Arquivo dev ser uma imagem',
 
         'cnpj.max' => 'Arquivo e maior que 1 mb',
-        // 'cnpj.file' => 'Arquivo dev ser uma imagem',
 
         'telefone.required' => 'Necessario informar o telefone',
         'telefone.min' => 'Telefone deve ter no minimo 11 digitos'
@@ -67,10 +68,6 @@ class HomeUser extends Component
         }
         DB::commit();
         return redirect()->route('cliente.porjects');
-    }
-
-    public function mount()
-    {
     }
 
     public function render()
