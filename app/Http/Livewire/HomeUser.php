@@ -15,12 +15,12 @@ class HomeUser extends Component
     use WithFileUploads;
     //controller exibir campos da view
     public $exibir_empresa;
-
     // arquivos
     public $rg_cnh, $cnpj, $procuracao, $fatura_da_uc, $padrao_de_entrada;
     // nao obrigatorios
     public $kwp, $fotovoltaico, $inversor, $datasheet, $telefone, $kit_id;
     //
+    public $tipo_pessoa = 'pf';
 
     protected $rules = [
         'rg_cnh' => 'max:1024',
@@ -39,6 +39,11 @@ class HomeUser extends Component
     public function trocaStatus()
     {
         $this->exibir_empresa = !$this->exibir_empresa;
+        if ($this->exibir_empresa) {
+            $this->tipo_pessoa = 'pj';
+        } else {
+            $this->tipo_pessoa = 'pf';
+        }
     }
 
     public function save()
@@ -59,6 +64,7 @@ class HomeUser extends Component
             DB::transaction(fn () => Register::create([
                 'user_id' => auth()->user()->id,
                 'rg_cnh' => $rg_path,
+                'tipo_pessoa' => $this->tipo_pessoa,
                 'cnpj' => $cnpj_path,
             ]));
         } catch (Exception $e) {

@@ -3,18 +3,24 @@
         <div>
             <p>{{ $item->id }}</p>
             <ul>
-                <li>
+                @if ($item->tipo_pessoa == 'pj')
                     <span>cnpj</span>
                     @if (!empty($item->cnpj))
-                        {{-- <img src="{{ url('storage/' . $item->cnpj) }}" alt=""> --}}
                         <img src="{{ asset('storage/' . $item->cnpj) }}" alt="" class="w-32">
                     @endif
+                @else
                     @if (!empty($item->rg_cnh))
                         <img src="{{ asset('storage/' . $item->rg_cnh) }}" alt="" class="w-32">
                         <span>rg cnh</span>
                     @endif
-                </li>
+                @endif
             </ul>
         </div>
     @endforeach
 </div>
+
+
+<li>
+
+
+</li>

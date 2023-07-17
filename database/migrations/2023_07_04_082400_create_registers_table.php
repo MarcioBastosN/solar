@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
+            $table->enum('tipo_pessoa', ['pf', 'pj'])->default('pf');
             // todos os arquivos do cliente
-            // definir junto no model
 
             $table->text('cnpj')->nullable();
             $table->text('rg_cnh')->nullable();

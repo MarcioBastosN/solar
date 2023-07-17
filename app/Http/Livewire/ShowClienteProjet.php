@@ -17,7 +17,6 @@ class ShowClienteProjet extends Component
 
     public function render()
     {
-
         return view('livewire.show-cliente-projet');
     }
 }
