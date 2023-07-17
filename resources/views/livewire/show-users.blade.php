@@ -24,9 +24,13 @@
                         class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ $user->name }}</a>
                     <p class="mt-2 text-gray-500">{{ $user->email }}</p>
                 </div>
-                <div class="w-full bg-primary-200">
-                    <p class="text-center align-middle text-2xl scale-150 my-8">
+                <div class="w-full bg-primary-200 hover:bg-primary-300"
+                    wire:click='paginaDetalhes({{ $user->id }})'>
+                    <p class="text-center align-middle text-2xl scale-150 mt-8">
                         {{ $user->register->count() }}
+                    </p>
+                    <p class="text-center align-middle">
+                        <span>Projetos</span>
                     </p>
                 </div>
             </div>

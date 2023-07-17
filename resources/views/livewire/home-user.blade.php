@@ -1,8 +1,22 @@
 <div>
-    {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     <div class="bg-white">
         <form wire:submit.prevent="save" class="max-w-xl mx-auto p-4 shadow-xl bg-primary-50">
-
+            <div class="max-w-xl mx-auto p-4">
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" class="sr-only peer" wire:click="trocaStatus">
+                    <div
+                        class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4
+                        peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full
+                        peer dark:bg-gray-700 peer-checked:after:translate-x-full
+                        peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
+                        after:left-[2px] after:bg-white after:border-gray-300 after:border
+                        after:rounded-full after:h-5 after:w-5 after:transition-all
+                        dark:border-gray-600 peer-checked:bg-blue-600">
+                    </div>
+                    <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        {{ $exibir_empresa == false ? 'Sou um pessoa' : 'Sou uma empresa' }}</span>
+                </label>
+            </div>
             <div class="max-w-xl mx-auto p-4">
                 <div class="flow-root">
                     <ul class="-mb-8">
@@ -48,8 +62,7 @@
                                                     border-b-2 border-gray-300 appearance-none dark:text-white
                                                     dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none
                                                     focus:ring-0 focus:border-blue-600 peer"
-                                                    placeholder=" " wire:model="telefone"
-                                                    wire:change="formatPhoneNumber" />
+                                                    placeholder=" " wire:model="telefone" />
                                                 <label for="floating_filled"
                                                     class="absolute text-sm text-gray-500 dark:text-gray-400
                                                     duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5
@@ -101,37 +114,41 @@
                                             </div>
                                             <span class="whitespace-nowrap text-sm">arquivos diversos</span>
                                         </div>
-                                        {{-- overflow-y-scroll --}}
-                                        <div class="mt-2 text-gray-700  ">
-                                            <label for="file_input">Identidade ou CNH</label>
-                                            <input wire:model="rg_cnh" accept="image/*,.pdf"
-                                                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg
+                                        @if ($exibir_empresa)
+                                            <div class="mt-2 text-gray-700  ">
+                                                <label for="file_input_cnpj">CONTRATO SOCIAL (CASO TITULAR SEJA CNPJ)
+                                                </label>
+                                                <input wire:model="cnpj" accept="image/*,.pdf"
+                                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg
                                                 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none
                                                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                                aria-describedby="file_input_help" id="file_input" type="file">
-                                            @error('rg_cnh')
-                                                <br>
-                                                <span class="text-text_error">{{ $message }}</span>
-                                            @enderror
+                                                    aria-describedby="file_input_help" id="file_input_cnpj"
+                                                    type="file">
+                                                @error('cnpj')
+                                                    <br>
+                                                    <span class="text-text_error">{{ $message }}</span>
+                                                @enderror
 
-                                            <div wire:loading wire:target="rg_cnh">Uploading...</div>
-                                        </div>
-                                        {{-- contrato social CNPJ --}}
-                                        <div class="mt-2 text-gray-700  ">
-                                            <label for="file_input_cnpj">CONTRATO SOCIAL (CASO TITULAR SEJA CNPJ)
-                                            </label>
-                                            <input wire:model="cnpj" accept="image/*,.pdf"
-                                                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg
+                                                <div wire:loading wire:target="cnpj">Uploading...</div>
+                                            </div>
+                                        @else
+                                            <div class="mt-2 text-gray-700  ">
+                                                <label for="file_input">Identidade ou CNH</label>
+                                                <input wire:model="rg_cnh" accept="image/*,.pdf"
+                                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg
                                                 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none
                                                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                                aria-describedby="file_input_help" id="file_input_cnpj" type="file">
-                                            @error('cnpj')
-                                                <br>
-                                                <span class="text-text_error">{{ $message }}</span>
-                                            @enderror
+                                                    aria-describedby="file_input_help" id="file_input" type="file">
+                                                @error('rg_cnh')
+                                                    <br>
+                                                    <span class="text-text_error">{{ $message }}</span>
+                                                @enderror
 
-                                            <div wire:loading wire:target="cnpj">Uploading...</div>
-                                        </div>
+                                                <div wire:loading wire:target="rg_cnh">Uploading...</div>
+                                            </div>
+                                        @endif
+
+
                                     </div>
                                 </div>
                             </div>
@@ -173,13 +190,17 @@
                                         </div>
                                         <div class="mt-2 text-gray-700">
                                             {{-- entradas --}}
-                                            {{ $dijuntores }}
-                                            {{-- <select>
+                                            <label for="underline_select" class="sr-only">Underline select</label>
+                                            <select id="underline_select" wire:model="kit_id"
+                                                class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent
+                                                border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400
+                                                dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200
+                                                peer">
+                                                <option selected>Choose ...</option>
                                                 @foreach ($dijuntores as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    <option value={{ $item->id }}>{{ $item->name }}</option>
                                                 @endforeach
-
-                                            </select> --}}
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

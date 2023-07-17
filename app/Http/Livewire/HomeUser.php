@@ -14,12 +14,12 @@ class HomeUser extends Component
 
     use WithFileUploads;
     //controller exibir campos da view
-    public $exibir_empresa = false;
+    public $exibir_empresa;
 
     // arquivos
     public $rg_cnh, $cnpj, $procuracao, $fatura_da_uc, $padrao_de_entrada;
     // nao obrigatorios
-    public $kwp, $fotovoltaico, $inversor, $datasheet, $telefone;
+    public $kwp, $fotovoltaico, $inversor, $datasheet, $telefone, $kit_id;
     //
 
     protected $rules = [
@@ -30,16 +30,15 @@ class HomeUser extends Component
 
     protected $messages = [
         'rg_cnh.max' => 'Arquivo e maior que 1 mb',
-
         'cnpj.max' => 'Arquivo e maior que 1 mb',
 
         'telefone.required' => 'Necessario informar o telefone',
         'telefone.min' => 'Telefone deve ter no minimo 11 digitos'
     ];
 
-    public function formatPhoneNumber()
+    public function trocaStatus()
     {
-        // $this->telefone Manny::mask();
+        $this->exibir_empresa = !$this->exibir_empresa;
     }
 
     public function save()

@@ -13,6 +13,11 @@ class ShowUsers extends Component
 
     protected $queryString = ['search'];
 
+    public function paginaDetalhes($id)
+    {
+        return redirect()->route('admin.cliente.project', ['cliente' => $id]);
+    }
+
     public function render()
     {
         $users = User::with('roles')->where('email', 'ilike', '%' . $this->search . '%')->get();
