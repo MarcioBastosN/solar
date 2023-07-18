@@ -99,14 +99,14 @@ class HomeUser extends Component
                 'fatura_da_uc' => $fatura_da_uc_path,
                 'padrao_de_entrada' => $padrao_de_entrada_path,
             ]));
-            if (!empty($this->kwp) || !empty($this->fotovoltaico) || !empty($this->inversor) || !empty($this->datasheet)) {
+            if (!empty($this->kwp) || !empty($this->fotovoltaico) || !empty($this->inversor) || !empty($this->datasheet_path)) {
                 DB::transaction(fn () => UserKit::create(
                     [
                         'customer_id' => auth()->user()->id,
                         'kwp' => $this->kwp,
                         'fotovoltaico' => $this->fotovoltaico,
                         'inversor' => $this->inversor,
-                        'datasheet' => $this->datasheet,
+                        'datasheet' => $datasheet_path,
                     ]
                 ));
             }
