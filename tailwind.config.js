@@ -16,7 +16,25 @@ export default {
             },
         },
         colors: {
-            primary: {
+            primary: '#006399',
+            primary_dark: '#fee2e2',
+
+            secondary: '#fee2e2',
+            secondary_dark: '#006399',
+
+            destaque:'#0082C9',
+            destaque_dark:'#0082C9',
+
+            primary_text: '',
+            primary_text_dark: '',
+
+            dark_bg: '#000000',
+            text_error: '#ff0000',
+
+            form_color: '#dcf1ff',
+            form_color_dark: '#fee2e2',
+
+            _primary: {
               50: '#dcf1ff',
               100: '#ccedff',
               200: '#99dbff',
@@ -29,10 +47,6 @@ export default {
               900: '#005380',
               DEFAULT: '#0082C9',
             },
-            secondary: '#fee2e2',
-            dark_primary : '#fee2e2',
-            dark_bg: '#000000',
-            text_error: '#ff0000',
           },
     },
 
