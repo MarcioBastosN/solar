@@ -12,7 +12,8 @@ class ShowClienteProjet extends Component
 
     public function mount(HttpRequest $request)
     {
-        $this->projetos = User::find($request->cliente)->register()->get();
+
+        $this->projetos = User::find($request->cliente)->register()->with('statusRequest.status')->get();
     }
 
     public function render()

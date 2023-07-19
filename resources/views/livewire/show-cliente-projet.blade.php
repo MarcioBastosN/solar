@@ -20,6 +20,9 @@
             'dijuntor_id',
             'user_kit_id',
             --}}
+            <p><b>{{ $projeto->statusRequest->status->label }}</b></p>
+            <p><span>Registrado em:{{ $projeto->created_at->format('d/m/Y') }}</span></p>
+            <p><span>Atualizado em:{{ $projeto->statusRequest->created_at->format('d/m/Y') }}</span></p>
         </div>
     @endforeach
 

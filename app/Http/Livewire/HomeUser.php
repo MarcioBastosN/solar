@@ -4,7 +4,9 @@ namespace App\Http\Livewire;
 
 use App\Models\Dijuntor;
 use App\Models\Register;
+use App\Models\StatusProjet;
 use App\Models\UserKit;
+use App\Models\UserRequest;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -90,15 +92,28 @@ class HomeUser extends Component
         // 1 passo salvar documentos (tabela Register)
         DB::beginTransaction();
         try {
-            DB::transaction(fn () => Register::create([
-                'user_id' => auth()->user()->id,
+
+            $user_id = auth()->user()->id;
+
+            $register = Register::create([
+                'user_id' => $user_id,
                 'rg_cnh' => $rg_path,
                 'tipo_pessoa' => $this->tipo_pessoa,
                 'cnpj' => $cnpj_path,
                 'procuracao' => $procuracao_path,
                 'fatura_da_uc' => $fatura_da_uc_path,
                 'padrao_de_entrada' => $padrao_de_entrada_path,
-            ]));
+            ]);
+
+            $status_do_projeto = StatusProjet::find(1);
+
+            $requestUser = UserRequest::create([
+                'customer_id' => $user_id,
+                'request_id' => $register->id,
+                'status_id' => $status_do_projeto->id,
+            ]);
+
+
             if (!empty($this->kwp) || !empty($this->fotovoltaico) || !empty($this->inversor) || !empty($this->datasheet_path)) {
                 DB::transaction(fn () => UserKit::create(
                     [
