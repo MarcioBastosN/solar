@@ -6,6 +6,7 @@ use App\Http\Livewire\{
     ShowClienteProjet,
     ShowDijuntor,
     ShowProjectUser,
+    ShowStatusProject,
     ShowUsers,
 };
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('/dijuntor', ShowDijuntor::class)->name('admin.dijuntor');
         Route::get('/clientes', ShowUsers::class)->name('admin.clientes');
         Route::get('/clienteProject', ShowClienteProjet::class)->name('admin.cliente.project');
+        Route::get('/statusProjet', ShowStatusProject::class)->name('admin.status.project');
     });
 
 require __DIR__ . '/auth.php';

@@ -24,8 +24,17 @@ class Register extends Model
         'user_kit_id',
     ];
 
+    protected $dates = [
+        'created_at'
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function statusRequest(): HasOne
+    {
+        return $this->hasOne(UserRequest::class, 'request_id');
     }
 }
