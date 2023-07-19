@@ -28,7 +28,7 @@
                             {{ __('Dijuntor') }}
                         </x-nav-link>
                         <x-nav-link :href="route('admin.status.project')" :active="request()->routeIs('admin.status.project')">
-                            {{ __('Sattus') }}
+                            {{ __('Status') }}
                         </x-nav-link>
                     @endhasallroles
                 </div>
