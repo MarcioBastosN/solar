@@ -17,20 +17,20 @@ return new class extends Migration
             $table->unsignedInteger('register_id');
             $table->foreign('register_id')->references('id')->on('registers');
 
-            $table->unsignedInteger('rg_cnh')->nullable();
-            $table->foreign('rg_cnh')->references('id')->on('status_documentos');
+            $table->unsignedInteger('status_rg_cnh')->nullable();
+            $table->foreign('status_rg_cnh')->references('id')->on('status_documentos');
 
-            $table->unsignedInteger('cnpj')->nullable();
-            $table->foreign('cnpj')->references('id')->on('status_documentos');
+            $table->unsignedInteger('status_cnpj')->nullable();
+            $table->foreign('status_cnpj')->references('id')->on('status_documentos');
 
-            $table->unsignedInteger('procuracao')->nullable();
-            $table->foreign('procuracao')->references('id')->on('status_documentos');
+            $table->unsignedInteger('status_procuracao')->nullable();
+            $table->foreign('status_procuracao')->references('id')->on('status_documentos');
 
-            $table->unsignedInteger('fatura_da_uc')->nullable();
-            $table->foreign('fatura_da_uc')->references('id')->on('status_documentos');
+            $table->unsignedInteger('status_fatura_da_uc')->nullable();
+            $table->foreign('status_fatura_da_uc')->references('id')->on('status_documentos');
 
-            $table->unsignedInteger('padrao_de_entrada')->nullable();
-            $table->foreign('padrao_de_entrada')->references('id')->on('status_documentos');
+            $table->unsignedInteger('status_padrao_de_entrada')->nullable();
+            $table->foreign('status_padrao_de_entrada')->references('id')->on('status_documentos');
 
             $table->timestamps();
         });
