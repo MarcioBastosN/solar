@@ -60,6 +60,11 @@ class HomeUser extends Component
         }
     }
 
+    public function updated($fatura_da_uc)
+    {
+        $this->validateOnly($fatura_da_uc);
+    }
+
     public function save()
     {
         $caminho = "documentos/" . auth()->user()->id;
