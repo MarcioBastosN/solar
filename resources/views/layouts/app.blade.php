@@ -15,6 +15,7 @@
     @livewireStyles
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 </head>
 
 {{-- bg-gradient-to-b from-primary-800 via-primary-500 to-secondary --}}
