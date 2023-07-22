@@ -16,11 +16,15 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+    @wireUiScripts
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
 {{-- bg-gradient-to-b from-primary-800 via-primary-500 to-secondary --}}
 
 <body class="font-sans antialiased ">
+    <x-notifications />
+    <x-dialog z-index="z-50" blur="md" align="center" />
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 

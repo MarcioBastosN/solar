@@ -11,10 +11,11 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use WireUi\Traits\Actions;
 
 class HomeUser extends Component
 {
-
+    use Actions;
     use WithFileUploads;
     //controller exibir campos da view
     public $exibir_empresa = false, $possui_kit;
@@ -58,6 +59,11 @@ class HomeUser extends Component
         } else {
             $this->tipo_pessoa = 'pf';
         }
+    }
+
+    public function redireciona()
+    {
+        return redirect()->route('cliente.porjects');
     }
 
     public function updated($fatura_da_uc)
@@ -135,7 +141,16 @@ class HomeUser extends Component
             dd($e->getMessage());
         }
         DB::commit();
-        return redirect()->route('cliente.porjects');
+        $this->dialog()->confirm([
+            'title'       => 'Cadastro Realizado',
+            'description' => 'informaçoes salvas',
+            'icon'        => 'success',
+            'accept'      => [
+                'label'  => 'Ir para Meus Projetos',
+                'method' => 'redireciona',
+                'params' => '',
+            ],
+        ]);
     }
 
     public function render()
