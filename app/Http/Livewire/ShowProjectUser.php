@@ -2,13 +2,26 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Register;
 use Livewire\Component;
 
 class ShowProjectUser extends Component
 {
+
+    public $infoCard, $register;
+
+    public function detalhes($id)
+    {
+        $this->infoCard = Register::find($id);
+    }
+
+    public function mount()
+    {
+        $this->register = auth()->user()->register()->get();
+    }
+
     public function render()
     {
-        $register = auth()->user()->register()->get();
-        return view('livewire.show-project-user')->with(compact('register'));
+        return view('livewire.show-project-user');
     }
 }
