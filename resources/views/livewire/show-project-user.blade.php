@@ -31,6 +31,7 @@
                 </button>
             </div>
         @endforeach
+        {{ $register->links() }}
     </div>
     <div class="container mx-auto px-8">
         <ol class="relative border-l border-gray-200 dark:border-gray-700">

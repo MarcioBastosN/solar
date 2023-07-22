@@ -4,24 +4,22 @@ namespace App\Http\Livewire;
 
 use App\Models\Register;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ShowProjectUser extends Component
 {
+    use WithPagination;
 
-    public $infoCard, $register;
+    public $infoCard;
 
     public function detalhes($id)
     {
         $this->infoCard = Register::find($id);
     }
 
-    public function mount()
-    {
-        $this->register = auth()->user()->register()->get();
-    }
-
     public function render()
     {
-        return view('livewire.show-project-user');
+        $register = auth()->user()->register()->paginate(2);
+        return view('livewire.show-project-user')->with(compact('register'));
     }
 }
