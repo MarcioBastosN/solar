@@ -3,17 +3,52 @@
 namespace App\Http\Livewire;
 
 use App\Models\Dijuntor;
+use Exception;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use WireUi\Traits\Actions;
 
 class ShowDijuntor extends Component
 {
 
-    public $dijuntores;
+    use Actions;
+
+    public $disjuntores, $name;
+
+    protected $rules = [
+        'name' => 'required',
+    ];
+
+    protected $messages = [
+        'name.required' => "Nome e obrigatorio",
+    ];
+
+    public function save()
+    {
+        $this->validate();
+
+        DB::beginTransaction();
+        try {
+            DB::transaction(fn () => Dijuntor::create(['name' => $this->name]));
+        } catch (Exception $e) {
+            DB::rollBack();
+            $this->notification()->error(
+                $title = 'Error !!!',
+                $description = 'Não foi possivel salvar'
+            );
+        }
+        DB::commit();
+        $this->name = '';
+        $this->notification()->success(
+            $title = 'Sucesso',
+            $description = 'Registro salvo'
+        );
+        $this->mount();
+    }
 
     public function mount()
     {
-        $this->dijuntores = Dijuntor::all();
-        // session()->flash('message', 'Post successfully updated.');
+        $this->disjuntores = Dijuntor::all();
     }
 
     public function render()

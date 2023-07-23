@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\Dijuntor;
 use App\Models\Register;
 use App\Models\StatusProjet;
-use App\Models\UserKit;
 use App\Models\UserRequest;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -20,10 +19,8 @@ class HomeUser extends Component
     //controller exibir campos da view
     public $exibir_empresa = false;
     // arquivos
-    public $identificacao_pf_pj,  $procuracao, $fatura_da_uc, $padrao_de_entrada;
-    public $kwp, $fotovoltaico, $inversor, $datasheet,  $dijuntor_id;
-    // obrigatorio
-    public $telefone, $observacao;
+    public $identificacao_pf_pj,  $procuracao, $fatura_da_uc, $padrao_de_entrada, $datasheet;
+    public $kwp, $fotovoltaico, $inversor, $dijuntor_id, $telefone, $observacao;
     //
     public $tipo_pessoa = 'pf';
 
@@ -92,21 +89,10 @@ class HomeUser extends Component
         $padrao_de_entrada_path = $this->padrao_de_entrada->store($caminho);
         $datasheet_path = $this->datasheet->store($caminho);
 
-        // 1 passo salvar documentos (tabela Register)
         DB::beginTransaction();
         try {
 
             $user_id = auth()->user()->id;
-
-            $kit = UserKit::create(
-                [
-                    'customer_id' => $user_id,
-                    'kwp' => $this->kwp,
-                    'fotovoltaico' => $this->fotovoltaico,
-                    'inversor' => $this->inversor,
-                    'datasheet' => $datasheet_path,
-                ]
-            );
 
             $register = Register::create([
                 'user_id' => $user_id,
@@ -115,9 +101,12 @@ class HomeUser extends Component
                 'procuracao' => $procuracao_path,
                 'fatura_da_uc' => $fatura_da_uc_path,
                 'padrao_de_entrada' => $padrao_de_entrada_path,
-                'user_kit_id' => $kit->id,
                 'dijuntor_id' => $this->dijuntor_id,
                 'observacao' => $this->observacao,
+                'kwp' => $this->kwp,
+                'fotovoltaico' => $this->fotovoltaico,
+                'inversor' => $this->inversor,
+                'datasheet' => $datasheet_path,
             ]);
 
             $status_do_projeto = StatusProjet::find(1);

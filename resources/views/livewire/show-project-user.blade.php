@@ -14,7 +14,7 @@
                     <li class="mb-1 mx-2">Procuracao: {{ $item->procuracao ?? 'não informado' }}</li>
                     <li class="mb-1 mx-2">Fatura da UC: {{ $item->fatura_da_uc ?? 'não informado' }}</li>
                     <li class="mb-1 mx-2">Padrão de entrada: {{ $item->padrao_de_entrada ?? 'não informado' }}</li>
-                    <li class="mb-1 mx-2">Dijuntor: {{ $item->dijuntor ?? 'não informado' }}</li>
+                    <li class="mb-1 mx-2">Disjuntor: {{ $item->dijuntor ?? 'não informado' }}</li>
                     <li class="mb-1 mx-2">kit - info: {{ $item->user_kit_id ?? 'não informado' }}</li>
                 </ul>
                 <hr>

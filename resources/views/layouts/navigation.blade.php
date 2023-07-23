@@ -25,7 +25,7 @@
                             {{ __('Clientes') }}
                         </x-nav-link>
                         <x-nav-link :href="route('admin.dijuntor')" :active="request()->routeIs('admin.dijuntor')">
-                            {{ __('Dijuntor') }}
+                            {{ __('Disjuntor') }}
                         </x-nav-link>
                         <x-nav-link :href="route('admin.status.project')" :active="request()->routeIs('admin.status.project')">
                             {{ __('Status') }}

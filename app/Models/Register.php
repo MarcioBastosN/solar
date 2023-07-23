@@ -22,6 +22,10 @@ class Register extends Model
         'dijuntor_id',
         'user_kit_id',
         'observacao',
+        'kwp',
+        'fotovoltaico',
+        'inversor',
+        'datasheet',
     ];
 
     protected $dates = [

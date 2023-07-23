@@ -29,8 +29,10 @@ return new class extends Migration
             $table->unsignedInteger('dijuntor_id');
             $table->foreign('dijuntor_id')->references('id')->on('dijuntors');
 
-            $table->unsignedInteger('user_kit_id');
-            $table->foreign('user_kit_id')->references('id')->on('user_kits');
+            $table->string('kwp')->nullable();
+            $table->string('fotovoltaico')->nullable();
+            $table->string('inversor')->nullable();
+            $table->string('datasheet')->nullable();
 
             $table->text('observacao')->nullable();
 
