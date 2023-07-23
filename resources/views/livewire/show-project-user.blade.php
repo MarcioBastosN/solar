@@ -7,17 +7,9 @@
                 <p class="ml-2">Documentos informados:</p>
                 <ul class="text-secondary ml-2">
                     @if ($item->tipo_pessoa == 'pj')
-                        @if (!empty($item->cnpj))
-                            <li class="mb-1 mx-2">CNPJ: {{ $item->cnpj }}</li>
-                        @else
-                            <li class="mb-1 mx-2">CNPJ: Não informado</li>
-                        @endif
+                        <li class="mb-1 mx-2">CNPJ: {{ $item->identificacao_pf_pj }}</li>
                     @else
-                        @if (!empty($item->rg_cnh))
-                            <li class="mb-1 mx-2">rg_cnh: {{ $item->rg_cnh }}</li>
-                        @else
-                            <li class="mb-1 mx-2">rg_cnh: Não informado</li>
-                        @endif
+                        <li class="mb-1 mx-2">rg_cnh: {{ $item->identificacao_pf_pj }}</li>
                     @endif
                     <li class="mb-1 mx-2">Procuracao: {{ $item->procuracao ?? 'não informado' }}</li>
                     <li class="mb-1 mx-2">Fatura da UC: {{ $item->fatura_da_uc ?? 'não informado' }}</li>

@@ -20,17 +20,19 @@ return new class extends Migration
             $table->enum('tipo_pessoa', ['pf', 'pj'])->default('pf');
             // todos os arquivos do cliente
 
-            $table->text('cnpj')->nullable();
-            $table->text('rg_cnh')->nullable();
-            $table->text('procuracao')->nullable();
-            $table->text('fatura_da_uc')->nullable();
-            $table->text('padrao_de_entrada')->nullable();
+            $table->text('identificacao_pf_pj');
+            // $table->text('rg_cnh')->nullable();
+            $table->text('procuracao');
+            $table->text('fatura_da_uc');
+            $table->text('padrao_de_entrada');
 
-            $table->unsignedInteger('dijuntor_id')->nullable();
+            $table->unsignedInteger('dijuntor_id');
             $table->foreign('dijuntor_id')->references('id')->on('dijuntors');
 
-            $table->unsignedInteger('user_kit_id')->nullable();
+            $table->unsignedInteger('user_kit_id');
             $table->foreign('user_kit_id')->references('id')->on('user_kits');
+
+            $table->text('observacao')->nullable();
 
             $table->timestamps();
         });

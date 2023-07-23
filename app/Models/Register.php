@@ -15,13 +15,13 @@ class Register extends Model
     protected $fillable = [
         'user_id',
         'tipo_pessoa',
-        'cnpj',
-        'rg_cnh',
+        'identificacao_pf_pj',
         'procuracao',
         'fatura_da_uc',
         'padrao_de_entrada',
         'dijuntor_id',
         'user_kit_id',
+        'observacao',
     ];
 
     protected $dates = [

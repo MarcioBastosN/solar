@@ -66,35 +66,22 @@
                         <h3 class="font-medium leading-tight">Documentos</h3>
                         <p class="text-sm">Arquivos diversos (foto ou
                             pdf) até 1Mb</p>
-                        @if ($exibir_empresa)
-                            <div class="mt-2 text-gray-700  ">
-                                <label for="file_input_cnpj">CONTRATO SOCIAL (CASO TITULAR SEJA CNPJ)
-                                </label>
-                                <input wire:model="cnpj" accept="image/*,.pdf"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg
+                        <div class="mt-2 text-gray-700  ">
+                            <label
+                                for="file_input_identificacao_pf_pj">{{ $exibir_empresa ? 'CONTRATO SOCIAL (CASO TITULAR SEJA CNPJ)' : 'Identidade ou CNH' }}
+                            </label>
+                            <input wire:model="identificacao_pf_pj" accept="image/*,.pdf"
+                                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg
                                                 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none
                                                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    aria-describedby="file_input_help" id="file_input_cnpj" type="file">
-                                @error('cnpj')
-                                    <span class="text-text_error">{{ $message }}</span>
-                                @enderror
+                                aria-describedby="file_input_help" id="file_input_identificacao_pf_pj" type="file">
+                            @error('identificacao_pf_pj')
+                                <span class="text-text_error">{{ $message }}</span>
+                            @enderror
 
-                                <div wire:loading wire:target="cnpj">Uploading...</div>
-                            </div>
-                        @else
-                            <div class="mt-2 text-gray-700  ">
-                                <label for="file_input">Identidade ou CNH</label>
-                                <input wire:model="rg_cnh" accept="image/*,.pdf"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg
-                                                cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none
-                                                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    aria-describedby="file_input_help" id="file_input" type="file">
-                                @error('rg_cnh')
-                                    <span class="text-text_error">{{ $message }}</span>
-                                @enderror
-                                <div wire:loading wire:target="rg_cnh">Uploading...</div>
-                            </div>
-                        @endif
+                            <div wire:loading wire:target="identificacao_pf_pj">Uploading...</div>
+                        </div>
+
                         <div class="mt-2 text-gray-700  ">
                             <label for="procuracao_input">Procuração autenticada</label>
                             <input wire:model="procuracao" accept="image/*,.pdf"
@@ -148,7 +135,7 @@
                         <div class="mt-2 text-gray-700">
 
                             <label for="underline_select" class="sr-only">Underline select</label>
-                            <select id="underline_select" wire:model="kit_id"
+                            <select id="underline_select" wire:model="dijuntor_id"
                                 class="block rounded-t-lg px-2.5 pb-1.5 pt-5 w-full
                                 text-sm text-gray-900 bg-primary-100 dark:bg-gray-700 border-0
                                 border-b-2 border-gray-300 appearance-none dark:text-white
@@ -160,6 +147,9 @@
                                     <option value={{ $item->id }}>{{ $item->name }}</option>
                                 @endforeach
                             </select>
+                            @error('dijuntor_id')
+                                <span class="text-text_error">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="mt-2 text-gray-700">
@@ -247,8 +237,9 @@
                                     d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2ZM7 2h4v3H7V2Zm5.7 8.289-3.975 3.857a1 1 0 0 1-1.393 0L5.3 12.182a1.002 1.002 0 1 1 1.4-1.436l1.328 1.289 3.28-3.181a1 1 0 1 1 1.392 1.435Z" />
                             </svg>
                         </span>
-                        <h3 class="font-medium leading-tight">Confirmation</h3>
-                        <p class="text-sm">Step details here</p>
+                        <h3 class="font-medium leading-tight">Confirmação</h3>
+                        <p class="text-sm">informe observações se houver</p>
+                        <x-textarea wire:model="observacao" label="Notas" placeholder="Suas considerações" />
                         <div class="flex mt-3">
                             <button type="submit"
                                 class="w-full bg-gray-400 h-12 rounded-lg border-spacing-2
