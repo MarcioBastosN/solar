@@ -42,4 +42,9 @@ class Register extends Model
     {
         return $this->hasOne(UserRequest::class, 'request_id');
     }
+
+    public function possuiProjeto(): HasOne
+    {
+        return $this->hasOne(Project::class, 'user_request_id');
+    }
 }

@@ -113,7 +113,7 @@
                     <li>
                         <div>
                             <h2>Info Card</h2>
-                            <p>{{ $infoCard }}</p>
+                            <p>{{ empty($infoProjet) ? 'Vazio' : 'test' }}</p>
                         </div>
                     </li>
                 </ol>

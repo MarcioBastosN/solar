@@ -21,8 +21,8 @@ return new class extends Migration
             $table->unsignedInteger('user_request_id');
             $table->foreign('user_request_id')->references('id')->on('user_requests');
 
-            $table->unsignedInteger('status_id');
-            $table->foreign('status_id')->references('id')->on('status_projets');
+            // $table->unsignedInteger('status_id');
+            // $table->foreign('status_id')->references('id')->on('status_projets');
 
             $table->timestamps();
         });
