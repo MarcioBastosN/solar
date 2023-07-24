@@ -14,8 +14,15 @@
         <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-2">
             <div class="md:flex">
                 <div class="md:flex-shrink-0">
-                    <img class="h-48 w-full object-cover md:h-full md:w-48" src="/img/store.jpg"
-                        alt="Man looking at item at a store">
+                    @if (empty($user->pendencia))
+                        <x-icon name="emoji-sad" class="w-full h-12 hover:text-red-500"
+                            wire:click='desativar({{ $user->id }})' />
+                        <p>Desabilitar registro</p>
+                    @else
+                        <x-icon name="badge-check" class="w-full h-12 hover:bg-primary"
+                            wire:click='ativar({{ $user->id }})' />
+                        <p>Ativar registro</p>
+                    @endif
                 </div>
                 <div class="p-6 w-full">
                     <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">

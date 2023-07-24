@@ -43,7 +43,7 @@ Route::middleware(['auth', 'verified'])
 Route::middleware(['auth', 'verified'])
     ->prefix('admin')
     ->group(function () {
-        Route::get('/dijuntor', ShowDijuntor::class)->name('admin.dijuntor');
+        Route::get('/disjuntor', ShowDijuntor::class)->name('admin.disjuntor');
         Route::get('/clientes', ShowUsers::class)->name('admin.clientes');
         Route::get('/clienteProject', ShowClienteProjet::class)->name('admin.cliente.project');
         Route::get('/statusProjet', ShowStatusProject::class)->name('admin.status.project');
