@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->enum('tipo_pessoa', ['pf', 'pj'])->default('pf');
+            $table->string('telefone');
             // todos os arquivos do cliente
 
             $table->text('identificacao_pf_pj');

@@ -14,6 +14,7 @@ class Register extends Model
 
     protected $fillable = [
         'user_id',
+        'telefone',
         'tipo_pessoa',
         'identificacao_pf_pj',
         'procuracao',

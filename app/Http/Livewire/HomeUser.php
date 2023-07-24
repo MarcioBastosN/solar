@@ -96,6 +96,7 @@ class HomeUser extends Component
 
             $register = Register::create([
                 'user_id' => $user_id,
+                'telefone' => $this->telefone,
                 'identificacao_pf_pj' => $identificacao_pf_pj_path,
                 'tipo_pessoa' => $this->tipo_pessoa,
                 'procuracao' => $procuracao_path,
