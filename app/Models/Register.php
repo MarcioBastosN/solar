@@ -21,7 +21,6 @@ class Register extends Model
         'fatura_da_uc',
         'padrao_de_entrada',
         'dijuntor_id',
-        'user_kit_id',
         'observacao',
         'kwp',
         'fotovoltaico',
@@ -46,5 +45,10 @@ class Register extends Model
     public function possuiProjeto(): HasOne
     {
         return $this->hasOne(Project::class, 'user_request_id');
+    }
+
+    public function disjuntor(): BelongsTo
+    {
+        return $this->belongsTo(Dijuntor::class, 'dijuntor_id');
     }
 }

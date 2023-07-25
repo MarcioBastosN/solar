@@ -3,13 +3,14 @@
 namespace App\Http\Livewire;
 
 use App\Models\Project;
-use App\Models\Register;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
+use WireUi\Traits\Actions;
 
 class ShowProjectUser extends Component
 {
-    use WithPagination;
+    use WithPagination, Actions;
 
     public $infoProjet;
 
@@ -17,6 +18,21 @@ class ShowProjectUser extends Component
     {
         $this->infoProjet = Project::where('user_request_id', $id)->get();
     }
+
+    public function export($path)
+    {
+        return Storage::disk('public')->download($path);
+    }
+
+    public function showObs($obs)
+    {
+        $this->dialog()->show([
+            'title'       => 'Observação',
+            'description' => $obs,
+            'icon'        => 'info'
+        ]);
+    }
+
 
     public function render()
     {

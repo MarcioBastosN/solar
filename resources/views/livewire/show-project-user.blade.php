@@ -6,36 +6,109 @@
             <p>Contate o responsavel para verificar suas pendencias!</p>
         </div>
     @else
-        <div class="grid grid-cols-2 py-4">
-            <div class="container mx-auto px-8 ">
+        <div class="grid grid-cols-2 my-4">
+            {{-- grid-1 --}}
+            <div class="mx-8 px-8 ">
                 @foreach ($register as $item)
-                    <div class="bg-primary mt-2 box-border box-border-4">
-                        <p class="text-lg mt-2 ml-4">Registro: {{ $item->id }} -
-                            {{ $item->tipo_pessoa == 'pf' ? 'Pessoa Fisica' : 'Pessoa Juridica' }}</p>
-                        <p class="ml-2">Documentos informados:</p>
-                        <ul class="text-secondary ml-2">
-                            @if ($item->tipo_pessoa == 'pj')
-                                <li class="mb-1 mx-2">CNPJ: {{ $item->identificacao_pf_pj }}</li>
-                            @else
-                                <li class="mb-1 mx-2">rg_cnh: {{ $item->identificacao_pf_pj }}</li>
-                            @endif
-                            <li class="mb-1 mx-2">Procuracao: {{ $item->procuracao ?? 'não informado' }}</li>
-                            <li class="mb-1 mx-2">Fatura da UC: {{ $item->fatura_da_uc ?? 'não informado' }}</li>
-                            <li class="mb-1 mx-2">Padrão de entrada: {{ $item->padrao_de_entrada ?? 'não informado' }}
-                            </li>
-                            <li class="mb-1 mx-2">Disjuntor: {{ $item->dijuntor ?? 'não informado' }}</li>
-                            <li class="mb-1 mx-2">kit - info: {{ $item->user_kit_id ?? 'não informado' }}</li>
-                        </ul>
-                        <hr>
-                        <button class="w-full my-2 rounded-md bg-primary_dark"
-                            wire:click='detalhes({{ $item->id }})'>
-                            Ver detalhes
-                        </button>
+                    <div class="my-2">
+                        <x-card
+                            title="Registro: {{ $item->id }} -
+                            {{ $item->tipo_pessoa == 'pf' ? 'Pessoa Fisica' : 'Pessoa Juridica' }} - {{ $item->created_at->format('d/m/Y') }}">
+
+                            <div class="grid grid-cols-2">
+                                <div>
+                                    <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Arquivos
+                                        enviados
+                                    </h2>
+                                    <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                        <li class="flex items-center">
+                                            <x-icon name="download"
+                                                class="w-3.5 h-3.5 text-primary dark:text-primary" />
+                                            <a href="#" wire:click="export('{{ $item->identificacao_pf_pj }}')"
+                                                class="hover:underline">
+                                                {{ $item->tipo_pessoa == 'pj' ? 'CNPJ' : 'RG ou CNH' }}
+                                            </a>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <x-icon name="download"
+                                                class="w-3.5 h-3.5 text-primary dark:text-primary" />
+                                            <a href="#" wire:click="export('{{ $item->procuracao }}')"
+                                                class="hover:underline">
+                                                Procuração
+                                            </a>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <x-icon name="download"
+                                                class="w-3.5 h-3.5 text-primary dark:text-primary" />
+                                            <a href="#" wire:click="export('{{ $item->fatura_da_uc }}')"
+                                                class="hover:underline">
+                                                Fatura da Unidade Consumidora
+                                            </a>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <x-icon name="download"
+                                                class="w-3.5 h-3.5 text-primary dark:text-primary" />
+                                            <a href="#" wire:click="export('{{ $item->padrao_de_entrada }}')"
+                                                class="hover:underline">
+                                                Padrao de entrada
+                                            </a>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <x-icon name="download"
+                                                class="w-3.5 h-3.5 text-primary dark:text-primary" />
+                                            <a href="#" wire:click="export('{{ $item->datasheet }}')"
+                                                class="hover:underline">
+                                                Datasheet
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                                        Informaçoes do modelo
+                                    </h2>
+                                    <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                        <li class="flex items-center">Disjuntor:
+                                            {{ $item->disjuntor->name }}
+                                        </li>
+                                        <li class="flex items-center">
+                                            KWP: {{ $item->kwp }}
+                                        </li>
+                                        <li class="flex items-center">
+                                            fotovoltaico: {{ $item->fotovoltaico }}
+                                        </li>
+                                        <li class="flex items-center">
+                                            inversor: {{ $item->inversor }}
+                                        </li>
+                                        <li class="flex items-center">
+                                            @if (empty($item->observacao))
+                                                <x-icon name="exclamation"
+                                                    class="w-3.5 h-3.5 text-primary dark:text-primary" />
+                                                Não possui observação
+                                            @else
+                                                <x-icon name="search"
+                                                    class="w-3.5 h-3.5 text-primary dark:text-primary" />
+                                                <a href="#" wire:click="showObs('{{ $item->observacao }}')">
+                                                    Observacao
+                                                </a>
+                                            @endif
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <x-slot name="footer">
+                                <div class="flex justify-between items-center">
+                                    <x-button label="Delete" flat negative />
+                                    <x-button label="Save" class="bg-primary w-32" />
+                                </div>
+                            </x-slot>
+                        </x-card>
                     </div>
                 @endforeach
                 {{ $register->links() }}
             </div>
-            <div class="container mx-auto px-8">
+            {{-- grid-2 --}}
+            <div class="mx-8 px-8">
                 <ol class="relative border-l border-gray-200 dark:border-gray-700">
                     <li class="mb-10 ml-6">
                         <span
@@ -105,7 +178,8 @@
                             class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released
                             on
                             December 2nd, 2021</time>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web
+                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of
+                            web
                             components and interactive elements built on top of Tailwind CSS.</p>
                     </li>
                 </ol>
