@@ -33,7 +33,6 @@ class ShowProjectUser extends Component
         ]);
     }
 
-
     public function render()
     {
         $register = auth()->user()->register()->orderBy('created_at', 'DESC')->paginate(2);

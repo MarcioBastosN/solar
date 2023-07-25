@@ -7,6 +7,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 
@@ -18,6 +19,20 @@ class ShowClienteProjet extends Component
     public function mount(HttpRequest $request)
     {
         $this->projetos = User::find($request->cliente)->register()->with('statusRequest.status', 'possuiProjeto')->get();
+    }
+
+    public function export($path)
+    {
+        return Storage::disk('public')->download($path);
+    }
+
+    public function showObs($obs)
+    {
+        $this->dialog()->show([
+            'title'       => 'Observação',
+            'description' => $obs,
+            'icon'        => 'info'
+        ]);
     }
 
     public function trabalhar($projeto_id)
