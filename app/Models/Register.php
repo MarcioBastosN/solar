@@ -51,4 +51,9 @@ class Register extends Model
     {
         return $this->belongsTo(Dijuntor::class, 'dijuntor_id');
     }
+
+    public function validaDocumentos(): HasMany
+    {
+        return $this->hasMany(ValidaDocumento::class, 'register_id');
+    }
 }
