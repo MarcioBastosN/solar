@@ -35,7 +35,7 @@ class ShowProjectUser extends Component
 
     public function render()
     {
-        $register = auth()->user()->register()->orderBy('created_at', 'DESC')->paginate(2);
+        $register = auth()->user()->register()->with('validaDocumentos.status')->orderBy('created_at', 'DESC')->paginate(2);
         $pendencia = auth()->user()->pendencia;
         return view('livewire.show-project-user')->with(compact('register', 'pendencia'));
     }

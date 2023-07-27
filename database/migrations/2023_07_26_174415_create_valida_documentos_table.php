@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('valida_docuemntos', function (Blueprint $table) {
+        Schema::create('valida_documentos', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('register_id');
             $table->foreign('register_id')->references('id')->on('registers');

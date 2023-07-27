@@ -20,4 +20,9 @@ class Project extends Model
     {
         return $this->belongsTo(User::class, 'manager_id');
     }
+
+    public function statusDocumentos(): BelongsTo
+    {
+        return $this->belongsTo(ValidaDocumento::class, "user_request_id");
+    }
 }

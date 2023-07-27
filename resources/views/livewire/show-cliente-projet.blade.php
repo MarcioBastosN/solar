@@ -7,8 +7,8 @@
                 {{ $item->created_at->format('d/m/Y') }}">
                 <div class="grid grid-cols-2">
                     <div>
-                        <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Arquivos
-                            enviados
+                        <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                            Arquivos recebidos
                         </h2>
                         <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
                             <li class="flex items-center">
