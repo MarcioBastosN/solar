@@ -45,7 +45,7 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         Route::get('/disjuntor', ShowDijuntor::class)->name('admin.disjuntor');
         Route::get('/clientes', ShowUsers::class)->name('admin.clientes');
-        Route::get('/clienteProject', ShowClienteProjet::class)->name('admin.cliente.project');
+        Route::get('/clienteProject/{id}', ShowClienteProjet::class)->name('admin.cliente.project');
         Route::get('/statusProjet', ShowStatusProject::class)->name('admin.status.project');
     });
 

@@ -21,7 +21,8 @@ class ShowUsers extends Component
 
     public function paginaDetalhes($id)
     {
-        return redirect()->route('admin.cliente.project', ['cliente' => $id]);
+        // ['cliente' => $id]
+        return redirect()->route('admin.cliente.project', $id);
     }
 
     public function mount()

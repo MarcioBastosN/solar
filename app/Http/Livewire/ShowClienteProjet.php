@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\Project;
 use App\Models\User;
 use Exception;
-use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -14,11 +13,11 @@ use WireUi\Traits\Actions;
 class ShowClienteProjet extends Component
 {
     use Actions;
-    public $projetos;
+    public $user_id;
 
-    public function mount(HttpRequest $request)
+    public function mount($id)
     {
-        $this->projetos = User::find($request->cliente)->register()->with('statusRequest.status', 'possuiProjeto')->get();
+        $this->user_id = $id;
     }
 
     public function export($path)
@@ -51,10 +50,12 @@ class ShowClienteProjet extends Component
             $description = 'Você e o responsavel deste projeto'
         );
         DB::commit();
+        $this->render();
     }
 
     public function render()
     {
-        return view('livewire.show-cliente-projet');
+        $projetos = User::find($this->user_id)->register()->with('statusRequest.status', 'possuiProjeto')->get();
+        return view('livewire.show-cliente-projet')->with(compact('projetos'));
     }
 }
