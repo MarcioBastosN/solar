@@ -168,13 +168,12 @@
                                 Trabalho</button>
                         @else
                             <p class="text-gray-500 "> Responsavel: {{ $item->possuiProjeto->responsavel->name }}</p>
-                            <p>Verificar Documntos e iniciar</p>
+                            <p>Verificar Documentos para iniciar</p>
                         @endif
-                        <x-button label="Save" class="bg-primary w-32" />
+                        <x-button label="Save" class="bg-primary w-32" wire:click='teste' />
                     </div>
                 </x-slot>
             </x-card>
         </div>
     @endforeach
-
 </div>
