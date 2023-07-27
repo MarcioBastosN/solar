@@ -17,17 +17,10 @@ class ShowUsers extends Component
 
     protected $queryString = ['search'];
 
-    // public $users;
-
     public function paginaDetalhes($id)
     {
         return redirect()->route('admin.cliente.project', ['cliente' => $id]);
     }
-
-    // public function mount()
-    // {
-    //     $this->users = User::with('roles')->where('email', 'ilike', '%' . $this->search . '%')->get();
-    // }
 
     public function desativar($id)
     {
@@ -42,7 +35,6 @@ class ShowUsers extends Component
             $title = 'Desabilitado',
             $description = 'Acesso do usuario suspenso com sucesso'
         );
-        $this->mount();
         $this->render();
     }
 
@@ -59,7 +51,6 @@ class ShowUsers extends Component
             $title = 'Reativado',
             $description = 'Acesso reabilitado com sucesso'
         );
-        $this->mount();
         $this->render();
     }
 
