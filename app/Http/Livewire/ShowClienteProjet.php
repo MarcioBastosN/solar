@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Project;
 use App\Models\User;
+use App\Models\ValidaDocumento;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -23,6 +24,42 @@ class ShowClienteProjet extends Component
     public function export($path)
     {
         return Storage::disk('public')->download($path);
+    }
+
+    public function validar($documento, $registro)
+    {
+        $this->dialog()->confirm([
+            'title'       => 'Altera status do Documento',
+            'description' => 'aprove ou rejeite o Documento',
+            'icon'        => 'info',
+            'accept'      => [
+                'label'  => 'Aprovar arquivo',
+                'method' => 'aprovar',
+                'params' => [$documento, $registro],
+            ],
+            'reject' => [
+                'label'  => 'Rejeitar arquivo',
+                'method' => 'cancel',
+                'params' => [$documento, $registro],
+            ],
+        ]);
+    }
+
+    public function aprovar($documento, $registro)
+    {
+        DB::beginTransaction();
+        try {
+            DB::transaction(fn () => ValidaDocumento::where('register_id', $registro)->where('documento', 'ilike', "%" . $documento . "%")->update(['status_id' => 3]));
+        } catch (Exception $e) {
+            DB::rollBack();
+        }
+        DB::commit();
+        $this->render();
+    }
+
+    public function cancel($documento, $registro)
+    {
+        dd("rejeitar", $documento, $registro);
     }
 
     public function showObs($obs)

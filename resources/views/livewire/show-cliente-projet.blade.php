@@ -32,7 +32,10 @@
                                             {{ $item->validaDocumentos->where('documento', 'RG')->first()->status->label }}
                                         </span>
                                     @endif
-                                    <button class="mx-2">teste validar</button>
+                                    @if ($item->validaDocumentos->where('documento', 'RG')->first()->status_id != 3)
+                                        <button class="mx-2" wire:click="validar('Rg', {{ $item->id }})">
+                                            Avaliar</button>
+                                    @endif
                                 @endif
                             </li>
                             <li class="flex items-center">
@@ -55,6 +58,10 @@
                                             {{ $item->validaDocumentos->where('documento', 'Procuracao')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
                                             {{ $item->validaDocumentos->where('documento', 'Procuracao')->first()->status->label }}
                                         </span>
+                                    @endif
+                                    @if ($item->validaDocumentos->where('documento', 'Procuracao')->first()->status_id != 3)
+                                        <button class="mx-2" wire:click="validar('Procuracao', {{ $item->id }})">
+                                            Avaliar</button>
                                     @endif
                                 @endif
                             </li>
@@ -79,6 +86,10 @@
                                             {{ $item->validaDocumentos->where('documento', 'Fatura')->first()->status->label }}
                                         </span>
                                     @endif
+                                    @if ($item->validaDocumentos->where('documento', 'Fatura')->first()->status_id != 3)
+                                        <button class="mx-2" wire:click="validar('Fatura', {{ $item->id }})">
+                                            Avaliar</button>
+                                    @endif
                                 @endif
                             </li>
                             <li class="flex items-center">
@@ -102,6 +113,10 @@
                                             {{ $item->validaDocumentos->where('documento', 'Padrao')->first()->status->label }}
                                         </span>
                                     @endif
+                                    @if ($item->validaDocumentos->where('documento', 'Padrao')->first()->status_id != 3)
+                                        <button class="mx-2" wire:click="validar('Padrao', {{ $item->id }})">
+                                            Avaliar</button>
+                                    @endif
                                 @endif
                             </li>
                             <li class="flex items-center">
@@ -124,6 +139,10 @@
                                             {{ $item->validaDocumentos->where('documento', 'Datasheet')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
                                             {{ $item->validaDocumentos->where('documento', 'Datasheet')->first()->status->label }}
                                         </span>
+                                    @endif
+                                    @if ($item->validaDocumentos->where('documento', 'Datasheet')->first()->status_id != 3)
+                                        <button class="mx-2" wire:click="validar('Datasheet', {{ $item->id }})">
+                                            Avaliar</button>
                                     @endif
                                 @endif
                             </li>
@@ -168,9 +187,12 @@
                                 Trabalho</button>
                         @else
                             <p class="text-gray-500 "> Responsavel: {{ $item->possuiProjeto->responsavel->name }}</p>
+                        @endif
+                        @if ($item->habilitaProjeto())
+                            <x-button label="Save" class="bg-primary w-32" wire:click='' />
+                        @else
                             <p>Verificar Documentos para iniciar</p>
                         @endif
-                        <x-button label="Save" class="bg-primary w-32" wire:click='teste' />
                     </div>
                 </x-slot>
             </x-card>

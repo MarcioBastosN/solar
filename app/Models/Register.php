@@ -56,4 +56,13 @@ class Register extends Model
     {
         return $this->hasMany(ValidaDocumento::class, 'register_id');
     }
+
+    public function habilitaProjeto()
+    {
+        $valida = $this->hasMany(ValidaDocumento::class, 'register_id');
+        if ($valida->sum("status_id") == 15) {
+            return true;
+        }
+        return false;
+    }
 }

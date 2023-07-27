@@ -6,6 +6,7 @@ use App\Models\Dijuntor;
 use App\Models\Register;
 use App\Models\StatusProjet;
 use App\Models\UserRequest;
+use App\Models\ValidaDocumento;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -117,6 +118,16 @@ class HomeUser extends Component
                 'request_id' => $register->id,
                 'status_id' => $status_do_projeto->id,
             ]);
+
+            $documentos = ['RG', 'Procuracao', 'Padrao', 'Fatura', 'Datasheet', 'ContratoSocial'];
+
+            foreach ($documentos as $doc) {
+                DB::transaction(fn () => ValidaDocumento::create([
+                    'register_id' => $register->id,
+                    'documento' => $doc,
+                    'status_id' => 1,
+                ]));
+            }
         } catch (Exception $e) {
             DB::rollBack();
             dd($e->getMessage());
