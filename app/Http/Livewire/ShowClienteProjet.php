@@ -57,11 +57,6 @@ class ShowClienteProjet extends Component
         $this->render();
     }
 
-    public function cancel($documento, $registro)
-    {
-        dd("rejeitar", $documento, $registro);
-    }
-
     public function showObs($obs)
     {
         $this->dialog()->show([
