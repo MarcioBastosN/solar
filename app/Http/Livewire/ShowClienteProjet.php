@@ -34,22 +34,22 @@ class ShowClienteProjet extends Component
             'icon'        => 'info',
             'accept'      => [
                 'label'  => 'Aprovar arquivo',
-                'method' => 'aprovar',
-                'params' => [$documento, $registro],
+                'method' => 'valide',
+                'params' => [$documento, $registro, 3],
             ],
             'reject' => [
                 'label'  => 'Rejeitar arquivo',
-                'method' => 'cancel',
-                'params' => [$documento, $registro],
+                'method' => 'valide',
+                'params' => [$documento, $registro, 2],
             ],
         ]);
     }
 
-    public function aprovar($documento, $registro)
+    public function valide($documento, $registro, $status)
     {
         DB::beginTransaction();
         try {
-            DB::transaction(fn () => ValidaDocumento::where('register_id', $registro)->where('documento', 'ilike', "%" . $documento . "%")->update(['status_id' => 3]));
+            DB::transaction(fn () => ValidaDocumento::where('register_id', $registro)->where('documento', 'ilike', "%" . $documento . "%")->update(['status_id' => $status]));
         } catch (Exception $e) {
             DB::rollBack();
         }
