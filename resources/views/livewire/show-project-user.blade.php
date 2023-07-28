@@ -28,8 +28,8 @@
                                                 class="hover:underline">
                                                 {{ $item->tipo_pessoa == 'pj' ? 'CNPJ' : 'RG ou CNH' }}
                                             </a>
-                                            @if (empty($item->validaDocumentos->where('documento', 'RG')->first()) ||
-                                                    $item->validaDocumentos->where('documento', 'RG')->first()->status_id == 1)
+                                            @if (empty($item->validaDocumentos->where('documento', 'PF_PJ')->first()) ||
+                                                    $item->validaDocumentos->where('documento', 'PF_PJ')->first()->status_id == 1)
                                                 <span
                                                     class="bg-gray-300 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2">
                                                     Não visualizado
@@ -38,11 +38,11 @@
                                                 <span
                                                     class=" text-gray-800 text-xs font-medium
                                             mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2
-                                            {{ $item->validaDocumentos->where('documento', 'RG')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
-                                                    {{ $item->validaDocumentos->where('documento', 'RG')->first()->status->label }}
+                                            {{ $item->validaDocumentos->where('documento', 'PF_PJ')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
+                                                    {{ $item->validaDocumentos->where('documento', 'PF_PJ')->first()->status->label }}
                                                 </span>
-                                                @if ($item->validaDocumentos->where('documento', 'RG')->first()->status_id == 2)
-                                                    <a href="#">Subustituir</a>
+                                                @if ($item->validaDocumentos->where('documento', 'PF_PJ')->first()->status_id == 2)
+                                                    <a href="#">Substituir</a>
                                                 @endif
                                             @endif
                                         </li>
@@ -68,7 +68,7 @@
                                                     {{ $item->validaDocumentos->where('documento', 'Procuracao')->first()->status->label }}
                                                 </span>
                                                 @if ($item->validaDocumentos->where('documento', 'Procuracao')->first()->status_id == 2)
-                                                    <a href="#">Subustituir</a>
+                                                    <a href="#">Substituir</a>
                                                 @endif
                                             @endif
                                         </li>
@@ -93,7 +93,7 @@
                                                     {{ $item->validaDocumentos->where('documento', 'Fatura')->first()->status->label }}
                                                 </span>
                                                 @if ($item->validaDocumentos->where('documento', 'Fatura')->first()->status_id == 2)
-                                                    <a href="#">Subustituir</a>
+                                                    <a href="#">Substituir</a>
                                                 @endif
                                             @endif
                                         </li>
@@ -118,7 +118,7 @@
                                                     {{ $item->validaDocumentos->where('documento', 'Padrao')->first()->status->label }}
                                                 </span>
                                                 @if ($item->validaDocumentos->where('documento', 'Padrao')->first()->status_id == 2)
-                                                    <a href="#">Subustituir</a>
+                                                    <a href="#">Substituir</a>
                                                 @endif
                                             @endif
                                         </li>
@@ -143,7 +143,7 @@
                                                     {{ $item->validaDocumentos->where('documento', 'Datasheet')->first()->status->label }}
                                                 </span>
                                                 @if ($item->validaDocumentos->where('documento', 'Datasheet')->first()->status_id == 2)
-                                                    <a href="#">Subustituir</a>
+                                                    <a href="#">Substituir</a>
                                                 @endif
                                             @endif
                                         </li>

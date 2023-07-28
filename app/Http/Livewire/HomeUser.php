@@ -119,7 +119,7 @@ class HomeUser extends Component
                 'status_id' => $status_do_projeto->id,
             ]);
 
-            $documentos = ['RG', 'Procuracao', 'Padrao', 'Fatura', 'Datasheet', 'ContratoSocial'];
+            $documentos = ['PF_PJ', 'Procuracao', 'Padrao', 'Fatura', 'Datasheet'];
 
             foreach ($documentos as $doc) {
                 DB::transaction(fn () => ValidaDocumento::create([

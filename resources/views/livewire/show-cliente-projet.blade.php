@@ -18,8 +18,8 @@
                                     {{ $item->tipo_pessoa == 'pj' ? 'CNPJ' : 'RG ou CNH' }}
                                 </a>
                                 @if (!empty($item->possuiProjeto))
-                                    @if (empty($item->validaDocumentos->where('documento', 'RG')->first()) ||
-                                            $item->validaDocumentos->where('documento', 'RG')->first()->status_id == 1)
+                                    @if (empty($item->validaDocumentos->where('documento', 'PF_PJ')->first()) ||
+                                            $item->validaDocumentos->where('documento', 'PF_PJ')->first()->status_id == 1)
                                         <span
                                             class="bg-gray-300 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2">
                                             Não visualizado
@@ -28,12 +28,12 @@
                                         <span
                                             class=" text-gray-800 text-xs font-medium
                                             mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2
-                                            {{ $item->validaDocumentos->where('documento', 'RG')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
-                                            {{ $item->validaDocumentos->where('documento', 'RG')->first()->status->label }}
+                                            {{ $item->validaDocumentos->where('documento', 'PF_PJ')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
+                                            {{ $item->validaDocumentos->where('documento', 'PF_PJ')->first()->status->label }}
                                         </span>
                                     @endif
-                                    @if ($item->validaDocumentos->where('documento', 'RG')->first()->status_id != 3)
-                                        <button class="mx-2" wire:click="validar('Rg', {{ $item->id }})">
+                                    @if ($item->validaDocumentos->where('documento', 'PF_PJ')->first()->status_id != 3)
+                                        <button class="mx-2" wire:click="validar('PF_PJ', {{ $item->id }})">
                                             Avaliar</button>
                                     @endif
                                 @endif
@@ -189,7 +189,9 @@
                             <p class="text-gray-500 "> Responsavel: {{ $item->possuiProjeto->responsavel->name }}</p>
                         @endif
                         @if ($item->habilitaProjeto())
-                            <x-button label="Save" class="bg-primary w-32" wire:click='' />
+                            <button label="Save" class="bg-primary w-32" wire:click=''>
+                                Iniciar
+                            </button>
                         @else
                             <p>Verificar Documentos para iniciar</p>
                         @endif

@@ -59,10 +59,11 @@ class Register extends Model
 
     public function habilitaProjeto()
     {
+        $validador = false;
         $valida = $this->hasMany(ValidaDocumento::class, 'register_id');
-        if ($valida->sum("status_id") == 15) {
-            return true;
+        if ($valida->sum("status_id") >= 15) {
+            $validador = true;
         }
-        return false;
+        return $validador;
     }
 }

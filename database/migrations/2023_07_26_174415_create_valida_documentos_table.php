@@ -17,9 +17,9 @@ return new class extends Migration
             $table->foreign('register_id')->references('id')->on('registers');
 
             $table->unsignedInteger('status_id');
-            $table->foreign('status_id')->references('id')->on('status_documentos');
+            $table->foreign('status_id')->references('id')->on('status_documentos')->onDelete("cascade");
 
-            $table->enum('documento', ['RG', 'Procuracao', 'Padrao', 'Fatura', 'Datasheet', 'ContratoSocial']);
+            $table->enum('documento', ['PF_PJ', 'Procuracao', 'Padrao', 'Fatura', 'Datasheet']);
             $table->string('obs')->nullable();
             $table->timestamps();
         });
