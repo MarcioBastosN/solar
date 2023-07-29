@@ -205,7 +205,7 @@
                         </div>
 
                         <div class="mt-2 text-gray-700  ">
-                            <label for="datasheet">Padrao de entrada</label>
+                            <label for="datasheet">Datasheet</label>
                             <input wire:model="datasheet" accept="image/*,.pdf"
                                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg
                             cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none

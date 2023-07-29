@@ -15,8 +15,7 @@ use WireUi\Traits\Actions;
 
 class HomeUser extends Component
 {
-    use Actions;
-    use WithFileUploads;
+    use Actions, WithFileUploads;
     //controller exibir campos da view
     public $exibir_empresa = false;
     // arquivos
@@ -119,7 +118,7 @@ class HomeUser extends Component
                 'status_id' => $status_do_projeto->id,
             ]);
 
-            $documentos = ['PF_PJ', 'Procuracao', 'Padrao', 'Fatura', 'Datasheet'];
+            $documentos = ['identificacao_pf_pj', 'procuracao', 'padrao_de_entrada', 'fatura_da_uc', 'datasheet'];
 
             foreach ($documentos as $doc) {
                 DB::transaction(fn () => ValidaDocumento::create([

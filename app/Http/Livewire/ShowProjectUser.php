@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Project;
+use App\Models\Register;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -14,6 +15,12 @@ class ShowProjectUser extends Component
 
     public $infoProjet;
 
+    public $cardDetalhes = false;
+    public $cardReenvio = false;
+
+    // infornaçoes uteis
+    public $projetoSelecionado;
+
     public function detalhes($id)
     {
         $this->infoProjet = Project::where('user_request_id', $id)->get();
@@ -22,6 +29,22 @@ class ShowProjectUser extends Component
     public function export($path)
     {
         return Storage::disk('public')->download($path);
+    }
+
+
+    public function paginaArquivosCliente($id)
+    {
+        return redirect()->route('cliente.documentos.correcao', $id);
+    }
+
+
+    public function exbibeDetalhes($id)
+    {
+        $this->projetoSelecionado = $id;
+        if ($this->cardReenvio) {
+            $this->cardReenvio = false;
+        }
+        $this->cardDetalhes = true;
     }
 
     public function showObs($obs)

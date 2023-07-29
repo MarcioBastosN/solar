@@ -8,6 +8,7 @@ use App\Http\Livewire\{
     ShowProjectUser,
     ShowStatusProject,
     ShowUsers,
+    UpdateDocumentos,
 };
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,7 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         Route::get('/home', HomeUser::class)->name('cliente.home');
         Route::get('/projects', ShowProjectUser::class)->name('cliente.porjects');
+        Route::get('/documento/corrige/{id}', UpdateDocumentos::class)->name('cliente.documentos.correcao');
     });
 
 Route::middleware(['auth', 'verified'])
