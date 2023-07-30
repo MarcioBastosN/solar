@@ -84,7 +84,7 @@ class UpdateDocumentos extends Component
 
         $this->render();
     }
-
+    // falta liberar o arquivo apos salvar
     public function saveDoc($arquivo, $nomeArquivo)
     {
         DB::beginTransaction();
