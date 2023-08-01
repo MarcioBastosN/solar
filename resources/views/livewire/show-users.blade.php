@@ -24,6 +24,7 @@
                         <p>Ativar registro</p>
                     @endif
                 </div>
+                {{-- centro --}}
                 <div class="p-6 w-full">
                     <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
                         {{ !empty($user->roles->first()) ? $user->roles->first()->name : 'ops' }}</div>
@@ -31,14 +32,18 @@
                         class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ $user->name }}</a>
                     <p class="mt-2 text-gray-500">{{ $user->email }}</p>
                 </div>
-                <div class="w-full bg-primary-200 hover:bg-primary" wire:click='paginaDetalhes({{ $user->id }})'>
-                    <p class="text-center align-middle text-2xl scale-150 mt-8">
-                        {{ $user->register->count() }}
-                    </p>
-                    <p class="text-center align-middle">
-                        <span>Projetos</span>
-                    </p>
-                </div>
+                {{-- direita --}}
+                <a href="#" wire:click='paginaDetalhes({{ $user->id }})'
+                    class="w-full bg-primary-200 hover:bg-primary">
+                    <div>
+                        <p class="text-center align-middle text-2xl scale-150 mt-8">
+                            {{ $user->register->count() }}
+                        </p>
+                        <p class="text-center align-middle">
+                            <span>Projetos</span>
+                        </p>
+                    </div>
+                </a>
             </div>
         </div>
     @endforeach

@@ -12,15 +12,13 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <script src="//unpkg.com/alpinejs" defer></script>
+    {{-- <script src="../path/to/flowbite/dist/flowbite.min.js"></script> --}}
     @wireUiScripts
+    <script src="//unpkg.com/alpinejs" defer></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Scripts -->
-    {{-- <script src="../path/to/flowbite/dist/flowbite.min.js"></script> --}}
     @livewireStyles
 </head>
-
-{{-- bg-gradient-to-b from-primary-800 via-primary-500 to-secondary --}}
 
 <body class="font-sans antialiased ">
     <x-notifications />
