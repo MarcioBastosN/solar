@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\DadosProject;
 use App\Models\Register;
 use App\Models\StatusProjet;
 use Exception;
@@ -24,11 +25,25 @@ class IniciaProjeto extends Component
         $this->statusProjeto = StatusProjet::all();
     }
 
+    protected $rules = [
+        'faseProjeto' => 'required'
+    ];
+
+    protected $messages = [
+        'faseProjeto.required' => 'Necessario Selecionar uma fase do projeto'
+    ];
+
     public function trocarFase()
     {
+        $this->validate();
+
+        $id_projeto = Register::find($this->register_id)->possuiprojeto->id;
         DB::beginTransaction();
         try {
-            DB::commit();
+            DB::transaction(fn () => DadosProject::create([
+                'projects_id' => $id_projeto,
+                'status_project_id' => $this->faseProjeto
+            ]));
         } catch (Exception $e) {
             $this->notification()->error(
                 $title = "Ops!, algo deu errado",
@@ -37,9 +52,10 @@ class IniciaProjeto extends Component
             DB::rollBack();
         }
         DB::commit();
+        $fase = StatusProjet::find($this->faseProjeto)->label;
         $this->notification()->success(
             $title = "Sucesso",
-            $description = "Fase alterada"
+            $description = "Fase alterada: " . $fase
         );
     }
 

@@ -4,7 +4,8 @@
     <div class="grid grid-cols-2 my-2 mx-4">
         <div>
 
-            <div class="text-center">O projeto esta na fase de: {{ $projeto->dadosProject->last()->status->label }}
+            <div class="text-center text-xl">
+                A fase atual do seu projeto é: {{ $projeto->dadosProject->last()->status->label }}
             </div>
             <form wire:submit.prevent="trocarFase"
                 class="max-w-xl mx-auto p-4 shadow-xl bg-form_color dark:bg-form_color_dark">
@@ -20,6 +21,9 @@
                         <option value={{ $item->id }}>{{ $item->label }}</option>
                     @endforeach
                 </select>
+                @error('faseProjeto')
+                    <span class="text-text_error">{{ $message }}</span>
+                @enderror
                 <button type="submit"
                     class="w-full bg-gray-400 h-12 rounded-lg border-spacing-2
                 border-2-secondary text-center shadow-xl ring-4 ring-white
@@ -39,6 +43,14 @@
             </form>
         </div>
         {{--  --}}
-        <div>Detalhes</div>
+        <div>
+            <p>
+                Detalhes
+            </p>
+
+            @foreach ($projeto->dadosProject as $item)
+                <p>{{ $item }}</p>
+            @endforeach
+        </div>
     </div>
 </div>
