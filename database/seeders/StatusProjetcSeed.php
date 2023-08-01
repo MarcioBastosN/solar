@@ -14,14 +14,14 @@ class StatusProjetcSeed extends Seeder
     public function run(): void
     {
         $status = [
-            'Recebimento da Documentacao',
+            'Recebimento da Documentação',
             'Emissão e pagamento de ART',
-            'Elaboraçao do projeto',
+            'Elaboração do projeto',
             'Solicitação de parecer de acesso na concessionária',
             'Aprovação do projeto',
             'Recebimento das fotos da instalação',
-            'Solicitação de vistoria na concessionaria',
-            'conclusao'
+            'Solicitação de vistoria na concessionária',
+            'conclusão'
         ];
 
         foreach ($status as $item) {

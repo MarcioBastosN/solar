@@ -192,9 +192,18 @@
                             <p class="text-gray-500 "> Responsavel: {{ $item->possuiProjeto->responsavel->name }}</p>
                         @endif
                         @if ($item->habilitaProjeto())
-                            <button label="Save" class="bg-primary w-32" wire:click=''>
-                                Iniciar
-                            </button>
+                            @if (empty($item->dadosProject))
+                                <button label="Save" class="bg-primary w-32"
+                                    wire:click='InicioProjeto({{ $item->possuiProjeto->id }}, {{ $item->id }})'>
+                                    Iniciar
+                                </button>
+                            @else
+                                <button label="Save" class="bg-primary w-32"
+                                    wire:click='viewProjeto({{ $item->id }})'>
+                                    ver detalhes
+                                </button>
+                            @endif
+                            {{-- {{ empty($item->dadosProject) ? 'nao inicado' : 'iniciado' }} --}}
                         @else
                             <p>Verificar Documentos para iniciar</p>
                         @endif

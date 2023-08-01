@@ -19,6 +19,15 @@ return new class extends Migration
             $table->unsignedInteger('projects_id');
             $table->foreign('projects_id')->references('id')->on('projects');
 
+            // fase do projeto
+            $table->unsignedInteger('status_project_id');
+            $table->foreign('status_project_id')->references('id')->on('status_projets');
+
+            // arquivo
+            $table->text('documento')->nullable();
+            // notas
+            $table->text('notas')->nullable();
+
             $table->timestamps();
         });
     }

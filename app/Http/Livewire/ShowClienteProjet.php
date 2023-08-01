@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\DadosProject;
 use App\Models\Project;
 use App\Models\User;
 use App\Models\ValidaDocumento;
@@ -24,6 +25,30 @@ class ShowClienteProjet extends Component
     public function export($path)
     {
         return Storage::disk('public')->download($path);
+    }
+
+    public function InicioProjeto($id_projeto, $registro_id)
+    {
+        DB::beginTransaction();
+        try {
+            DB::transaction(fn () => DadosProject::create([
+                'projects_id' => $id_projeto,
+                'status_project_id' => 1
+            ]));
+        } catch (Exception $e) {
+            DB::rollBack();
+            $this->notification()->error(
+                $title = "Error",
+                $description = $e->getMessage()
+            );
+        }
+        DB::commit();
+        $this->viewProjeto($registro_id);
+    }
+
+    public function viewProjeto($registro_id)
+    {
+        return redirect()->route('admin.start.project', $registro_id);
     }
 
     public function validar($documento, $registro)

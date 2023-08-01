@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\{
     HomeUser,
+    IniciaProjeto,
     ShowClienteProjet,
     ShowDijuntor,
     ShowProjectUser,
@@ -49,6 +50,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('/clientes', ShowUsers::class)->name('admin.clientes');
         Route::get('/clienteProject/{id}', ShowClienteProjet::class)->name('admin.cliente.project');
         Route::get('/statusProjet', ShowStatusProject::class)->name('admin.status.project');
+        Route::get('/iniciaProjeto/{id}', IniciaProjeto::class)->name('admin.start.project');
     });
 
 require __DIR__ . '/auth.php';
