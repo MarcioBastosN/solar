@@ -3,12 +3,11 @@
 
     <div class="grid grid-cols-2 my-2 mx-4">
         <div>
-
             <div class="text-center text-xl">
                 A fase atual do seu projeto é: {{ $projeto->dadosProject->last()->status->label }}
             </div>
             <form wire:submit.prevent="trocarFase"
-                class="max-w-xl mx-auto p-4 shadow-xl bg-form_color dark:bg-form_color_dark">
+                class="max-w-xl mx-auto p-4 shadow-xl bg-form_color dark:bg-form_color_dark rounded-xl my-1">
                 <select id="underline_select" wire:model="faseProjeto"
                     class="block rounded-t-lg px-2.5 pb-1.5 pt-5 w-full
                                 text-sm text-gray-900 bg-primary-100 dark:bg-gray-700 border-0
@@ -44,12 +43,29 @@
         </div>
         {{--  --}}
         <div>
-            <p>
+            <p class="text-center text-2xl text-primary">
                 Detalhes
             </p>
 
-            @foreach ($projeto->dadosProject as $item)
-                <p>{{ $item }}</p>
+            @foreach ($statusProjeto as $item)
+                <p class="text-lg text-primary font-bold">{{ $item->label }}</p>
+                @foreach ($projeto->dadosProject->where('status_project_id', $item->id) as $item)
+                    <div
+                        class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-2 group/item">
+                        <div class="md:flex hover:bg-gray-200">
+                            <div class="w-full px-4 ">
+                                <p>Documento: {{ $item->documento }}, notas: {{ $item->notas }}</p>
+                                <span>{{ $item->created_at->format('d/m/Y h:m') }}</span>
+                            </div>
+                            <div class="w-full text-end mx-4 my-auto">
+                                <a class="group/edit invisible hover:bg-primary group-hover/item:visible px-4 py-2 rounded-lg"
+                                    href="#">
+                                    <span class="group-hover/edit:text-gray-900">Editar</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             @endforeach
         </div>
     </div>
