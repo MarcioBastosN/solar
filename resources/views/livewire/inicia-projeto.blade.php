@@ -50,8 +50,8 @@
             @foreach ($statusProjeto as $item)
                 <p class="text-lg text-primary font-bold">{{ $item->label }}</p>
                 @foreach ($projeto->dadosProject->where('status_project_id', $item->id) as $item)
-                    <div
-                        class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-2 group/item">
+                    {{-- max-w-md mx-auto --}}
+                    <div class=" bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-2 group/item">
                         <div class="md:flex hover:bg-gray-200">
                             <div class="w-full px-4 ">
                                 <p>Documento: {{ $item->documento }}, notas: {{ $item->notas }}</p>
