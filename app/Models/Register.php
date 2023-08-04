@@ -57,6 +57,15 @@ class Register extends Model
         return $this->hasMany(DadosProject::class, 'projects_id');
     }
 
+    public function registrosValidos(): HasMany
+    {
+        return $this->hasMany(DadosProject::class, 'projects_id')
+            ->where(function ($query) {
+                $query->where('documento', '!=', null)
+                    ->orWhere('notas', '<>', null);
+            });
+    }
+
     public function validaDocumentos(): HasMany
     {
         return $this->hasMany(ValidaDocumento::class, 'register_id');
