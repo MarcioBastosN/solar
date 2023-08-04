@@ -69,11 +69,3 @@
             components and interactive elements built on top of Tailwind CSS.</p>
     </li>
 </ol>
-<ol>
-    <li>
-        <div>
-            <h2>Info Card</h2>
-            <p>{{ empty($infoProjet) ? 'Vazio' : 'test' }}</p>
-        </div>
-    </li>
-</ol>

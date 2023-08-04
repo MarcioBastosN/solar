@@ -113,6 +113,9 @@ class IniciaProjeto extends Component
                 );
             }
             DB::commit();
+            $this->obs = null;
+            $this->documento = null;
+
             $this->notification()->success(
                 $title = "Sucesso",
                 $description = "etapa registrada",
