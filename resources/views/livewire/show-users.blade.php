@@ -17,13 +17,13 @@
                 <div class="w-full p-6 group ">
                     <div class="text-center align-middle">
                         @if (empty($user->pendencia))
-                            <div class="group-hover:text-red-500">
+                            <div class="group-hover:text-red-500 cursor-pointer">
                                 <x-icon name="emoji-sad" class="w-full h-12"
                                     wire:click='desativar({{ $user->id }})' />
                                 <p>Desabilitar registro</p>
                             </div>
                         @else
-                            <div class="group-hover:text-white group-hover:bg-primary rounded-xl">
+                            <div class="group-hover:text-white group-hover:bg-primary rounded-xl cursor-pointer">
                                 <x-icon name="badge-check" class="w-full h-12 "
                                     wire:click='ativar({{ $user->id }})' />
                                 <p>Ativar registro</p>
