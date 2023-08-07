@@ -10,10 +10,10 @@
     </div> --}}
 
     <section class="bg-white">
-        <div class="container max-w-5xl mx-2 py-2">
+        <div class="container w-full ">
             <div class="flex flex-wrap">
                 {{-- esquerda --}}
-                <div class="sm:w-1/2">
+                <div class="sm:w-1/2 mx-auto px-4">
                     <div class="text-center text-xl mx-2">
                         A fase atual do seu projeto é: {{ $projeto->dadosProject->last()->status->label }}
                     </div>
@@ -64,7 +64,7 @@
                     </form>
                 </div>
                 {{-- direita --}}
-                <div class="w-full sm:w-1/2 p-6">
+                <div class="sm:w-1/2 mx-auto px-8">
                     <p class="text-center text-2xl text-primary">
                         Detalhes
                     </p>
