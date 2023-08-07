@@ -204,7 +204,7 @@
                             <p class="text-gray-500 "> Responsavel: {{ $item->possuiProjeto->responsavel->name }}</p>
                         @endif
                         @if ($item->habilitaProjeto())
-                            @if (empty($item->dadosProject))
+                            @if (empty($item->dadosProject->first()))
                                 <button label="Save" class="bg-primary w-32"
                                     wire:click='InicioProjeto({{ $item->possuiProjeto->id }}, {{ $item->id }})'>
                                     Iniciar
@@ -215,7 +215,6 @@
                                     ver detalhes
                                 </button>
                             @endif
-                            {{-- {{ empty($item->dadosProject) ? 'nao inicado' : 'iniciado' }} --}}
                         @else
                             <p>Verificar Documentos para iniciar</p>
                         @endif
