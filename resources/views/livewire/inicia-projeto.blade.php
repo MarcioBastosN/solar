@@ -1,14 +1,4 @@
 <div>
-
-    {{-- <div class="grid grid-cols-2 my-2 mx-4">
-        <div>
-
-        </div>
-        <div>
-
-        </div>
-    </div> --}}
-
     <section class="bg-white">
         <div class="container w-full ">
             <div class="flex flex-wrap">
@@ -103,7 +93,8 @@
                                             </div>
                                             <div class="flex-auto text-end mx-4 my-auto">
                                                 <a class="group/edit invisible hover:bg-primary group-hover/item:visible px-4 py-2 rounded-lg"
-                                                    href="#">
+                                                    href="#"
+                                                    wire:click="editarDocumentos({{ $item->projects_id }}, {{ $item->status_project_id }})">
                                                     <span class="group-hover/edit:text-gray-900">Editar</span>
                                                 </a>
                                             </div>

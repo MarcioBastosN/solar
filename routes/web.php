@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\{
+    EditarDocumentoEtapa,
     HomeUser,
     IniciaProjeto,
     ShowClienteProjet,
@@ -51,6 +52,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('/clienteProject/{id}', ShowClienteProjet::class)->name('admin.cliente.project');
         Route::get('/statusProjet', ShowStatusProject::class)->name('admin.status.project');
         Route::get('/iniciaProjeto/{id}', IniciaProjeto::class)->name('admin.start.project');
+        Route::get('/editarDocumentoEtapa/{projeto}/{status}', EditarDocumentoEtapa::class)->name('admin.editar.documento');
     });
 
 require __DIR__ . '/auth.php';

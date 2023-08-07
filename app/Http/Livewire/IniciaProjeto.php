@@ -133,6 +133,10 @@ class IniciaProjeto extends Component
         return Storage::disk('public')->download($docuemnto);
     }
 
+    public function editarDocumentos($project_id, $status_id)
+    {
+        return redirect()->route('admin.editar.documento', [$project_id, $status_id]);
+    }
 
     public function render()
     {
