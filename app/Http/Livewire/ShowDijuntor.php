@@ -20,7 +20,7 @@ class ShowDijuntor extends Component
     ];
 
     protected $messages = [
-        'name.required' => "Nome e obrigatorio",
+        'name.required' => "Nome e Obrigatório",
     ];
 
     public function save()

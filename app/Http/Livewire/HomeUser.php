@@ -45,16 +45,16 @@ class HomeUser extends Component
         'telefone.min' => 'Telefone deve ter no minimo 11 digitos',
         'datasheet.max' => 'Arquivo é maior que 1 mb',
 
-        'identificacao_pf_pj.required' => 'Arquivo é obrigatorio',
-        'procuracao.required' => 'Arquivo é obrigatorio',
-        'fatura_da_uc.required' => 'Arquivo é obrigatorio',
-        'padrao_de_entrada.required' => 'Arquivo é obrigatorio',
+        'identificacao_pf_pj.required' => 'Arquivo é Obrigatório',
+        'procuracao.required' => 'Arquivo é Obrigatório',
+        'fatura_da_uc.required' => 'Arquivo é Obrigatório',
+        'padrao_de_entrada.required' => 'Arquivo é Obrigatório',
         'telefone.required' => 'Necessario informar o telefone',
-        'kwp.required' => 'Arquivo é obrigatorio',
-        'fotovoltaico.required' => 'Arquivo é obrigatorio',
-        'inversor.required' => 'Arquivo é obrigatorio',
-        'datasheet.required' => 'Arquivo é obrigatorio',
-        'dijuntor_id.required' => 'Campo Origatorio',
+        'kwp.required' => 'Arquivo é Obrigatório',
+        'fotovoltaico.required' => 'Arquivo é Obrigatório',
+        'inversor.required' => 'Arquivo é Obrigatório',
+        'datasheet.required' => 'Arquivo é Obrigatório',
+        'dijuntor_id.required' => 'Campo Obrigatório',
 
     ];
 
