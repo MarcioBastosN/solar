@@ -96,12 +96,30 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1 ">
-            <x-responsive-nav-link :href="route('cliente.home')" :active="request()->routeIs('cliente/home')">
-                {{ __('Home') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.clientes')" :active="request()->routeIs('dmin.clientes')">
+            @hasallroles('user')
+                <x-responsive-nav-link :href="route('cliente.home')" :active="request()->routeIs('cliente/home')">
+                    {{ __('Home') }}
+                </x-responsive-nav-link>
+                @if (auth()->user()->register()->count() > 0)
+                    <x-responsive-nav-link :href="route('cliente.porjects')" :active="request()->routeIs('cliente.porjects')">
+                        {{ __('Meus projetos') }}
+                    </x-responsive-nav-link>
+                @endif
+            @endhasallroles
+            {{-- <x-responsive-nav-link :href="route('admin.clientes')" :active="request()->routeIs('dmin.clientes')">
                 {{ __('Clientes') }}
-            </x-responsive-nav-link>
+            </x-responsive-nav-link> --}}
+            @hasallroles('admin')
+                <x-responsive-nav-link :href="route('admin.clientes')" :active="request()->routeIs('admin.clientes')">
+                    {{ __('Clientes') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.disjuntor')" :active="request()->routeIs('admin.disjuntor')">
+                    {{ __('Disjuntor') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.status.project')" :active="request()->routeIs('admin.status.project')">
+                    {{ __('Status') }}
+                </x-responsive-nav-link>
+            @endhasallroles
         </div>
 
         <!-- Responsive Settings Options -->
