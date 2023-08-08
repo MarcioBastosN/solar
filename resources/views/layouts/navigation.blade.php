@@ -12,14 +12,16 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('cliente.home')" :active="request()->routeIs('cliente.home')">
-                        {{ __('Home') }}
-                    </x-nav-link>
-                    @if (auth()->user()->register()->count() > 0)
-                        <x-nav-link :href="route('cliente.porjects')" :active="request()->routeIs('cliente.porjects')">
-                            {{ __('Meus projetos') }}
+                    @hasallroles('user')
+                        <x-nav-link :href="route('cliente.home')" :active="request()->routeIs('cliente.home')">
+                            {{ __('Home') }}
                         </x-nav-link>
-                    @endif
+                        @if (auth()->user()->register()->count() > 0)
+                            <x-nav-link :href="route('cliente.porjects')" :active="request()->routeIs('cliente.porjects')">
+                                {{ __('Meus projetos') }}
+                            </x-nav-link>
+                        @endif
+                    @endhasallroles
                     @hasallroles('admin')
                         <x-nav-link :href="route('admin.clientes')" :active="request()->routeIs('admin.clientes')">
                             {{ __('Clientes') }}

@@ -74,7 +74,7 @@
                                         Dia: {{ $itemData->first()->created_at->format('d-m-Y') }}</time>
                                     <div
                                         class=" bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-2 group/item">
-                                        <div class="md:flex hover:bg-gray-200">
+                                        <div class="md:flex hover:bg-gray-200 py-2">
                                             <div class="flex-auto px-4 ">
                                                 @foreach ($itemData as $item)
                                                     @if (!empty($item['documento']))
