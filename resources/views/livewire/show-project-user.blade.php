@@ -212,10 +212,6 @@
                         <div class="mx-4 px-2 my-2">
                             @if (!$cardDetalhes && !$cardReenvio)
                                 <p>Selecione uma ação para exibir!</p>
-                                <ol class="relative border-l border-gray-200 dark:border-gray-700">
-                                    <li>Corrigir arquivos</li>
-                                    <li>Detalhes</li>
-                                </ol>
                             @endif
                             @if ($cardDetalhes)
                                 @include('card_porjet_user.card_detalhes')
