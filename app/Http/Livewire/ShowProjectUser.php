@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Project;
 use App\Models\Register;
+use App\Models\StatusProjet;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -13,13 +14,18 @@ class ShowProjectUser extends Component
 {
     use WithPagination, Actions;
 
-    public $infoProjet;
+    public $infoProjet, $statusProjeto, $projeto;
 
     public $cardDetalhes = false;
     public $cardReenvio = false;
 
     // infornaçoes uteis
     public $projetoSelecionado;
+
+    public function mount()
+    {
+        $this->statusProjeto = StatusProjet::all();
+    }
 
     public function detalhes($id)
     {
@@ -45,6 +51,7 @@ class ShowProjectUser extends Component
             $this->cardReenvio = false;
         }
         $this->cardDetalhes = true;
+        $this->projeto = Register::find($id);
     }
 
     public function showObs($obs)
