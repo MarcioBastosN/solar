@@ -5,7 +5,11 @@
                 {{-- esquerda --}}
                 <div class="sm:w-1/2 mx-auto px-4">
                     <div class="text-center text-xl mx-2">
-                        A fase atual do seu projeto é: {{ $projeto->dadosProject->last()->status->label }}
+                        A fase atual do seu projeto é: <br />
+                        {{ $projeto->dadosProject->last()->status->label }}
+                    </div>
+                    <div class="text-center text-md mx-2">
+                        Você esta Trabalhando no projeto de: {{ $projeto->user->name }}
                     </div>
                     <form wire:submit.prevent="trocarFase"
                         class="max-w-xl mx-auto p-4 shadow-xl bg-form_color dark:bg-form_color_dark rounded-xl my-1">
@@ -68,7 +72,9 @@
                                 <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
                                     {{ $item->label }}
                                 </h3>
-                                @foreach ($projeto->registrosValidos->where('status_project_id', $item->id)->groupBy("DATE_FORMAT(created_at, '%Y-%m-%d')") as $itemData)
+                                @foreach ($projeto->registrosValidos->where('status_project_id', $item->id)->groupBy(function ($item) {
+        return $item->created_at->format('Y-m-d');
+    }) as $itemData)
                                     <time
                                         class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                                         Dia: {{ $itemData->first()->created_at->format('d-m-Y') }}</time>

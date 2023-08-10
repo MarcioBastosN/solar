@@ -8,7 +8,9 @@
             <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
                 {{ $item->label }}
             </h3>
-            @foreach ($projeto->registrosValidos->where('status_project_id', $item->id)->groupBy("DATE_FORMAT(created_at, '%Y-%m-%d')") as $itemData)
+            @foreach ($projeto->registrosValidos->where('status_project_id', $item->id)->groupBy(function ($item) {
+        return $item->created_at->format('Y-m-d');
+    }) as $itemData)
                 <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                     Inicio: {{ $itemData->first()->created_at->format('d-m-Y') }}</time>
                 <div class=" bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-2 group/item">

@@ -140,7 +140,7 @@ class IniciaProjeto extends Component
 
     public function render()
     {
-        $projeto = Register::find($this->register_id);
+        $projeto = Register::with('registrosValidos')->find($this->register_id);
         return view('livewire.inicia-projeto')->with(compact('projeto'));
     }
 }

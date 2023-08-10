@@ -61,8 +61,10 @@ class ShowUsers extends Component
 
     public function render()
     {
-        $users = User::with('roles')->where('email', 'ilike', '%' . $this->search . '%')
-            ->orWhere('name', 'ilike', '%' . $this->search . '%')->paginate(5);
+        $users = User::with('roles')->where(function ($query) {
+            $query->where('email', 'ilike', '%' . $this->search . '%')
+                ->orWhere('name', 'ilike', '%' . $this->search . '%');
+        })->orderBy('created_at', "DESC")->paginate(5);
         return view('livewire.show-users')->with(compact('users'));
     }
 }

@@ -41,14 +41,14 @@ class addAdmin extends Command
 
         if ($this->confirm('Seus dados acima estão corretos?')) {
             $permissions = Permission::all();
-            $role = Role::firstOrCreate(['name' => 'super-suport']);
+            $role = Role::firstOrCreate(['name' => 'admin']);
             $role->syncPermissions($permissions);
             $user = User::create([
                 'name' => $name,
                 'email' => $email,
                 'password' => Hash::make($pwd),
             ]);
-            $user->assignRole('super-suport');
+            $user->assignRole('admin');
 
             $this->info("Usuário: {$name} criado com sucesso");
         }
