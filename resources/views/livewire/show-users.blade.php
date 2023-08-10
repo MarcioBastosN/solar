@@ -12,7 +12,8 @@
     @foreach ($users as $user)
         @if ($user->roles->first()->name != 'admin')
             <div class="mx-2 my-2">
-                <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl ">
+                <div
+                    class="max-w-md mx-auto {{ empty($user->pendencia) ? 'bg-white' : 'bg-gray-200' }} rounded-xl shadow-md overflow-hidden md:max-w-2xl ">
                     <div class="md:flex">
                         {{-- esquerda --}}
                         <div class="w-full p-6 group ">
