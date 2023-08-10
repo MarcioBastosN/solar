@@ -32,6 +32,11 @@ class ShowProjectUser extends Component
         $this->infoProjet = Project::where('user_request_id', $id)->get();
     }
 
+    public function filedownload($docuemnto)
+    {
+        return Storage::disk('public')->download($docuemnto);
+    }
+
     public function export($path)
     {
         return Storage::disk('public')->download($path);
