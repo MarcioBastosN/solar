@@ -4,7 +4,7 @@ services:
   app:
     build:
       args:
-        user: ${USER}
+        user: marcio
         uid: 1000
       context: ./
       dockerfile: ./docker-compose/app/Dockerfile
