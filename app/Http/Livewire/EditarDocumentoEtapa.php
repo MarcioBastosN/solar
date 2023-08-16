@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\DadosProject;
+use App\Models\Project;
+use App\Models\StatusProjet;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +17,7 @@ class EditarDocumentoEtapa extends Component
 
     use Actions, WithFileUploads;
 
-    public $idProjeto, $idStatus;
+    public $idProjeto, $idStatus, $dadosProjeto, $status;
     public $exibeCampoEditarNota = false, $idNota, $valorNota;
 
 
@@ -23,6 +25,8 @@ class EditarDocumentoEtapa extends Component
     {
         $this->idProjeto = $projeto;
         $this->idStatus = $status;
+        $this->dadosProjeto = Project::with('contratante.customer')->find($projeto);
+        $this->status = StatusProjet::find($status);
     }
 
     public function export($path)

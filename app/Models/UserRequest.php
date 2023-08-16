@@ -21,4 +21,9 @@ class UserRequest extends Model
     {
         return $this->belongsTo(StatusProjet::class, 'status_id');
     }
+
+    public function customer(): BelongsTo
+    {
+        return $this->belongsTo(User::class, "customer_id");
+    }
 }
