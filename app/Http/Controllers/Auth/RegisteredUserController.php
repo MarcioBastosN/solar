@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\EmailController;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -10,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -45,6 +47,13 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         $user->assignRole('user');
+        // to = pra quem vai ser enviado
+        $mail = Mail::to("marciobastosn@gmail.com", "Solar-Project")->send(new EmailController([
+            'fromName' => $request->name,
+            'fromEmail' => $request->email,
+            'subject' => "Novo Usuario registrado",
+            'message' => "$request->name, se registrou na plataforma",
+        ]));
 
         Auth::login($user);
 

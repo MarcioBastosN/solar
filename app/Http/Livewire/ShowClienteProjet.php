@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\EmailController;
 use App\Models\DadosProject;
 use App\Models\Project;
 use App\Models\User;
 use App\Models\ValidaDocumento;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use WireUi\Traits\Actions;
@@ -43,6 +45,15 @@ class ShowClienteProjet extends Component
             );
         }
         DB::commit();
+
+        $user_email = User::find($this->user_id)->email;
+        $mail = Mail::to($user_email, "Solar-Project")->send(new EmailController([
+            'fromName' => auth()->user()->name,
+            'fromEmail' => auth()->user()->email,
+            'subject' => "Projeto iniciado",
+            'message' => "Novas etapas em processo",
+        ]));
+
         $this->viewProjeto($registro_id);
     }
 
@@ -102,11 +113,20 @@ class ShowClienteProjet extends Component
         } catch (Exception $e) {
             DB::rollBack();
         }
+        DB::commit();
         $this->notification()->success(
             $title = 'Registro realizado',
             $description = 'Você e o responsavel deste projeto'
         );
-        DB::commit();
+
+        $user_email = User::find($this->user_id)->email;
+        $mail = Mail::to($user_email, "Solar-Project")->send(new EmailController([
+            'fromName' => auth()->user()->name,
+            'fromEmail' => auth()->user()->email,
+            'subject' => "Seu projeto foi visualizado e esta sendo iniciado.",
+            'message' => auth()->user()->name . ", deu inicio ao seu projeto",
+        ]));
+
         $this->render();
     }
 
