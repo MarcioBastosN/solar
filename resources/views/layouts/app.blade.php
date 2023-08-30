@@ -12,17 +12,23 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- Scripts -->
+    {{-- <script src="../path/to/flowbite/dist/flowbite.min.js"></script> --}}
+    <script src="//unpkg.com/alpinejs" defer></script>
+    @wireUiScripts
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Scripts -->
+    @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased ">
+    <x-notifications />
+    <x-dialog z-index="z-50" blur="md" align="center" />
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-white shadow">
+            <header class="bg-primary dark:bg-primary_dark shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
@@ -34,6 +40,7 @@
             {{ $slot }}
         </main>
     </div>
+    @livewireScripts
 </body>
 
 </html>

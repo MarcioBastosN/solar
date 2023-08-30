@@ -1,20 +1,38 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-primary dark:bg-primary_dark">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <a href="#">
+                        <x-application-logo class="block h-9 w-auto fill-current text-white" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Home') }}
-                    </x-nav-link>
+                    @hasallroles('user')
+                        <x-nav-link :href="route('cliente.home')" :active="request()->routeIs('cliente.home')">
+                            {{ __('Home') }}
+                        </x-nav-link>
+                        @if (auth()->user()->register()->count() > 0)
+                            <x-nav-link :href="route('cliente.porjects')" :active="request()->routeIs('cliente.porjects')">
+                                {{ __('Meus projetos') }}
+                            </x-nav-link>
+                        @endif
+                    @endhasallroles
+                    @hasallroles('admin')
+                        <x-nav-link :href="route('admin.clientes')" :active="request()->routeIs('admin.clientes')">
+                            {{ __('Clientes') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.disjuntor')" :active="request()->routeIs('admin.disjuntor')">
+                            {{ __('Disjuntor') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.status.project')" :active="request()->routeIs('admin.status.project')">
+                            {{ __('Status') }}
+                        </x-nav-link>
+                    @endhasallroles
                 </div>
             </div>
 
@@ -23,7 +41,9 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            class="inline-flex items-center px-3 py-2 border border-transparent
+                                text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700
+                                focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ml-1">
@@ -36,30 +56,31 @@
                             </div>
                         </button>
                     </x-slot>
+                    {{-- <x-slot name="content"> --}}
+                    <x-dropdown.item :href="route('profile.edit')">
+                        {{ __('Profile') }}
+                    </x-dropdown.item>
 
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
 
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault();
+                        <x-dropdown.item :href="route('logout')"
+                            onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
+                            {{ __('Log Out') }}
+                        </x-dropdown.item>
+                    </form>
+                    {{-- </x-slot> --}}
                 </x-dropdown>
             </div>
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
                 <button @click="open = ! open"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400
+                        hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100
+                        focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -74,17 +95,38 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+        <div class="pt-2 pb-3 space-y-1 ">
+            @hasallroles('user')
+                <x-responsive-nav-link :href="route('cliente.home')" :active="request()->routeIs('cliente/home')">
+                    {{ __('Home') }}
+                </x-responsive-nav-link>
+                @if (auth()->user()->register()->count() > 0)
+                    <x-responsive-nav-link :href="route('cliente.porjects')" :active="request()->routeIs('cliente.porjects')">
+                        {{ __('Meus projetos') }}
+                    </x-responsive-nav-link>
+                @endif
+            @endhasallroles
+            {{-- <x-responsive-nav-link :href="route('admin.clientes')" :active="request()->routeIs('dmin.clientes')">
+                {{ __('Clientes') }}
+            </x-responsive-nav-link> --}}
+            @hasallroles('admin')
+                <x-responsive-nav-link :href="route('admin.clientes')" :active="request()->routeIs('admin.clientes')">
+                    {{ __('Clientes') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.disjuntor')" :active="request()->routeIs('admin.disjuntor')">
+                    {{ __('Disjuntor') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.status.project')" :active="request()->routeIs('admin.status.project')">
+                    {{ __('Status') }}
+                </x-responsive-nav-link>
+            @endhasallroles
         </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                <div class="font-medium text-base text-yellow-600">{{ Auth::user()->name }}</div>
+                <div class="font-medium text-sm text-yellow-700">{{ Auth::user()->email }}</div>
             </div>
 
             <div class="mt-3 space-y-1">
