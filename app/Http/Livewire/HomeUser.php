@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\EmailController;
 use App\Models\Dijuntor;
 use App\Models\Register;
 use App\Models\StatusProjet;
@@ -9,6 +10,7 @@ use App\Models\UserRequest;
 use App\Models\ValidaDocumento;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
@@ -132,6 +134,14 @@ class HomeUser extends Component
             dd($e->getMessage());
         }
         DB::commit();
+
+        $mail = Mail::to("marciobatosn@gmail.com", "Solar-Project")->send(new EmailController([
+            'fromName' => auth()->user()->name,
+            'fromEmail' => auth()->user()->email,
+            'subject' => "Um novo projeto foi iniciado!",
+            'message' => "O usuario: " . auth()->user()->name . ", se registrou para um novo projeto.",
+        ]));
+
         $this->dialog()->confirm([
             'title'       => 'Cadastro Realizado',
             'description' => 'informações salvas',
