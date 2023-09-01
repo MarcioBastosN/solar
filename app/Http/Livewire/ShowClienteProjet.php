@@ -19,9 +19,9 @@ class ShowClienteProjet extends Component
     use Actions;
     public $user_id;
 
-    public function mount($id)
+    public function mount($user_id)
     {
-        $this->user_id = $id;
+        $this->user_id = $user_id;
     }
 
     public function export($path)
@@ -79,6 +79,18 @@ class ShowClienteProjet extends Component
                 'params' => [$documento, $registro, 2],
             ],
         ]);
+    }
+
+    public function validarTodos($registro)
+    {
+        DB::beginTransaction();
+        try {
+            DB::transaction(fn () => ValidaDocumento::where('register_id', $registro)->update(['status_id' => 3]));
+        } catch (Exception $e) {
+            DB::rollBack();
+        }
+        DB::commit();
+        $this->render();
     }
 
     public function valide($documento, $registro, $status)
