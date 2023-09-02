@@ -211,7 +211,13 @@
                     <div class="w-full sm:w-1/2 ">
                         <div class="mx-4 px-2 my-2">
                             @if (!$cardDetalhes && !$cardReenvio)
-                                <p>Selecione uma ação para exibir!</p>
+                                <div class="flex justify-center">
+                                    <img src="{{ asset('LOGO PRIMARIA FUNDO TRANSPARENTE.svg') }}" alt=""
+                                        class="w-64">
+                                </div>
+                                <p class="text-center font-bold text-primary">Selecione uma opção de detalhes!</p>
+                                <p class="text-center text-primary text-sm">(detalhes) fica disponivel quando o
+                                    projeto e aprovado!</p>
                             @endif
                             @if ($cardDetalhes)
                                 @include('card_porjet_user.card_detalhes')

@@ -229,15 +229,17 @@
                             <button type="submit"
                                 class="w-full bg-gray-400 h-12 rounded-lg border-spacing-2
                                 border-2-secondary text-center shadow-xl ring-4 ring-white
-                                hover:bg-primary hover:text-secondary">
+                                hover:bg-primary hover:text-secondary"
+                                wire:loading.attr="disabled">
                                 Salvar
                             </button>
                         </div>
                     </li>
                 </ol>
+                <div wire:loading wire:target="save" class="text-center text-primary font-extrabold ">
+                    Aguarde carregando....
+                </div>
             </div>
-
-
         </form>
     </div>
 </div>
