@@ -142,6 +142,13 @@ class HomeUser extends Component
             'message' => "O usuario: " . auth()->user()->name . ", se registrou para um novo projeto.",
         ]));
 
+        Mail::to(auth()->user()->email, "Solar-Project")->send(new EmailController([
+            'fromName' => "Solar-Project",
+            'fromEmail' => "marciobastosn@gmail.com",
+            'subject' => "Projeto registrado!",
+            'message' => "Aguarde, logo o responsavel iniciara seu projeto",
+        ]));
+
         $this->dialog()->confirm([
             'title'       => 'Cadastro Realizado',
             'description' => 'informações salvas',
