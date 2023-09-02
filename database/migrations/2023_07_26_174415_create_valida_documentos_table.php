@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('register_id')->references('id')->on('registers');
 
             $table->unsignedInteger('status_id');
-            $table->foreign('status_id')->references('id')->on('status_documentos')->onDelete("cascade");
+            $table->foreign('status_id')->references('id')->on('status_documentos');
 
             $table->enum('documento', ['identificacao_pf_pj', 'procuracao', 'padrao_de_entrada', 'fatura_da_uc', 'datasheet']);
             $table->string('obs')->nullable();
@@ -30,6 +30,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('valida_docuemntos');
+        Schema::table('valida_documentos', function (Blueprint $table) {
+            // $table->dropForeign('status_id');
+            // $table->dropForeign('register_id');
+        });
+        Schema::dropIfExists('valida_documentos');
     }
 };
