@@ -2,11 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\EmailController;
 use App\Models\DadosProject;
 use App\Models\Register;
 use App\Models\StatusProjet;
+use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -120,6 +123,14 @@ class IniciaProjeto extends Component
                 $title = "Sucesso",
                 $description = "etapa registrada",
             );
+
+            $destinatario = Register::find($this->register_id);
+            $mail = Mail::to(auth()->user()->email, "Solar-Project")->send(new EmailController([
+                'fromName' => $destinatario->user->name,
+                'fromEmail' => $destinatario->user->email,
+                'subject' => "Houve uma alteração nas etapas do projeto na fase de:",
+                'message' => $destinatario->dadosProject->last()->status->label,
+            ]));
         } else {
             $this->notification()->error(
                 $title = "Ops!",

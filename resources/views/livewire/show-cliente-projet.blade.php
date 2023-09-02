@@ -205,10 +205,11 @@
                         @endif
                         @if ($item->habilitaProjeto())
                             @if (empty($item->dadosProject->first()))
-                                <button label="Save" class="bg-primary w-32"
+                                <button label="Save" class="bg-primary w-32 rounded-xl"
                                     wire:click='InicioProjeto({{ $item->possuiProjeto->id }}, {{ $item->id }})'>
-                                    Iniciar
+                                    Iniciar projeto
                                 </button>
+                                <p>{{ $item->possuiProjeto->id }}, {{ $item->id }}</p>
                             @else
                                 <button label="Save" class="bg-primary w-32"
                                     wire:click='viewProjeto({{ $item->id }})'>

@@ -17,11 +17,11 @@ return new class extends Migration
             // verificar os demais e adicionar no model tambem
 
             $table->unsignedInteger('projects_id');
-            $table->foreign('projects_id')->references('id')->on('projects');
+            $table->foreign('projects_id')->references('id')->on('projects')->onDelete("cascade");
 
             // fase do projeto
             $table->unsignedInteger('status_project_id');
-            $table->foreign('status_project_id')->references('id')->on('status_projets');
+            $table->foreign('status_project_id')->references('id')->on('status_projets')->onDelete("cascade");
 
             // arquivo
             $table->text('documento')->nullable();
@@ -37,6 +37,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // Schema::table('dados_projects', function (Blueprint $table) {
+        //     $table->dropForeign('projects_id');
+        //     $table->dropForeign('status_project_id');
+        // });
         Schema::dropIfExists('dados_projects');
     }
 };

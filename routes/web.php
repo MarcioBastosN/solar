@@ -49,7 +49,7 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         Route::get('/disjuntor', ShowDijuntor::class)->name('admin.disjuntor');
         Route::get('/clientes', ShowUsers::class)->name('admin.clientes');
-        Route::get('/clienteProject/{id}', ShowClienteProjet::class)->name('admin.cliente.project');
+        Route::get('/clienteProject/{user_id}', ShowClienteProjet::class)->name('admin.cliente.project');
         Route::get('/statusProjet', ShowStatusProject::class)->name('admin.status.project');
         Route::get('/iniciaProjeto/{id}', IniciaProjeto::class)->name('admin.start.project');
         Route::get('/editarDocumentoEtapa/{projeto}/{status}', EditarDocumentoEtapa::class)->name('admin.editar.documento');

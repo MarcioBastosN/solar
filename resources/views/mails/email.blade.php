@@ -1,6 +1,6 @@
-<h2>
+<h3>
     {{ $data['subject'] }}
-</h2>
-<p>
+</h3>
+<h4>
     {{ $data['message'] }}
-</p>
+</h4>

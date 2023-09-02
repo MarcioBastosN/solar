@@ -36,11 +36,17 @@
                         </div>
                         {{-- centro --}}
                         <div class="p-6 w-full">
-                            {{-- <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-                                {{ !empty($user->roles->first()) ? $user->roles->first()->name : 'ops' }}</div> --}}
                             <a href="#"
-                                class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ $user->name }}</a>
+                                class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">Id:
+                                {{ $user->id }} - {{ $user->name }}</a>
                             <p class="mt-2 text-gray-500">{{ $user->email }}</p>
+                            {{-- @foreach ($user->register as $item)
+                                <p>
+                                    <small class="mt-2 text-gray-500">
+                                        Phone: {{ $item->telefone }}
+                                    </small>
+                                </p>
+                            @endforeach --}}
                             <p>Cadastrado: {{ $user->created_at->format('d-m-Y') }}</p>
                         </div>
                         {{-- direita --}}

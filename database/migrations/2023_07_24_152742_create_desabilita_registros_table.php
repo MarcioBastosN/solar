@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
             $table->softDeletes();
 
             $table->timestamps();
@@ -27,6 +27,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // Schema::table('desabilita_registros', function (Blueprint $table) {
+        //     $table->dropForeign('user_id');
+        // });
         Schema::dropIfExists('desabilita_registros');
     }
 };
