@@ -144,7 +144,7 @@ class ShowClienteProjet extends Component
 
     public function render()
     {
-        $projetos = User::find($this->user_id)->register()->with('statusRequest.status', 'possuiProjeto')->get();
-        return view('livewire.show-cliente-projet')->with(compact('projetos'));
+        $registros = User::find($this->user_id)->register()->with('statusRequest.status', 'possuiProjeto')->get();
+        return view('livewire.show-cliente-projet')->with(compact('registros'));
     }
 }

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('users')->onDelete("cascade");
 
-            $table->unsignedInteger('request_id');
-            $table->foreign('request_id')->references('id')->on('registers')->onDelete("cascade");
+            $table->unsignedInteger('register_id');
+            $table->foreign('register_id')->references('id')->on('registers')->onDelete("cascade");
 
             $table->unsignedInteger('status_id');
             $table->foreign('status_id')->references('id')->on('status_projets')->onDelete("cascade");
@@ -33,11 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Schema::table('user_requests', function (Blueprint $table) {
-        //     $table->dropForeign('customer_id');
-        //     $table->dropForeign('request_id');
-        //     $table->dropForeign('status_id');
-        // });
         Schema::dropIfExists('user_requests');
     }
 };

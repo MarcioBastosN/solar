@@ -116,7 +116,7 @@ class HomeUser extends Component
 
             $requestUser = UserRequest::create([
                 'customer_id' => $user_id,
-                'request_id' => $register->id,
+                'register_id' => $register->id,
                 'status_id' => $status_do_projeto->id,
             ]);
 

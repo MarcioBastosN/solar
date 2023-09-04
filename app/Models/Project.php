@@ -22,7 +22,6 @@ class Project extends Model
         return $this->belongsTo(User::class, 'manager_id');
     }
 
-
     public function contratante(): BelongsTo
     {
         return $this->belongsTo(UserRequest::class, 'user_request_id');
