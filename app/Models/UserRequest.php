@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class UserRequest extends Model
 {
@@ -13,7 +12,7 @@ class UserRequest extends Model
 
     protected $fillable = [
         'customer_id',
-        'request_id',
+        'register_id',
         'status_id',
     ];
 
@@ -25,5 +24,10 @@ class UserRequest extends Model
     public function customer(): BelongsTo
     {
         return $this->belongsTo(User::class, "customer_id");
+    }
+
+    public function register(): BelongsTo
+    {
+        return $this->belongsTo(Register::class, "register_id");
     }
 }

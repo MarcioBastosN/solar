@@ -39,7 +39,7 @@ class Register extends Model
 
     public function statusRequest(): HasOne
     {
-        return $this->hasOne(UserRequest::class, 'request_id');
+        return $this->hasOne(UserRequest::class, 'register_id');
     }
 
     public function possuiProjeto(): HasOne
