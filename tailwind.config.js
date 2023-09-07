@@ -22,10 +22,10 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                primary: '#006399',
+                primary: '#1c2b49',
                 primary_dark: '#fee2e2',
 
-                secondary: '#fee2e2',
+                secondary: '#edd3c9',
                 secondary_dark: '#006399',
 
                 destaque:'#0082C9',
