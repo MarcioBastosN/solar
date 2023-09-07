@@ -14,7 +14,7 @@
 
     {{-- <script src="../path/to/flowbite/dist/flowbite.min.js"></script> --}}
     @wireUiScripts
-    <script src="//unpkg.com/alpinejs" defer></script>
+    {{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Scripts -->
     @livewireStyles

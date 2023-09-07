@@ -135,19 +135,19 @@ class HomeUser extends Component
         }
         DB::commit();
 
-        $mail = Mail::to("marciobatosn@gmail.com", "Solar-Project")->send(new EmailController([
-            'fromName' => auth()->user()->name,
-            'fromEmail' => auth()->user()->email,
-            'subject' => "Um novo projeto foi iniciado!",
-            'message' => "O usuario: " . auth()->user()->name . ", se registrou para um novo projeto.",
-        ]));
+        // $mail = Mail::to("marciobatosn@gmail.com", "Solar-Project")->send(new EmailController([
+        //     'fromName' => auth()->user()->name,
+        //     'fromEmail' => auth()->user()->email,
+        //     'subject' => "Um novo projeto foi iniciado!",
+        //     'message' => "O usuario: " . auth()->user()->name . ", se registrou para um novo projeto.",
+        // ]));
 
-        Mail::to(auth()->user()->email, "Solar-Project")->send(new EmailController([
-            'fromName' => "Solar-Project",
-            'fromEmail' => "marciobastosn@gmail.com",
-            'subject' => "Projeto registrado!",
-            'message' => "Aguarde, logo o responsavel iniciara seu projeto",
-        ]));
+        // Mail::to(auth()->user()->email, "Solar-Project")->send(new EmailController([
+        //     'fromName' => "Solar-Project",
+        //     'fromEmail' => "marciobastosn@gmail.com",
+        //     'subject' => "Projeto registrado!",
+        //     'message' => "Aguarde, logo o responsavel iniciara seu projeto",
+        // ]));
 
         $this->dialog()->confirm([
             'title'       => 'Cadastro Realizado',
