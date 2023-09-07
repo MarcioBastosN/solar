@@ -42,6 +42,7 @@ services:
     restart: unless-stopped
     ports:
       - "8017:80"
+      - "80:80"
     volumes:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
