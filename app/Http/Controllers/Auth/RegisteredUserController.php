@@ -48,12 +48,12 @@ class RegisteredUserController extends Controller
 
         $user->assignRole('user');
         // to = pra quem vai ser enviado
-        $mail = Mail::to("marciobastosn@gmail.com", "Solar-Project")->send(new EmailController([
-            'fromName' => $request->name,
-            'fromEmail' => $request->email,
-            'subject' => "Novo Usuario registrado",
-            'message' => "$request->name, se registrou na plataforma",
-        ]));
+        // $mail = Mail::to("marciobastosn@gmail.com", "Solar-Project")->send(new EmailController([
+        //     'fromName' => $request->name,
+        //     'fromEmail' => $request->email,
+        //     'subject' => "Novo Usuario registrado",
+        //     'message' => "$request->name, se registrou na plataforma",
+        // ]));
 
         Auth::login($user);
 
