@@ -23,10 +23,10 @@ export default {
             },
             colors: {
                 primary: '#1c2b49',
-                primary_dark: '#fee2e2',
+                primary_dark: '#1c2b49',
 
                 secondary: '#edd3c9',
-                secondary_dark: '#006399',
+                secondary_dark: '#edd3c9',
 
                 destaque:'#0082C9',
                 destaque_dark:'#0082C9',
