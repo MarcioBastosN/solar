@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\EmailController;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Exception;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -48,12 +49,16 @@ class RegisteredUserController extends Controller
 
         $user->assignRole('user');
         // to = pra quem vai ser enviado
-        // $mail = Mail::to("marciobastosn@gmail.com", "Solar-Project")->send(new EmailController([
-        //     'fromName' => $request->name,
-        //     'fromEmail' => $request->email,
-        //     'subject' => "Novo Usuario registrado",
-        //     'message' => "$request->name, se registrou na plataforma",
-        // ]));
+        try {
+            $mail = Mail::to("marciobastosn@gmail.com", "Solar-Project")->send(new EmailController([
+                'fromName' => $request->name,
+                'fromEmail' => $request->email,
+                'subject' => "Novo Usuario registrado",
+                'message' => "$request->name, se registrou na plataforma",
+            ]));
+        } catch (Exception $e) {
+            //
+        }
 
         Auth::login($user);
 

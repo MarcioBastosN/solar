@@ -47,12 +47,12 @@ class ShowClienteProjet extends Component
         DB::commit();
 
         $user_email = User::find($this->user_id)->email;
-        // $mail = Mail::to($user_email, "Solar-Project")->send(new EmailController([
-        //     'fromName' => auth()->user()->name,
-        //     'fromEmail' => auth()->user()->email,
-        //     'subject' => "Projeto iniciado",
-        //     'message' => "Novas etapas em processo",
-        // ]));
+        $mail = Mail::to($user_email, "Solar-Project")->send(new EmailController([
+            'fromName' => auth()->user()->name,
+            'fromEmail' => auth()->user()->email,
+            'subject' => "Projeto iniciado",
+            'message' => "Novas etapas em processo",
+        ]));
 
         $this->viewProjeto($registro_id);
     }
@@ -132,12 +132,12 @@ class ShowClienteProjet extends Component
         );
 
         $user_email = User::find($this->user_id)->email;
-        // $mail = Mail::to($user_email, "Solar-Project")->send(new EmailController([
-        //     'fromName' => auth()->user()->name,
-        //     'fromEmail' => auth()->user()->email,
-        //     'subject' => "Seu projeto foi visualizado e esta sendo iniciado.",
-        //     'message' => auth()->user()->name . ", deu inicio ao seu projeto",
-        // ]));
+        $mail = Mail::to($user_email, "Solar-Project")->send(new EmailController([
+            'fromName' => auth()->user()->name,
+            'fromEmail' => auth()->user()->email,
+            'subject' => "Seu projeto foi visualizado e esta sendo iniciado.",
+            'message' => auth()->user()->name . ", deu inicio ao seu projeto",
+        ]));
 
         $this->render();
     }
