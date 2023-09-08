@@ -125,12 +125,20 @@ class IniciaProjeto extends Component
             );
 
             $destinatario = Register::find($this->register_id);
-            $mail = Mail::to(auth()->user()->email, "Solar-Project")->send(new EmailController([
-                'fromName' => $destinatario->user->name,
-                'fromEmail' => $destinatario->user->email,
-                'subject' => "Houve uma alteração nas etapas do projeto na fase de:",
-                'message' => $destinatario->dadosProject->last()->status->label,
-            ]));
+            try {
+                //code...
+                Mail::to(auth()->user()->email, "Solar-Project")->send(new EmailController([
+                    'fromName' => $destinatario->user->name,
+                    'fromEmail' => $destinatario->user->email,
+                    'subject' => "Houve uma alteração nas etapas do projeto na fase de:",
+                    'message' => $destinatario->dadosProject->last()->status->label,
+                ]));
+            } catch (Exception $e) {
+                $this->notification()->error(
+                    $title = "Error",
+                    $description = "Error envio do E-mail"
+                );
+            }
         } else {
             $this->notification()->error(
                 $title = "Ops!",

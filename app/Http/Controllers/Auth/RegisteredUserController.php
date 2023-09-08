@@ -15,9 +15,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use WireUi\Traits\Actions;
 
 class RegisteredUserController extends Controller
 {
+    use Actions;
     /**
      * Display the registration view.
      */
@@ -57,7 +59,10 @@ class RegisteredUserController extends Controller
                 'message' => "$request->name, se registrou na plataforma",
             ]));
         } catch (Exception $e) {
-            //
+            $this->notification()->error(
+                $title = "Error",
+                $description = "Não foi possivel enviar o E-mail"
+            );
         }
 
         Auth::login($user);

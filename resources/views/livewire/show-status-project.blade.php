@@ -8,9 +8,8 @@
                             Status possiveis do Projeto
                         </div>
                         <hr>
-                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead
-                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <table class="w-full text-sm text-left text-primary">
+                            <thead class="text-xs text-primary uppercase bg-gray-400 ">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">Status</th>
                                     <th scope="col" class="px-6 py-3">Actions</th>
@@ -18,7 +17,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($statusProject as $status)
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <tr class="bg-white border-b text-primary">
                                         <td class="px-6 py-4">
                                             {{ $status->label }}
                                         </td>
@@ -36,9 +35,8 @@
                             Status possiveis dos Documentos
                         </div>
                         <hr>
-                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead
-                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <table class="w-full text-sm text-left text-primary ">
+                            <thead class="text-xs text-primary uppercase bg-gray-400 ">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">Status</th>
                                     <th scope="col" class="px-6 py-3">Actions</th>
@@ -46,7 +44,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($statusDocumentos as $status)
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <tr class="bg-white border-b text-primary">
                                         <td class="px-6 py-4">
                                             {{ $status->label }}
                                         </td>

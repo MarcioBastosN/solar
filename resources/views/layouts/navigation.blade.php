@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-primary dark:bg-primary_dark">
+<nav x-data="{ open: false }" class="bg-primary ">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -42,7 +42,7 @@
                     <x-slot name="trigger">
                         <button
                             class="inline-flex items-center px-3 py-2 border border-transparent
-                                text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700
+                                text-sm leading-4 font-medium rounded-md text-secondary hover:text-gray-400
                                 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
 
@@ -58,7 +58,7 @@
                     </x-slot>
                     {{-- <x-slot name="content"> --}}
                     <x-dropdown.item :href="route('profile.edit')">
-                        {{ __('Profile') }}
+                        {{ __('Perfil') }}
                     </x-dropdown.item>
 
                     <!-- Authentication -->
@@ -123,10 +123,10 @@
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="pt-4 pb-1 border-t border-dashed border-secondary">
             <div class="px-4">
-                <div class="font-medium text-base text-yellow-600">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-yellow-700">{{ Auth::user()->email }}</div>
+                <div class="font-medium text-base text-secondary">{{ Auth::user()->name }}</div>
+                <div class="font-medium text-sm text-secondary">{{ Auth::user()->email }}</div>
             </div>
 
             <div class="mt-3 space-y-1">

@@ -11,12 +11,12 @@
                         <div class="flex flex-wrap flex-col-reverse sm:flex-row">
                             <div class="w-full sm:w-1/2 my-2">
                                 {{-- lado esquerdo --}}
-                                <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                                <h2 class="mb-2 text-lg font-semibold text-primary ">
                                     Arquivos recebidos
                                 </h2>
-                                <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                <ul class="max-w-md space-y-1 text-gray-400 list-inside ">
                                     <li class="flex items-center">
-                                        <x-icon name="download" class="w-3.5 h-3.5 text-primary dark:text-primary" />
+                                        <x-icon name="download" class="w-3.5 h-3.5 text-primary" />
                                         <a href="#" wire:click="export('{{ $registro->identificacao_pf_pj }}')"
                                             class="hover:underline">
                                             {{ $registro->tipo_pessoa == 'pj' ? 'CNPJ' : 'RG ou CNH' }}
@@ -25,13 +25,13 @@
                                             @if (empty($registro->validaDocumentos->where('documento', 'identificacao_pf_pj')->first()) ||
                                                     $registro->validaDocumentos->where('documento', 'identificacao_pf_pj')->first()->status_id == 1)
                                                 <span
-                                                    class="bg-gray-300 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2">
+                                                    class="bg-gray-400 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2">
                                                     Não visualizado
                                                 </span>
                                             @else
                                                 <span
-                                                    class=" text-gray-800 text-xs font-medium
-                                                    mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2
+                                                    class=" text-primary text-xs font-medium
+                                                    mr-2 px-2.5 py-0.5 rounded mx-2
                                                     {{ $registro->validaDocumentos->where('documento', 'identificacao_pf_pj')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
                                                     {{ $registro->validaDocumentos->where('documento', 'identificacao_pf_pj')->first()->status->label }}
                                                 </span>
@@ -53,13 +53,12 @@
                                             @if (empty($registro->validaDocumentos->where('documento', 'procuracao')->first()) ||
                                                     $registro->validaDocumentos->where('documento', 'procuracao')->first()->status_id == 1)
                                                 <span
-                                                    class="bg-gray-300 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2">
+                                                    class="bg-gray-400 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded  mx-2">
                                                     Não visualizado
                                                 </span>
                                             @else
                                                 <span
-                                                    class=" text-gray-800 text-xs font-medium
-                                                    mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2
+                                                    class=" text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2
                                                     {{ $registro->validaDocumentos->where('documento', 'procuracao')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
                                                     {{ $registro->validaDocumentos->where('documento', 'procuracao')->first()->status->label }}
                                                 </span>
@@ -81,13 +80,12 @@
                                             @if (empty($registro->validaDocumentos->where('documento', 'fatura_da_uc')->first()) ||
                                                     $registro->validaDocumentos->where('documento', 'fatura_da_uc')->first()->status_id == 1)
                                                 <span
-                                                    class="bg-gray-300 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2">
+                                                    class="bg-gray-400 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2">
                                                     Não visualizado
                                                 </span>
                                             @else
                                                 <span
-                                                    class=" text-gray-800 text-xs font-medium
-                                                    mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2
+                                                    class=" text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2
                                                     {{ $registro->validaDocumentos->where('documento', 'fatura_da_uc')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
                                                     {{ $registro->validaDocumentos->where('documento', 'fatura_da_uc')->first()->status->label }}
                                                 </span>
@@ -109,13 +107,12 @@
                                             @if (empty($registro->validaDocumentos->where('documento', 'padrao_de_entrada')->first()) ||
                                                     $registro->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status_id == 1)
                                                 <span
-                                                    class="bg-gray-300 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2">
+                                                    class="bg-gray-400 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2">
                                                     Não visualizado
                                                 </span>
                                             @else
                                                 <span
-                                                    class=" text-gray-800 text-xs font-medium
-                                            mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2
+                                                    class=" text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2
                                             {{ $registro->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
                                                     {{ $registro->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status->label }}
                                                 </span>
@@ -137,13 +134,12 @@
                                             @if (empty($registro->validaDocumentos->where('documento', 'datasheet')->first()) ||
                                                     $registro->validaDocumentos->where('documento', 'datasheet')->first()->status_id == 1)
                                                 <span
-                                                    class="bg-gray-300 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2">
+                                                    class="bg-gray-400 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2">
                                                     Não visualizado
                                                 </span>
                                             @else
                                                 <span
-                                                    class=" text-gray-800 text-xs font-medium
-                                                    mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2
+                                                    class=" text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2
                                                     {{ $registro->validaDocumentos->where('documento', 'datasheet')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
                                                     {{ $registro->validaDocumentos->where('documento', 'datasheet')->first()->status->label }}
                                                 </span>
@@ -159,10 +155,10 @@
                             </div>
                             <div class="w-full sm:w-1/2 my-2">
                                 <div class="align-middle">
-                                    <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                                    <h2 class="mb-2 text-lg font-semibold text-primary">
                                         Informaçoes do modelo
                                     </h2>
-                                    <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                    <ul class="max-w-md space-y-1 text-gray-400 list-inside">
                                         <li class="flex items-center">Disjuntor:
                                             {{ $registro->disjuntor->name }}
                                         </li>
@@ -177,12 +173,10 @@
                                         </li>
                                         <li class="flex items-center">
                                             @if (empty($registro->observacao))
-                                                <x-icon name="exclamation"
-                                                    class="w-3.5 h-3.5 text-primary dark:text-primary" />
+                                                <x-icon name="exclamation" class="w-3.5 h-3.5 text-primary" />
                                                 Não possui observação
                                             @else
-                                                <x-icon name="search"
-                                                    class="w-3.5 h-3.5 text-primary dark:text-primary" />
+                                                <x-icon name="search" class="w-3.5 h-3.5 text-primary " />
                                                 <a href="#" wire:click="showObs('{{ $registro->observacao }}')">
                                                     Observacao
                                                 </a>
@@ -197,23 +191,23 @@
                 <x-slot name="footer">
                     <div class="flex justify-between items-center">
                         @if (empty($registro->possuiProjeto))
-                            <button class="flex-auto text-primary text-center bg-secondary"
+                            <button class="flex-auto text-secondary text-center bg-primary rounded-md mx-4 py-2 text-lg"
                                 wire:click='trabalhar({{ $registro->id }})' wire:loading.attr="disabled">
-                                Pegar o Trabalho {{ $registro->id }}</button>
+                                Pegar o Trabalho</button>
                         @else
-                            <p class="text-gray-500 "> Responsavel: {{ $registro->possuiProjeto->responsavel->name }}
+                            <p class="text-gray-400 "> Responsavel: {{ $registro->possuiProjeto->responsavel->name }}
                             </p>
                         @endif
                         @if ($registro->habilitaProjeto())
                             @if (empty($registro->dadosProject->first()))
-                                <button label="Save" class="bg-primary w-32 rounded-xl"
+                                <button label="Save" class="bg-primary text-secondary rounded-md px-4 py-1 text-lg"
                                     wire:click='InicioProjeto({{ $registro->possuiProjeto->id }}, {{ $registro->id }})'
                                     wire:loading.attr="disabled">
                                     Iniciar projeto
                                 </button>
                                 <p>Projeto id: {{ $registro->possuiProjeto->id }}, resgistro: {{ $registro->id }}</p>
                             @else
-                                <button label="Save" class="bg-primary w-32"
+                                <button label="Save" class="bg-primary text-secondary rounded-lg text-md w-32"
                                     wire:click='viewProjeto({{ $registro->id }})'>
                                     ver detalhes
                                 </button>
@@ -221,7 +215,7 @@
                         @else
                             <p>Verificar Documentos para iniciar</p>
                             @if (empty($registro->dadosProject->first()) && !empty($registro->possuiProjeto))
-                                <button label="Save" class="bg-primary w-32 rounded-xl"
+                                <button label="Save" class="bg-primary text-secondary w-32 rounded-lg"
                                     wire:click='validarTodos({{ $registro->id }})'>
                                     Aprovar todos
                                 </button>
