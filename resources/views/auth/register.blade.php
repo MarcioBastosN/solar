@@ -19,7 +19,7 @@
                     <div class="flex justify-center">
                         <img src="{{ asset('LOGO PRIMARIA FUNDO TRANSPARENTE.svg') }}" alt="" class="w-64">
                     </div>
-                    <div class="text-bold text-lg text-gray-600">Faça login para acessar sua conta</div>
+                    <div class="text-bold text-lg text-gray-600">Registre-se para acessar</div>
                 </div>
 
                 <div class="mt-4">

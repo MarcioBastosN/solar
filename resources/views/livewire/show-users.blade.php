@@ -1,6 +1,6 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
-    <div class="max-w-lg mx-auto ">
+    <div class="max-w-lg mx-auto px-2">
         <input wire:model="search" type="search" placeholder="Procura email ou nome"
             class="mt-2 block rounded-t-lg px-2.5 pb-1.5 pt-5 w-full
         text-sm text-primary bg-gray-400  border-0
