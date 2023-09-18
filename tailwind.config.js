@@ -20,6 +20,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                Oswald : ['Oswald']
             },
             colors: {
                 primary: '#1c2b49',
