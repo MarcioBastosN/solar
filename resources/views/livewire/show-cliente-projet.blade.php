@@ -3,6 +3,7 @@
         <div class="my-2 mx-2">
             <x-card
                 title="Registro: {{ $registro->id }} - {{ $registro->user->name }} -
+                {{-- contato - {{ $registro->telefone }} - --}}
                 {{ $registro->tipo_pessoa == 'pf' ? 'Pessoa Fisica' : 'Pessoa Juridica' }} -
                 {{ $registro->created_at->format('d/m/Y') }}">
 
