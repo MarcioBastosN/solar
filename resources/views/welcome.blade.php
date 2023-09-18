@@ -17,8 +17,9 @@
     <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+{{-- style="font-family: 'Source Sans Pro', sans-serif;" --}}
 
-<body class="leading-normal tracking-normal text-white bg-primary " style="font-family: 'Source Sans Pro', sans-serif;">
+<body class="leading-normal tracking-normal text-white bg-primary ">
     <!--Nav-->
     <nav id="header" class="fixed w-full z-30 top-0 text-white">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
@@ -355,11 +356,12 @@
     </section> --}}
     <section class="bg-primary pt-20 pb-2">
         <div class="container max-w-5xl mx-auto m-8">
-            <h2 class="w-full sm:my-2 md:text-6xl md:mx-2 text-3xl font-bold tracking-tight text-right  text-secondary">
+            <h2
+                class="w-full sm:my-2 md:text-6xl md:mx-2 text-3xl font-bold tracking-tight text-right  text-secondary ">
                 QUEM EU SOU ?
             </h2>
             <div class="flex">
-                <div class="grow-0 w-80">
+                <div class="grow-0 w-7/12">
                     {{--  --}}
                 </div>
                 <div class="grow w-auto">
@@ -390,12 +392,12 @@
         <h2 class="w-full my-2 text-6xl font-extrabold leading-tight text-center text-primary">
             FORMAÇÕES & CURSOS
         </h2>
-        <div class="w-full px-6 md:px-12 font-medium text-xl text-primary mb-6">
+        <div class="w-full px-6 md:px-12 font-medium text-xl text-primary mb-12">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Tempora aliquid ab possimus repellendus debitis! Nam blanditiis voluptatem illo,
                 dolor repudiandae fugit, qui minima, vero tenetur earum ea fugiat. Similique, aliquid!</p>
         </div>
-        <div class="w-full mx-2">
+        <div class="w-full px-2">
             <div class="flex md:flex-nowrap sm:flex-wrap sm:flex-row">
                 <div class="w-full sm:w-1/3 text-white bg-primary text-center mx-2 py-6 px-2 rounded-2xl">
                     <x-icon name="bookmark-alt" class="md:w-40 md:h-40 my-6 mx-auto justify-center" />
