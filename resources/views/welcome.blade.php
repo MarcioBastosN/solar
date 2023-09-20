@@ -355,7 +355,7 @@
         </div>
     </section> --}}
     <section class="bg-primary pt-20 pb-2">
-        <div class="container max-w-5xl mx-auto m-8">
+        <div class="container max-w-5xl mx-auto m-8 p-2">
             <h2
                 class="w-full sm:my-2 md:text-6xl md:mx-2 text-3xl font-bold tracking-tight text-right  text-secondary ">
                 QUEM EU SOU ?
@@ -365,22 +365,44 @@
                     {{--  --}}
                 </div>
                 <div class="grow w-auto">
-                    <div class="p-2 text-white text-right">
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur,
-                            aliquid quaerat harum
-                            incidunt labore nihil amet ea quae sed inventore rerum excepturi molestiae non velit.
-                            Deserunt
-                            accusamus maiores in laborum.</p>
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur,
-                            aliquid quaerat harum
-                            incidunt labore nihil amet ea quae sed inventore rerum excepturi molestiae non velit.
-                            Deserunt
-                            accusamus maiores in laborum.</p>
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur,
-                            aliquid quaerat harum
-                            incidunt labore nihil amet ea quae sed inventore rerum excepturi molestiae non velit.
-                            Deserunt
-                            accusamus maiores in laborum.</p>
+                    <div class="text-white text-right md:ml-28">
+                        <p class="mb-4">
+                            Desde a minha graduação na
+                            <span class="font-semibold">Universidade Federal do Oeste do Pará</span> (Ufopa) em
+                            Santarém, tenho
+                            trilhado uma empolgante jornada como <span class="font-semibold">engenheira elétrica</span>.
+                            Com 30 anos de idade, posso
+                            afirmar que a busca por conhecimento e a <span class="font-semibold">paixão pela minha
+                                profissão</span> tem sido as forcas
+                            motrizes da minha carreira. Minha formação acadêmica proporcionou uma base solida em
+                            princípios de engenharia elétrica, mas foi na prática de mercado que realmente floresci.
+                        </p>
+                        <p class="mb-4">Ao longo dos anos, ganhei <span class="font-semibold">ampla experiencia</span>
+                            em uma variedade de <span class="font-semibold">projetos
+                                desafiadores</span>. Desde sistemas de <span class="font-semibold">distribuição de
+                                energia</span> até a implementação de
+                            tecnologias
+                            de <span class="font-semibold"> automação industrial</span> de ponta, tive a oportunidade de
+                            <span class="font-semibold">liderar equipes
+                                multidisciplinares</span> e aplicar meu conhecimento de <span
+                                class="font-semibold">forma criativa</span> para <span class="font-semibold">superar
+                                obstáculos</span>
+                            complexos. Essa diversidade de experiencias me permitiu desenvolver <span
+                                class="font-semibold">habilidades de resolução</span>
+                            de problemas, comunicação eficaz e a capacidade de pensar de <span
+                                class="font-semibold">forma estratégica</span>,
+                            características essenciais em nossa área dinâmica.
+                        </p>
+                        <p class="">Minha abordagem à engenharia elétrica vai além de simplesmente resolver
+                            problemas técnicos. Acredito firmemente que nossa profissão tem um papel fundamental na
+                            modelagem de um <span class="font-semibold">futuro sustentável</span>. Assumo a
+                            responsabilidade de integrar princípios de
+                            <span class="font-semibold">eficiência energética e energias renováveis</span> em meus
+                            projetos sempre que possível,
+                            contribuindo para um <span class="font-semibold">mundo mais verde e tecnologicamente
+                                avançado</span>. Estou entusiasmada para
+                            continuar desafiando-me e fazendo uma diferença positiva no campo da engenharia elétrica.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -389,7 +411,7 @@
 
     {{-- formaçoes e cursos --}}
     <section class="bg-secondary border-b-2 border-dashed py-32">
-        <h2 class="w-full my-2 text-6xl font-extrabold leading-tight text-center text-primary">
+        <h2 class="w-full m-2 md:text-6xl text-5xl font-extrabold leading-tight text-center text-primary">
             FORMAÇÕES & CURSOS
         </h2>
         <div class="w-full px-6 md:px-12 font-medium text-xl text-primary mb-12">
@@ -398,22 +420,22 @@
                 dolor repudiandae fugit, qui minima, vero tenetur earum ea fugiat. Similique, aliquid!</p>
         </div>
         <div class="w-full px-2">
-            <div class="flex md:flex-nowrap sm:flex-wrap sm:flex-row">
-                <div class="w-full sm:w-1/3 text-white bg-primary text-center mx-2 py-6 px-2 rounded-2xl">
+            <div class="flex md:flex-nowrap flex-wrap flex-row flex-grow">
+                <div class="w-full sm:w-1/3 text-white bg-primary text-center mx-2 py-6 px-2 rounded-2xl mb-2">
                     <x-icon name="bookmark-alt" class="md:w-40 md:h-40 my-6 mx-auto justify-center" />
                     <p class="text-center font-extrabold md:text-2xl mb-6">FORMAÇÂO</p>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto assumenda sunt expedita
                         nihil aliquam reprehenderit voluptas doloremque doloribus hic. Adipisci numquam voluptas facere
                         neque asperiores veritatis corrupti sunt perferendis ad!</p>
                 </div>
-                <div class="w-full sm:w-1/3 text-white bg-primary text-center mx-2 py-6 px-2 rounded-2xl">
+                <div class="w-full sm:w-1/3 text-white bg-primary text-center mx-2 py-6 px-2 rounded-2xl mb-2">
                     <x-icon name="bookmark-alt" class="md:w-40 md:h-40 my-6 mx-auto justify-center" />
                     <p class="text-center font-extrabold md:text-2xl mb-6">FORMAÇÂO</p>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto assumenda sunt expedita
                         nihil aliquam reprehenderit voluptas doloremque doloribus hic. Adipisci numquam voluptas facere
                         neque asperiores veritatis corrupti sunt perferendis ad!</p>
                 </div>
-                <div class="w-full sm:w-1/3 text-white bg-primary text-center mx-2 py-6 px-2 rounded-2xl">
+                <div class="w-full sm:w-1/3 text-white bg-primary text-center mx-2 py-6 px-2 rounded-2xl mb-2">
                     <x-icon name="bookmark-alt" class="md:w-40 md:h-40 my-6 mx-auto justify-center" />
                     <p class="text-center font-extrabold md:text-2xl mb-6">FORMAÇÂO</p>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto assumenda sunt expedita
@@ -428,11 +450,12 @@
     {{-- contato --}}
     <section class="bg-secondary border-b-2 border-dotted py-32">
         <div class="container max-w-5xl mx-auto m-8">
-            <h2 class="w-full my-2 text-6xl font-bold leading-tight text-center text-primary">
+            <h2 class="w-full my-2 md:text-6xl  text-5xl font-bold leading-tight text-center text-primary">
                 ENTRE EM CONTATO COMIGO!
             </h2>
             <div class="w-full mb-2 mt-12 text-center">
-                <button class="bg-primary text-3xl font-extrabold text-white rounded-full px-28 py-4">CLICK
+                <button
+                    class="bg-primary md:text-3xl  text-2xl font-extrabold text-white rounded-full px-28 py-4">CLICK
                     AQUI!</button>
             </div>
         </div>
