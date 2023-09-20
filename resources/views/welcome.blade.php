@@ -365,7 +365,7 @@
                     {{--  --}}
                 </div>
                 <div class="grow w-auto">
-                    <div class="text-white text-right md:ml-28">
+                    <div class="text-white font-light text-right md:ml-28">
                         <p class="mb-4">
                             Desde a minha graduação na
                             <span class="font-semibold">Universidade Federal do Oeste do Pará</span> (Ufopa) em
