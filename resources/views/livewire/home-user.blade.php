@@ -1,6 +1,6 @@
 <div>
     <div class="bg-white">
-        <form wire:submit.prevent="save" class="max-w-xl mx-auto p-4 shadow-xl bg-form_color dark:bg-form_color_dark">
+        <form wire:submit.prevent="save" class="max-w-xl mx-auto p-4 shadow-xl bg-form_color">
             <div class="max-w-xl mx-auto">
                 <label class="relative inline-flex items-center cursor-pointer">
                     <input type="checkbox" class="sr-only peer" wire:click="trocaStatus">
@@ -12,14 +12,14 @@
                         peer peer-checked:after:translate-x-full
                         peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
                         after:left-[2px]  after:border after:rounded-full after:h-6 after:w-6 after:transition-all
-                        peer-checked:bg-blue-600">
+                        peer-checked:bg-primary">
                     </div>
                     <span class="ml-3 text-md font-extrabold text-primary dark:text-primary">
                         {{ $exibir_empresa == false ? 'Sou uma Pessoa' : 'Sou Empresa' }}</span>
                 </label>
             </div>
             <div class=" max-w-xl mx-auto p-4">
-                <ol class="relative text-gray-500 border-l border-gray-200 dark:border-gray-700 dark:text-gray-400">
+                <ol class="relative text-gray-800 border-l border-gray-200 dark:border-gray-700 dark:text-gray-500">
                     <li class="mb-10 ml-6">
                         <span
                             class="absolute flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-gray-900">
@@ -227,9 +227,9 @@
                         <x-textarea wire:model="observacao" label="Notas" placeholder="Suas considerações" />
                         <div class="flex mt-3">
                             <button type="submit"
-                                class="w-full bg-gray-400 h-12 rounded-lg border-spacing-2
+                                class="w-full bg-primary h-12 rounded-lg border-spacing-2
                                 border-2-secondary text-center shadow-xl ring-4 ring-white
-                                hover:bg-primary hover:text-secondary"
+                             hover:text-secondary"
                                 wire:loading.attr="disabled">
                                 Salvar
                             </button>

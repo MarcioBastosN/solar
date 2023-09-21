@@ -1,27 +1,28 @@
 @foreach ($statusProjeto as $item)
-    <ol class="relative border-l border-gray-200 dark:border-gray-700">
+    <ol class="relative border-l border-gray-400 ">
         <li class="mb-10 ml-6">
             <span
-                class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                class="absolute flex items-center justify-center w-6 h-6
+                bg-primary rounded-full -left-3 ring-8 ring-gray-200 text-secondary">
                 <x-icon name="archive" class="w-5 h-5" />
             </span>
-            <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 class="flex items-center mb-1 text-lg font-semibold text-primary ">
                 {{ $item->label }}
             </h3>
             @foreach ($projeto->registrosValidos->where('status_project_id', $item->id)->groupBy(function ($item) {
         return $item->created_at->format('Y-m-d');
     }) as $itemData)
-                <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                <time class="block mb-2 text-sm font-normal leading-none text-gray-500">
                     Inicio: {{ $itemData->first()->created_at->format('d-m-Y') }}</time>
-                <div class=" bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-2 group/item">
+                <div class=" bg-gray-100 rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-2 group/item">
                     <div class="md:flex hover:bg-gray-200 py-2">
                         <div class="flex-auto px-4 ">
                             @foreach ($itemData as $item)
                                 @if (!empty($item['documento']))
                                     <button wire:click="filedownload('{{ $item['documento'] }}')" type="button"
-                                        class="text-white bg-primary hover:bg-blue-800 focus:ring-4 focus:outline-none
-                                                                focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 my-1 text-center inline-flex
-                                                                items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        class="text-secondary bg-primary focus:ring-2 focus:outline-none
+                                                                focus:ring-secondary font-medium rounded-lg text-sm px-5 py-2 my-1 text-center inline-flex
+                                                                items-center mr-2 ">
                                         <x-icon name="cloud-download" class="w-5 h-5" /> dowload
                                     </button>
                                 @endif

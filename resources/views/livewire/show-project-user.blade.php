@@ -22,16 +22,14 @@
                                                 <div class="flex flex-wrap flex-col-reverse sm:flex-row">
                                                     {{--  --}}
                                                     <div class="w-full sm:w-1/2 ">
-                                                        <h2
-                                                            class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                                                        <h2 class="mb-2 text-lg font-semibold text-primary">
                                                             Arquivos
                                                             enviados
                                                         </h2>
-                                                        <ul
-                                                            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                                        <ul class="max-w-md space-y-1 text-primary list-inside ">
                                                             <li class="flex items-center">
                                                                 <x-icon name="download"
-                                                                    class="w-3.5 h-3.5 text-primary dark:text-primary" />
+                                                                    class="w-3.5 h-3.5 text-primary" />
                                                                 <a href="#"
                                                                     wire:click="export('{{ $item->identificacao_pf_pj }}')"
                                                                     class="hover:underline">
@@ -40,13 +38,13 @@
                                                                 @if (empty($item->validaDocumentos->where('documento', 'identificacao_pf_pj')->first()) ||
                                                                         $item->validaDocumentos->where('documento', 'identificacao_pf_pj')->first()->status_id == 1)
                                                                     <span
-                                                                        class="bg-gray-300 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2">
+                                                                        class="bg-gray-300 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2">
                                                                         Não visualizado
                                                                     </span>
                                                                 @else
                                                                     <span
-                                                                        class=" text-gray-800 text-xs font-medium
-                                                                    mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2
+                                                                        class=" text-primary text-xs font-medium
+                                                                    mr-2 px-2.5 py-0.5 rounded mx-2
                                                                     {{ $item->validaDocumentos->where('documento', 'identificacao_pf_pj')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
                                                                         {{ $item->validaDocumentos->where('documento', 'identificacao_pf_pj')->first()->status->label }}
                                                                     </span>
@@ -56,7 +54,7 @@
                                                                 class="flex
                                                                         items-center">
                                                                 <x-icon name="download"
-                                                                    class="w-3.5 h-3.5 text-primary dark:text-primary" />
+                                                                    class="w-3.5 h-3.5 text-primary " />
                                                                 <a href="#"
                                                                     wire:click="export('{{ $item->procuracao }}')"
                                                                     class="hover:underline">
@@ -65,13 +63,12 @@
                                                                 @if (empty($item->validaDocumentos->where('documento', 'procuracao')->first()) ||
                                                                         $item->validaDocumentos->where('documento', 'procuracao')->first()->status_id == 1)
                                                                     <span
-                                                                        class="bg-gray-300 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2">
+                                                                        class="bg-gray-300 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded  mx-2">
                                                                         Não visualizado
                                                                     </span>
                                                                 @else
                                                                     <span
-                                                                        class=" text-gray-800 text-xs font-medium
-                                                                    mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2
+                                                                        class=" text-primary text-xs font-mediummr-2 px-2.5 py-0.5 rounded  mx-2
                                                                     {{ $item->validaDocumentos->where('documento', 'procuracao')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
                                                                         {{ $item->validaDocumentos->where('documento', 'procuracao')->first()->status->label }}
                                                                     </span>
@@ -88,13 +85,12 @@
                                                                 @if (empty($item->validaDocumentos->where('documento', 'fatura_da_uc')->first()) ||
                                                                         $item->validaDocumentos->where('documento', 'fatura_da_uc')->first()->status_id == 1)
                                                                     <span
-                                                                        class="bg-gray-300 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2">
+                                                                        class="bg-gray-300 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded  mx-2">
                                                                         Não visualizado
                                                                     </span>
                                                                 @else
                                                                     <span
-                                                                        class=" text-gray-800 text-xs font-medium
-                                                                    mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2
+                                                                        class=" text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded  mx-2
                                                                     {{ $item->validaDocumentos->where('documento', 'fatura_da_uc')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
                                                                         {{ $item->validaDocumentos->where('documento', 'fatura_da_uc')->first()->status->label }}
                                                                     </span>
@@ -111,13 +107,13 @@
                                                                 @if (empty($item->validaDocumentos->where('documento', 'padrao_de_entrada')->first()) ||
                                                                         $item->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status_id == 1)
                                                                     <span
-                                                                        class="bg-gray-300 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2">
+                                                                        class="bg-gray-300 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded  mx-2">
                                                                         Não visualizado
                                                                     </span>
                                                                 @else
                                                                     <span
-                                                                        class=" text-gray-800 text-xs font-medium
-                                                                    mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2
+                                                                        class=" text-primary text-xs font-medium
+                                                                    mr-2 px-2.5 py-0.5 rounded  mx-2
                                                                     {{ $item->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
                                                                         {{ $item->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status->label }}
                                                                     </span>
@@ -134,13 +130,12 @@
                                                                 @if (empty($item->validaDocumentos->where('documento', 'datasheet')->first()) ||
                                                                         $item->validaDocumentos->where('documento', 'datasheet')->first()->status_id == 1)
                                                                     <span
-                                                                        class="bg-gray-300 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2">
+                                                                        class="bg-gray-300 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded  mx-2">
                                                                         Não visualizado
                                                                     </span>
                                                                 @else
                                                                     <span
-                                                                        class=" text-gray-800 text-xs font-medium
-                                                                    mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 mx-2
+                                                                        class=" text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded  mx-2
                                                                     {{ $item->validaDocumentos->where('documento', 'datasheet')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
                                                                         {{ $item->validaDocumentos->where('documento', 'datasheet')->first()->status->label }}
                                                                     </span>
@@ -150,12 +145,10 @@
                                                     </div>
                                                     {{--  --}}
                                                     <div class="w-full sm:w-1/2 ">
-                                                        <h2
-                                                            class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                                                        <h2 class="mb-2 text-lg font-semibold text-primary">
                                                             Informaçoes do modelo
                                                         </h2>
-                                                        <ul
-                                                            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                                                        <ul class="max-w-md space-y-1 text-primary list-inside">
                                                             <li class="flex items-center">Disjuntor:
                                                                 {{ $item->disjuntor->name }}
                                                             </li>
@@ -197,8 +190,15 @@
                                                 @if (!$item->habilitaProjeto())
                                                     <span>Aguardando aprovação dos arquivos</span>
                                                 @else
-                                                    <x-button label="Detalhes" class="bg-primary w-32"
-                                                        wire:click="exbibeDetalhes({{ $item->id }})" />
+                                                    <button
+                                                        class="bg-primary text-white hover:text-secondary hover:bg-primary w-32
+                                                        font-semibold rounded-xl px-4 py-1"
+                                                        wire:click="exbibeDetalhes({{ $item->id }})">
+                                                        Detalhes
+                                                    </button>
+                                                    {{-- <x-button label="Detalhes"
+                                                        class="bg-primary  hover:text-secondary hover:bg-primary w-32"
+                                                        wire:click="exbibeDetalhes({{ $item->id }})" /> --}}
                                                 @endif
                                             </div>
                                         </x-slot>
