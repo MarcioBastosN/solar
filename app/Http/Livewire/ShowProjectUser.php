@@ -19,7 +19,6 @@ class ShowProjectUser extends Component
     public $cardDetalhes = false;
     public $cardReenvio = false;
 
-    // infornaçoes uteis
     public $projetoSelecionado;
 
     public function mount()

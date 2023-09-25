@@ -14,7 +14,6 @@ class UpdateDocumentos extends Component
 {
     use WithFileUploads, Actions;
 
-    // documentos para validar
     public $identificacao_pf_pj, $Procuracao, $Fatura, $Padrao, $Datasheet;
 
     public $arquivosParaCorrigir, $exibir_empresa, $registro_id;
@@ -84,16 +83,16 @@ class UpdateDocumentos extends Component
 
         $this->render();
     }
-    // falta liberar o arquivo apos salvar
+
     public function saveDoc($arquivo, $nomeArquivo)
     {
         DB::beginTransaction();
         try {
-            // troca o documento
+
             $caminho = "documentos/" . auth()->user()->id;
             $caminhi_arquivo = $arquivo->store($caminho);
             DB::transaction(fn () => Register::find($this->registro_id)->update(["$nomeArquivo" => $caminhi_arquivo]));
-            // troca o status do documento
+
             DB::transaction(fn () => ValidaDocumento::where('register_id', $this->registro_id)->where('documento', 'ilike', "%" . $nomeArquivo . "%")->update(['status_id' => 1]));
         } catch (Exception $e) {
             DB::rollBack();

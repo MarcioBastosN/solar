@@ -18,12 +18,12 @@ use WireUi\Traits\Actions;
 class HomeUser extends Component
 {
     use Actions, WithFileUploads;
-    //controller exibir campos da view
+
     public $exibir_empresa = false;
-    // arquivos
+
     public $identificacao_pf_pj,  $procuracao, $fatura_da_uc, $padrao_de_entrada, $datasheet;
     public $kwp, $fotovoltaico, $inversor, $dijuntor_id, $telefone, $observacao;
-    //
+
     public $tipo_pessoa = 'pf';
 
     protected $rules = [

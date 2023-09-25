@@ -20,7 +20,7 @@
                                         <section class="bg-white ">
                                             <div class="container w-full mx-auto ">
                                                 <div class="flex flex-wrap flex-col-reverse sm:flex-row">
-                                                    {{--  --}}
+
                                                     <div class="w-full sm:w-1/2 ">
                                                         <h2 class="mb-2 text-lg font-semibold text-primary">
                                                             Arquivos
@@ -143,7 +143,7 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                    {{--  --}}
+
                                                     <div class="w-full sm:w-1/2 ">
                                                         <h2 class="mb-2 text-lg font-semibold text-primary">
                                                             Informaçoes do modelo
@@ -196,9 +196,6 @@
                                                         wire:click="exbibeDetalhes({{ $item->id }})">
                                                         Detalhes
                                                     </button>
-                                                    {{-- <x-button label="Detalhes"
-                                                        class="bg-primary  hover:text-secondary hover:bg-primary w-32"
-                                                        wire:click="exbibeDetalhes({{ $item->id }})" /> --}}
                                                 @endif
                                             </div>
                                         </x-slot>

@@ -1,5 +1,5 @@
 <div>
-    {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
+
     <div class="max-w-lg mx-auto px-2">
         <input wire:model="search" type="search" placeholder="Procura email ou nome"
             class="mt-2 block rounded-t-lg px-2.5 pb-1.5 pt-5 w-full
@@ -14,7 +14,7 @@
                 <div
                     class="max-w-md mx-auto {{ empty($user->pendencia) ? 'bg-white text-primary' : 'bg-gray-400 text-white' }} rounded-xl shadow-md overflow-hidden md:max-w-2xl ">
                     <div class="md:flex">
-                        {{-- esquerda --}}
+
                         <div class="w-full p-6 group ">
                             <div class="text-center align-middle">
                                 @if (empty($user->pendencia))
@@ -33,14 +33,14 @@
                                 @endif
                             </div>
                         </div>
-                        {{-- centro --}}
+
                         <div class="p-6 w-full">
                             <a href="#" class="block mt-1 text-lg leading-tight font-medium hover:underline">Id:
                                 {{ $user->id }} - {{ $user->name }}</a>
                             <p class="mt-2">{{ $user->email }}</p>
                             <p>Cadastrado: {{ $user->created_at->format('d-m-Y') }}</p>
                         </div>
-                        {{-- direita --}}
+
                         @if ($user->register->count() > 0)
                             <a href="#" wire:click='paginaDetalhes({{ $user->id }})'
                                 class="w-full hover:bg-primary group ">

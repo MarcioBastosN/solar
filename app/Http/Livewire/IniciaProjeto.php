@@ -126,7 +126,6 @@ class IniciaProjeto extends Component
 
             $destinatario = Register::find($this->register_id);
             try {
-                //code...
                 Mail::to(auth()->user()->email, "Solar-Project")->send(new EmailController([
                     'fromName' => $destinatario->user->name,
                     'fromEmail' => $destinatario->user->email,

@@ -11,7 +11,7 @@
                     <div class="container max-w-5xl mx-2">
                         <div class="flex flex-wrap flex-col-reverse sm:flex-row">
                             <div class="w-full sm:w-1/2 my-2">
-                                {{-- lado esquerdo --}}
+
                                 <h2 class="mb-2 text-lg font-semibold text-primary ">
                                     Arquivos recebidos
                                 </h2>
