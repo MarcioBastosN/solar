@@ -229,7 +229,7 @@
                             <button type="submit"
                                 class="w-full bg-primary h-12 rounded-lg border-spacing-2
                                 border-2-secondary text-center shadow-xl ring-4 ring-white
-                             hover:text-secondary"
+                             hover:text-secondary text-white"
                                 wire:loading.attr="disabled">
                                 Salvar
                             </button>
