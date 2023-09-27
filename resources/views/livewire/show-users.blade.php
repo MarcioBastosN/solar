@@ -44,7 +44,8 @@
                         @if ($user->register->count() > 0)
                             <a href="#" wire:click='paginaDetalhes({{ $user->id }})'
                                 class="w-full hover:bg-primary group ">
-                                <div class="group-hover:text-white text-center align-middle">
+                                <div
+                                    class="md:group-hover:text-white  group-hover:text-primary text-center align-middle">
                                     <p class=" text-2xl scale-150 mt-8 ">
                                         {{ $user->register->count() }}
                                     </p>
