@@ -16,8 +16,12 @@ return new class extends Migration
 
             // verificar os demais e adicionar no model tambem
 
+            // $table->unsignedInteger('projects_id');
+            // $table->foreign('projects_id')->references('id')->on('projects')->onDelete("cascade");
+
+            // registro do projeto
             $table->unsignedInteger('projects_id');
-            $table->foreign('projects_id')->references('id')->on('projects')->onDelete("cascade");
+            $table->foreign('projects_id')->references('id')->on('registers')->onDelete("cascade");
 
             // fase do projeto
             $table->unsignedInteger('status_project_id');

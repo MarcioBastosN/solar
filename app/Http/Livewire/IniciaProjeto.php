@@ -48,7 +48,7 @@ class IniciaProjeto extends Component
         DB::beginTransaction();
         try {
             DB::transaction(fn () => DadosProject::create([
-                'projects_id' => $id_projeto,
+                'projects_id' => $this->register_id,
                 'status_project_id' => $this->faseProjeto
             ]));
         } catch (Exception $e) {
@@ -87,14 +87,14 @@ class IniciaProjeto extends Component
                     foreach ($this->documento as $documento) {
                         $documentoPath = $documento->store($caminho);
                         DB::transaction(fn () => DadosProject::create([
-                            'projects_id' => $id_projeto,
+                            'projects_id' => $this->register_id,
                             'status_project_id' => $fase,
                             'documento' => $documentoPath,
                         ]));
                     }
                     if (!empty($this->obs)) {
                         DB::transaction(fn () => DadosProject::create([
-                            'projects_id' => $id_projeto,
+                            'projects_id' => $this->register_id,
                             'status_project_id' => $fase,
                             'notas' => $this->obs,
                         ]));
@@ -102,7 +102,7 @@ class IniciaProjeto extends Component
                 } else {
                     if (!empty($this->obs)) {
                         DB::transaction(fn () => DadosProject::create([
-                            'projects_id' => $id_projeto,
+                            'projects_id' => $this->register_id,
                             'status_project_id' => $fase,
                             'notas' => $this->obs,
                         ]));
@@ -158,12 +158,13 @@ class IniciaProjeto extends Component
 
     public function render()
     {
-        $projeto = Register::find($this->register_id);
+        $registro = Register::find($this->register_id);
+        // dd($registro->dadosProject);
         $dados = DadosProject::where('projects_id', $this->register_id)
             ->where(function ($query) {
                 $query->where('documento', '!=', null)
                     ->orWhere('notas', '<>', null);
             })->get();
-        return view('livewire.inicia-projeto')->with(compact('projeto', 'dados'));
+        return view('livewire.inicia-projeto')->with(compact('registro', 'dados'));
     }
 }

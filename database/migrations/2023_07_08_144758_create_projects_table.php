@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // serve para filtar os pedidos de um gerente
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
 

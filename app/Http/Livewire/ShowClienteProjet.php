@@ -33,16 +33,17 @@ class ShowClienteProjet extends Component
     {
         DB::beginTransaction();
         try {
+            // projects_id == id do registro
             DB::transaction(fn () => DadosProject::create([
-                'projects_id' => $id_projeto,
+                'projects_id' => $registro_id,
                 'status_project_id' => 1
             ]));
         } catch (Exception $e) {
-            DB::rollBack();
             $this->notification()->error(
                 $title = "Error",
                 $description = $e->getMessage()
             );
+            DB::rollBack();
         }
         DB::commit();
 

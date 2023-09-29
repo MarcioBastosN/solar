@@ -6,11 +6,11 @@
                     <div class="text-center text-xl mx-2">
                         A fase atual do seu projeto é: <br />
                         <div class="text-primary text-3xl font-bold flex-auto">
-                            {{ $projeto->dadosProject->last()->status->label }}
+                            {{ $registro->dadosProject->last()->status->label }}
                         </div>
                     </div>
                     <div class="text-center text-sm mx-2">
-                        Você esta Trabalhando no projeto de: {{ $projeto->user->name }}
+                        Você esta Trabalhando no projeto de: {{ $registro->user->name }}
                     </div>
                     <form wire:submit.prevent="trocarFase" class="max-w-xl mx-auto p-4 shadow-xl bg-form_color my-1">
                         <select id="underline_select" wire:model="faseProjeto"
@@ -35,7 +35,7 @@
                     <form wire:submit.prevent="novoRegistro" class="max-w-xl mx-auto p-4 shadow-xl bg-form_color">
                         <div class="text-primary text-center text-xl font-bold mb-2">
                             <p>
-                                Fase: {{ $projeto->dadosProject->last()->status->label }}
+                                Fase: {{ $registro->dadosProject->last()->status->label }}
                             </p>
                         </div>
                         <input
