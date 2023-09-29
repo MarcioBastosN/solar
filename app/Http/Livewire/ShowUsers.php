@@ -61,7 +61,8 @@ class ShowUsers extends Component
 
     public function render()
     {
-        $users = User::with('roles')->where(function ($query) {
+        // carrega apenas o usuarios com role user
+        $users = User::role('user')->with('roles')->where(function ($query) {
             $query->where('email', 'ilike', '%' . $this->search . '%')
                 ->orWhere('name', 'ilike', '%' . $this->search . '%');
         })->orderBy('created_at', "DESC")->paginate(5);
