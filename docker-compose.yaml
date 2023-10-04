@@ -19,7 +19,7 @@ services:
       - TZ=America/Santarem
     networks:
       solar:
-        ipv4_address: 172.16.17.4
+        ipv4_address: 172.16.19.4
   db:
     image: postgres:13-alpine
     ports:
@@ -34,7 +34,7 @@ services:
       - /home/data/solar:/var/lib/postgresql/data
     networks:
       solar:
-        ipv4_address: 172.16.17.2
+        ipv4_address: 172.16.19.2
 
   nginx:
     image: nginx:alpine
@@ -42,7 +42,6 @@ services:
     restart: unless-stopped
     ports:
       - "8017:80"
-      - "80:80"
     volumes:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
@@ -50,11 +49,11 @@ services:
       - TZ=America/Santarem
     networks:
       solar:
-        ipv4_address: 172.16.17.3
+        ipv4_address: 172.16.19.3
 
 networks:
   solar:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.16.17.0/28
+        - subnet: 172.16.19.0/28

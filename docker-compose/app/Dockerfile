@@ -1,25 +1,18 @@
+# FROM php:7.4-fpm
 FROM php:8.2-fpm
 
-# Arguments defined in docker-compose.yml
+# Argumentos definidos no docker-compose.yml
 ARG user
 ARG uid
 
-# Install system dependencies
+# Instalando dependências do sistema
 RUN apt-get update && apt-get install -y \
-    autoconf \
-    build-essential \
     git \
     curl \
     libpng-dev \
-    libjpeg-dev \
     libonig-dev \
     libxml2-dev \
     libpq-dev \
-    libzip-dev \
-    libmagick++-dev \
-    libmagickwand-dev \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
     zip \
     unzip \
     zlib1g-dev \
@@ -28,30 +21,26 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libsodium-dev
 
-# Clear cache
+
+# Limpando cache do APT
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Configurando a extensão do GD
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg=/usr/include/ --enable-gd
+# Instalando extensões PHP
+RUN docker-php-ext-install pdo pdo_pgsql pgsql mbstring xml exif pcntl bcmath gd zip sodium
 
-# Install PHP extensions
-RUN docker-php-ext-install pdo pdo_pgsql pgsql mbstring xml exif pcntl bcmath gd zip sodium intl
-
-# Get latest Composer
+# Download da ultima versão do Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# get node and npm
-
-COPY --from=node:lts-slim /usr/local/bin/node /usr/local/bin/node
-COPY --from=node:lts-slim /usr/local/lib/node_modules/npm /usr/local/lib/node_modules/npm
-RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
-
-# Create system user to run Composer and Artisan Commands
+# Criar usuario no sistema para executar o Composer e comandos Artisan  
 RUN useradd -G www-data,root -u $uid -d /home/$user $user
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
-# Set working directory
+# Declarando permissão 777 no diretório public e storage
+# RUN chmod -R 777 /var/www/puclic && chmod -R 777 /var/www/storage
+
+# Declarando diretório de trabalho
 WORKDIR /var/www
 
 USER $user
+
