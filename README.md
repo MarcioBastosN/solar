@@ -19,6 +19,9 @@
         MAIL_USERNAME=config
         MAIL_PASSWORD=config
     }
+    {
+        FILESYSTEM_DISK=public
+    }
 
 * 3º npm install
 

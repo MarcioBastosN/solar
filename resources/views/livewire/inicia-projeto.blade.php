@@ -1,4 +1,17 @@
 <div>
+    <section class="bg-primary text-secondary text-center">
+        <div class="text-sm mx-2">
+            Você esta Trabalhando no projeto de:
+            <div class="flex flex-wrap">
+                <div class="sm:w-1/2 mx-auto px-2">
+                    {{ $registro->user->name }}, {{ $registro->user->email }}
+                </div>
+                <div class="sm:w-1/2 mx-auto px-2">
+                    Tel: {{ $registro->telefone }}
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="bg-white">
         <div class="container w-full ">
             <div class="flex flex-wrap">
