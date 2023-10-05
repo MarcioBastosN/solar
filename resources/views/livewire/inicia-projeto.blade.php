@@ -1,6 +1,6 @@
 <div>
-    <section class="bg-primary text-secondary text-center">
-        <div class="text-sm mx-2">
+    <section class="bg-primary text-secondary ">
+        <div class="text-sm mx-2 text-center">
             Você esta Trabalhando no projeto de:
             <div class="flex flex-wrap">
                 <div class="sm:w-1/2 mx-auto px-2">
@@ -10,6 +10,10 @@
                     Tel: {{ $registro->telefone }}
                 </div>
             </div>
+        </div>
+        <div class="text-left">
+            <button class="text-md font-medium rounded-sm mx-2 my-1"
+                wire:click="voltar({{ $registro->user->id }})">Voltar</button>
         </div>
     </section>
     <section class="bg-white">
