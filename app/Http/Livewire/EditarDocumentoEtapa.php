@@ -25,7 +25,8 @@ class EditarDocumentoEtapa extends Component
     {
         $this->idProjeto = $projeto;
         $this->idStatus = $status;
-        $this->dadosProjeto = Project::with('contratante.customer')->find($projeto);
+        // $this->dadosProjeto = Project::with('contratante.customer')->find($projeto);
+        $this->dadosProjeto = Project::with('contratante.customer')->where('user_request_id', $projeto)->first();
         $this->status = StatusProjet::find($status);
     }
 
