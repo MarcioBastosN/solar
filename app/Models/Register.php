@@ -32,6 +32,11 @@ class Register extends Model
         'created_at'
     ];
 
+    public function routeNotificationForWhatsApp()
+    {
+    return $this->telefone;
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
