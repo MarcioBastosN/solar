@@ -75,6 +75,15 @@
         </div>
     </nav>
 
+    <div>
+        <a href="https://api.whatsapp.com/send?phone=559381009539&text=Paila%20Silva%20"
+            class="fixed z-90 bottom-8 right-8 bg-primary md:w-20 md:h-20 w-14 h-14 rounded-full drop-shadow-lg flex
+            justify-center items-center text-white hover:text-primary text-4xl hover:bg-secondary hover:drop-shadow-2xl
+            hover:animate-bounce duration-300 border-solid border-2 border-secondary hover:border-primary">
+            <x-icon name="phone" class="w-auto h-auto px-3 py-3" />
+        </a>
+    </div>
+
     <div class="pt-24">
         <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
             <div class="w-full">
