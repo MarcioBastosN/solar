@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SMSController;
 use App\Http\Livewire\{
     EditarDocumentoEtapa,
     HomeUser,
@@ -54,5 +55,11 @@ Route::middleware(['auth', 'verified'])
         Route::get('/iniciaProjeto/{id}', IniciaProjeto::class)->name('admin.start.project');
         Route::get('/editarDocumentoEtapa/{projeto}/{status}', EditarDocumentoEtapa::class)->name('admin.editar.documento');
     });
+
+
+Route::get('/send-sms', function () {
+    $teste = (new SMSController('whatsapp:+559391753545', 'foi porra!!'));
+    return $teste->sendSMS();
+});
 
 require __DIR__ . '/auth.php';
