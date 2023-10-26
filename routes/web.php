@@ -58,7 +58,7 @@ Route::middleware(['auth', 'verified'])
 
 
 Route::get('/send-sms', function () {
-    $teste = (new SMSController('whatsapp:+559391753545', 'foi porra!!'));
+    $teste = (new SMSController('whatsapp:+5593991753545', "Vai ... fdm !!"));
     return $teste->sendSMS();
 });
 
