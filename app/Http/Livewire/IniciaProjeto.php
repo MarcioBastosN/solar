@@ -29,6 +29,11 @@ class IniciaProjeto extends Component
         $this->statusProjeto = StatusProjet::all();
     }
 
+    public function voltar($id)
+    {
+        return redirect()->route('admin.cliente.project', $id);
+    }
+
     protected $rules = [
         'documento.*' => 'max:1024',
     ];

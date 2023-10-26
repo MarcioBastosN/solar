@@ -13,7 +13,7 @@ class ShowDijuntor extends Component
 
     use Actions;
 
-    public $disjuntores, $name;
+    public $name, $selecionado, $new_value, $id_selcionado;
 
     protected $rules = [
         'name' => 'required',
@@ -43,16 +43,46 @@ class ShowDijuntor extends Component
             $title = 'Sucesso',
             $description = 'Registro salvo'
         );
-        $this->mount();
+        // $this->mount();
+        $this->render();
     }
 
     public function mount()
     {
-        $this->disjuntores = Dijuntor::all();
+        // $this->disjuntores = Dijuntor::all();
+    }
+
+    public function showEditar($id)
+    {
+        $this->selecionado = Dijuntor::find($id);
+        $this->new_value = $this->selecionado->name;
+        $this->id_selcionado = $this->selecionado->id;
+    }
+
+    public function editar($id){
+        try {
+            DB::beginTransaction();
+            DB::transaction(fn () => Dijuntor::find($id)->update(['name' => $this->new_value]));
+            DB::commit();
+            $this->notification()->success(
+                $title = 'Sucesso',
+                $description = 'Registro alterado'
+            );
+        } catch (Exception $e) {
+            DB::rollBack();
+            $this->notification()->error(
+                $title = 'Error',
+                $description = 'Registro não editado'
+            );
+        }
+
+        $this->render();
+
     }
 
     public function render()
     {
-        return view('livewire.show-dijuntor');
+        $disjuntores = Dijuntor::all();
+        return view('livewire.show-dijuntor')->with(compact('disjuntores'));
     }
 }
