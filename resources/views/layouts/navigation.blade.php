@@ -122,6 +122,9 @@
                 <x-responsive-nav-link :href="route('admin.status.project')" :active="request()->routeIs('admin.status.project')">
                     {{ __('Status') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.gerente')" :active="request()->routeIs('admin.gerente')">
+                    {{ __('Gerente') }}
+                </x-responsive-nav-link>
             @endhasallroles
         </div>
 
