@@ -32,6 +32,9 @@
                         <x-nav-link :href="route('admin.status.project')" :active="request()->routeIs('admin.status.project')">
                             {{ __('Status') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('admin.gerente')" :active="request()->routeIs('admin.gerente')">
+                            {{ __('Gerente') }}
+                        </x-nav-link>
                     @endhasallroles
                 </div>
             </div>

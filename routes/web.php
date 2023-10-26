@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SMSController;
 use App\Http\Livewire\{
+    AddAdmin,
     EditarDocumentoEtapa,
     HomeUser,
     IniciaProjeto,
@@ -54,6 +55,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('/statusProjet', ShowStatusProject::class)->name('admin.status.project');
         Route::get('/iniciaProjeto/{id}', IniciaProjeto::class)->name('admin.start.project');
         Route::get('/editarDocumentoEtapa/{projeto}/{status}', EditarDocumentoEtapa::class)->name('admin.editar.documento');
+        Route::get('/gerente', AddAdmin::class)->name('admin.gerente');
     });
 
 
