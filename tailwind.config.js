@@ -23,16 +23,16 @@ export default {
                 Oswald : ['Oswald']
             },
             colors: {
-                primary: '#1c2b49',
-                primary_dark: '#1c2b49',
+                primary: '#040C16',
+                // primary_dark: '#1c2b49',
 
-                secondary: '#edd3c9',
-                secondary_dark: '#edd3c9',
+                secondary: '#07121F',
+                // secondary_dark: '#edd3c9',
 
                 destaque:'#0082C9',
                 destaque_dark:'#0082C9',
 
-                primary_text: '',
+                primary_text: 'F5F5F5',
                 primary_text_dark: '',
 
                 dark_bg: '#000000',
@@ -41,19 +41,23 @@ export default {
                 form_color: '#dcf1ff',
                 form_color_dark: '#fee2e2',
 
-                _primary: {
-                  50: '#dcf1ff',
-                  100: '#ccedff',
-                  200: '#99dbff',
-                  300: '#66c9ff',
-                  400: '#1aafff',
-                  500: '#0095e6',
-                  600: '#0082C9',
-                  700: '#0074b3',
-                  800: '#006399',
-                  900: '#005380',
-                  DEFAULT: '#0082C9',
-                },
+                // laranja  inicio FF792E  fim FF8F1C gradiente linear
+                btn_color_inicio: '#FF792E',
+                btn_color_fim: '#FF8F1C',
+
+                // _primary: {
+                //   50: '#dcf1ff',
+                //   100: '#ccedff',
+                //   200: '#99dbff',
+                //   300: '#66c9ff',
+                //   400: '#1aafff',
+                //   500: '#0095e6',
+                //   600: '#0082C9',
+                //   700: '#0074b3',
+                //   800: '#006399',
+                //   900: '#005380',
+                //   DEFAULT: '#0082C9',
+                // },
               },
         },
     },
