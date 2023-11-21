@@ -19,25 +19,24 @@
 </head>
 {{-- style="font-family: 'Source Sans Pro', sans-serif;" --}}
 
-<body class="leading-normal tracking-normal text-white bg-primary ">
+<body class="leading-normal tracking-normal text-gray-200 bg-primary ">
     <!--Nav-->
-    <nav id="header" class="fixed w-full z-30 top-0 text-white">
+    {{-- <nav id="header" class="fixed w-full z-30 top-0">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
             <div class="pl-4 flex items-center">
-                <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
-                    href="#">
+                <a class="toggleColour no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
                 </a>
             </div>
             <div class="block lg:hidden pr-4">
                 <button id="nav-toggle"
-                    class="flex items-center p-1 text-gray-400 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                    class="flex items-center p-1 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                     <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <title>Menu</title>
                         <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
                     </svg>
                 </button>
             </div>
-            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-primary lg:bg-transparent text-secondary p-4 lg:p-0 z-20"
+            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-primary lg:bg-transparent p-4 lg:p-0 z-20"
                 id="nav-content">
                 <ul class="list-reset lg:flex justify-end flex-1 items-center">
                     @if (Route::has('login'))
@@ -45,7 +44,7 @@
                             @hasallroles('user')
                                 <li class="mr-3">
                                     <a href="{{ route('cliente.home') }}"
-                                        class="font-semibold text-secondary hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">home</a>
+                                        class="font-semibold hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">home</a>
                                 </li>
                             @endhasallroles
 
@@ -58,13 +57,13 @@
                         @else
                             <li class="mr-3">
                                 <a href="{{ route('login') }}"
-                                    class="font-semibold text-secondary hover:text-gray-400 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                                    class="font-semibold hover:text-gray-400 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
                                     Log in</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="mr-3">
                                     <a href="{{ route('register') }}"
-                                        class="font-semibold text-secondary hover:text-gray-400 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                                        class="font-semibold hover:text-gray-400 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
                                 </li>
                             @endif
                         @endauth
@@ -73,28 +72,103 @@
                 </ul>
             </div>
         </div>
+    </nav> --}}
+
+
+    <nav class="bg-primary border-gray-200 dark:bg-gray-900">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="{{ asset('logo.png') }}" class="h-8" alt="paula seilva" />
+                <img src="{{ asset('text_paula.png') }}" class="h-8" alt="paula seilva" />
+                <img src="{{ asset('text_silva.png') }}" class="h-8" alt="paula seilva" />
+                {{-- <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Paula Silva</span> --}}
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg
+                    md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto text-white" id="navbar-default">
+                <ul
+                    class="font-medium flex flex-col p-4 md:p-0 mt-4
+                        border border-gray-100 rounded-lg
+                        bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0
+                        md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <li>
+                        <a href="#" class="block py-2 px-3 rounded md:bg-transparent md:p-0 md:dark:text-blue-500"
+                            aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
+                            md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500
+                            dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Quem
+                            somos</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
+                            md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500
+                            dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Depoimentos</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
+                            md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500
+                            dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
+                    </li>
+                    <li>
+                        <button class='rounded-md px-2 bg-[#CC7115]'>Registre-se</button>
+                        {{-- class='rounded-md px-2 bg-gradient-to-l from-btn_color_inicio to-btn_color_fim'>Registre-se</button> --}}
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <div>
         <a href="https://api.whatsapp.com/send?phone=559381009539&text=Ola%20Paula%20Silva,%20gostaria%20de%20solicitar%20um%20projeto"
             class="fixed z-90 bottom-8 right-8 bg-primary md:w-20 md:h-20 w-14 h-14 rounded-full drop-shadow-lg flex
-            justify-center items-center text-white hover:text-primary text-4xl hover:bg-secondary hover:drop-shadow-2xl
+            justify-center items-center text-4xl hover:bg-secondary hover:drop-shadow-2xl
             hover:animate-bounce duration-300 border-solid border-2 border-secondary hover:border-primary">
             <x-icon name="phone" class="w-auto h-auto px-3 py-3" />
         </a>
     </div>
 
-    <div class="pt-24">
+    {{-- <div class="pt-2">
         <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
             <div class="w-full">
-                <img src="{{ asset('LOGO PRIMARIA FUNDO TRANSPARENTE.svg') }}" alt="" class="w-full md:px-24">
+                <img src="{{ asset('LP 800 - Paula Silva 1.png') }}" alt="" class="w-full md:px-2">
             </div>
         </div>
+    </div> --}}
+
+    {{-- ajustar --}}
+    <div class="max-w-full mx-auto grid grid-cols-1 ">
+        <div class="relative p-3 col-start-1  flex flex-col-reverse rounded-lg
+            bg-none row-start-2 sm:p-0 ">
+            <h1 class="mt-1 text-lg font-semibold text-white sm:text-slate-900 md:text-2xl dark:sm:text-white">Beach
+                House in Collingwood</h1>
+            <p class="text-sm leading-4 font-medium text-white sm:text-slate-500 dark:sm:text-slate-400">Entire house
+            </p>
+        </div>
+        <div
+            class="grid gap-4 col-start-1 col-end-3 row-start-1 sm:mb-6 grid-cols-4 lg:gap-6 lg:col-start-2 lg:row-end-6 lg:row-span-6 lg:mb-0">
+            <img src="{{ asset('LP 800 - Paula Silva 1.png') }}" alt="" class="w-full md:px-2">
+        </div>
     </div>
+
+
     {{-- section 1 --}}
     <div class="relative bg-primary mt-12 mx-6">
-        <p class="text-secondary md:text-6xl font-bold tracking-tight">PAULA SILVA</p>
-        <p class="text-secondary md:text-2xl tracking-wide mb-12">Soluções para tudo que você precisa!</p>
+        <p class="md:text-6xl font-bold tracking-tight">PAULA SILVA</p>
+        <p class="md:text-2xl tracking-wide mb-12">Soluções para tudo que você precisa!</p>
     </div>
     <hr class="border-b-2 border-secondary border-dashed " />
 
@@ -365,8 +439,7 @@
     </section> --}}
     <section class="bg-primary pt-20 pb-2">
         <div class="container max-w-5xl mx-auto m-8 p-2">
-            <h2
-                class="w-full sm:my-2 md:text-6xl md:mx-2 text-3xl font-bold tracking-tight text-right  text-secondary ">
+            <h2 class="w-full sm:my-2 md:text-6xl md:mx-2 text-3xl font-bold tracking-tight text-right  ">
                 QUEM EU SOU ?
             </h2>
             <div class="flex">
@@ -374,7 +447,7 @@
                     {{--  --}}
                 </div>
                 <div class="grow w-auto">
-                    <div class="text-white font-light text-right md:ml-28">
+                    <div class="font-light text-right md:ml-28">
                         <p class="mb-4">
                             Desde a minha graduação na
                             <span class="font-semibold">Universidade Federal do Oeste do Pará</span> (Ufopa) em
@@ -420,31 +493,31 @@
 
     {{-- formaçoes e cursos --}}
     <section class="bg-secondary border-b-2 border-dashed py-32">
-        <h2 class="w-full m-2 md:text-6xl text-5xl font-extrabold leading-tight text-center text-primary">
+        <h2 class="w-full m-2 md:text-6xl text-5xl font-extrabold leading-tight text-center ">
             FORMAÇÕES & CURSOS
         </h2>
-        <div class="w-full px-6 md:px-12 font-medium text-xl text-primary mb-12">
+        <div class="w-full px-6 md:px-12 font-medium text-xl  mb-12">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Tempora aliquid ab possimus repellendus debitis! Nam blanditiis voluptatem illo,
                 dolor repudiandae fugit, qui minima, vero tenetur earum ea fugiat. Similique, aliquid!</p>
         </div>
         <div class="w-full px-2">
             <div class="flex md:flex-nowrap flex-wrap flex-row flex-grow">
-                <div class="w-full sm:w-1/3 text-white bg-primary text-center mx-2 py-6 px-2 rounded-2xl mb-2">
+                <div class="w-full sm:w-1/3 bg-primary text-center mx-2 py-6 px-2 rounded-2xl mb-2">
+                    {{-- <x-icon name="bookmark-alt" class="md:w-40 md:h-40 my-6 mx-auto justify-center" /> --}}
+                    <img src="{{ asset('Comrpomisso.png') }}" alt=""
+                        class="max-w-max md:px-2 justify-center">
+                    <p class="text-center font-extrabold md:text-2xl mb-6">FORMAÇÂO</p>
+                    <p>Total compromisso com sua satisfação</p>
+                </div>
+                <div class="w-full sm:w-1/3 bg-primary text-center mx-2 py-6 px-2 rounded-2xl mb-2">
                     <x-icon name="bookmark-alt" class="md:w-40 md:h-40 my-6 mx-auto justify-center" />
                     <p class="text-center font-extrabold md:text-2xl mb-6">FORMAÇÂO</p>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto assumenda sunt expedita
                         nihil aliquam reprehenderit voluptas doloremque doloribus hic. Adipisci numquam voluptas facere
                         neque asperiores veritatis corrupti sunt perferendis ad!</p>
                 </div>
-                <div class="w-full sm:w-1/3 text-white bg-primary text-center mx-2 py-6 px-2 rounded-2xl mb-2">
-                    <x-icon name="bookmark-alt" class="md:w-40 md:h-40 my-6 mx-auto justify-center" />
-                    <p class="text-center font-extrabold md:text-2xl mb-6">FORMAÇÂO</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto assumenda sunt expedita
-                        nihil aliquam reprehenderit voluptas doloremque doloribus hic. Adipisci numquam voluptas facere
-                        neque asperiores veritatis corrupti sunt perferendis ad!</p>
-                </div>
-                <div class="w-full sm:w-1/3 text-white bg-primary text-center mx-2 py-6 px-2 rounded-2xl mb-2">
+                <div class="w-full sm:w-1/3 bg-primary text-center mx-2 py-6 px-2 rounded-2xl mb-2">
                     <x-icon name="bookmark-alt" class="md:w-40 md:h-40 my-6 mx-auto justify-center" />
                     <p class="text-center font-extrabold md:text-2xl mb-6">FORMAÇÂO</p>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto assumenda sunt expedita
@@ -459,12 +532,11 @@
     {{-- contato --}}
     <section class="bg-secondary border-b-2 border-dotted py-32">
         <div class="container max-w-5xl mx-auto m-8">
-            <h2 class="w-full my-2 md:text-6xl  text-5xl font-bold leading-tight text-center text-primary">
+            <h2 class="w-full my-2 md:text-6xl  text-5xl font-bold leading-tight text-center ">
                 ENTRE EM CONTATO COMIGO!
             </h2>
             <div class="w-full mb-2 mt-12 text-center">
-                <button
-                    class="bg-primary md:text-3xl  text-2xl font-extrabold text-white rounded-full px-28 py-4">CLICK
+                <button class="bg-primary md:text-3xl  text-2xl font-extrabold rounded-full px-28 py-4">CLICK
                     AQUI!</button>
             </div>
         </div>
@@ -474,16 +546,15 @@
     <!--Footer-->
     <footer class="bg-primary py-32">
         <div class="container mx-auto px-8">
-            <p class="text-6xl text-secondary text-center font-extrabold mt-16 mb-6">DEIXE SEU EMAIL</p>
-            <p class="mx-12 mb-6 text-2xl text-white text-center font-medium">Deixe seu e-mail para que possamos entrar
+            <p class="text-6xl text-center font-extrabold mt-16 mb-6">DEIXE SEU EMAIL</p>
+            <p class="mx-12 mb-6 text-2xl text-center font-medium">Deixe seu e-mail para que possamos entrar
                 em contato e melhor lhe atender
             </p>
             <div class="">
                 <form action="" method="post" class="text-center">
                     @csrf
                     <input type="text" name="email" class="rounded-sm md:w-96 mx-auto">
-                    <button type="submit"
-                        class="-ml-1 bg-secondary rounded-sm px-6 py-2 text-primary font-bold">Email</button>
+                    <button type="submit" class="-ml-1 bg-secondary rounded-sm px-6 py-2  font-bold">Email</button>
                 </form>
             </div>
         </div>
@@ -500,40 +571,40 @@
         var toToggle = document.querySelectorAll(".toggleColour");
 
         document.addEventListener("scroll", function() {
-            /*Apply classes for slide in bar*/
-            scrollpos = window.scrollY;
+                    /*Apply classes for slide in bar*/
+                    scrollpos = window.scrollY;
 
-            if (scrollpos > 10) {
-                header.classList.add("bg-white");
-                navaction.classList.remove("bg-white");
-                // navaction.classList.add("gradient");
-                navaction.classList.remove("text-gray-800");
-                navaction.classList.add("text-white");
-                //Use to switch toggleColour colours
-                for (var i = 0; i < toToggle.length; i++) {
-                    toToggle[i].classList.add("text-gray-800");
-                    toToggle[i].classList.remove("text-white");
-                }
-                header.classList.add("shadow");
-                navcontent.classList.remove("bg-gray-100");
-                navcontent.classList.add("bg-white");
-            } else {
-                header.classList.remove("bg-white");
-                // navaction.classList.remove("gradient");
-                navaction.classList.add("bg-white");
-                navaction.classList.remove("text-white");
-                navaction.classList.add("text-gray-800");
-                //Use to switch toggleColour colours
-                for (var i = 0; i < toToggle.length; i++) {
-                    toToggle[i].classList.add("text-white");
-                    toToggle[i].classList.remove("text-gray-800");
-                }
+                    if (scrollpos > 10) {
+                        header.classList.add("bg-white");
+                        navaction.classList.remove("bg-white");
+                        // navaction.classList.add("gradient");
+                        navaction.classList.remove("text-gray-800");
+                        navaction.classList.add(");
+                                //Use to switch toggleColour colours
+                                for (var i = 0; i < toToggle.length; i++) {
+                                    toToggle[i].classList.add("text-gray-800");
+                                    toToggle[i].classList.remove(");
+                                    }
+                                    header.classList.add("shadow");
+                                    navcontent.classList.remove("bg-gray-100");
+                                    navcontent.classList.add("bg-white");
+                                } else {
+                                    header.classList.remove("bg-white");
+                                    // navaction.classList.remove("gradient");
+                                    navaction.classList.add("bg-white");
+                                    navaction.classList.remove(");
+                                        navaction.classList.add("text-gray-800");
+                                        //Use to switch toggleColour colours
+                                        for (var i = 0; i < toToggle.length; i++) {
+                                            toToggle[i].classList.add(");
+                                                toToggle[i].classList.remove("text-gray-800");
+                                            }
 
-                header.classList.remove("shadow");
-                navcontent.classList.remove("bg-white");
-                navcontent.classList.add("bg-gray-100");
-            }
-        });
+                                            header.classList.remove("shadow");
+                                            navcontent.classList.remove("bg-white");
+                                            navcontent.classList.add("bg-gray-100");
+                                        }
+                                    });
     </script>
     <script>
         /*Toggle dropdown list*/
