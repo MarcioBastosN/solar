@@ -141,36 +141,28 @@
         </a>
     </div>
 
-    {{-- <div class="pt-2">
-        <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-            <div class="w-full">
-                <img src="{{ asset('LP 800 - Paula Silva 1.png') }}" alt="" class="w-full md:px-2">
-            </div>
-        </div>
-    </div> --}}
-
-    {{-- ajustar --}}
-    <div class="max-w-full mx-auto grid grid-cols-1 ">
-        <div class="relative p-3 col-start-1  flex flex-col-reverse rounded-lg
-            bg-none row-start-2 sm:p-0 ">
-            <h1 class="mt-1 text-lg font-semibold text-white sm:text-slate-900 md:text-2xl dark:sm:text-white">Beach
-                House in Collingwood</h1>
-            <p class="text-sm leading-4 font-medium text-white sm:text-slate-500 dark:sm:text-slate-400">Entire house
+    {{-- inicio apresentação --}}
+    <div class="relative  h-[500px] w-screen bg-primary">
+        <img src="{{ asset('LP 800 - Paula Silva 1.png') }}" alt="Imagem" class="absolute h-full w-full object-cover">
+        <div class="absolute top-1/4 left-4  p-4 ml-16 bg-transparent max-w-xl text-white">
+            <h1 class="text-6xl font-bold">Simplifique suas homologações com a gente!</h1>
+            <p class="pt-4 max-w-md mt-4">
+                Economize tempo para investir na aquisição de novos clientes. Deixe a parte complicada comigo e minha
+                equipe.
             </p>
-        </div>
-        <div
-            class="grid gap-4 col-start-1 col-end-3 row-start-1 sm:mb-6 grid-cols-4 lg:gap-6 lg:col-start-2 lg:row-end-6 lg:row-span-6 lg:mb-0">
-            <img src="{{ asset('LP 800 - Paula Silva 1.png') }}" alt="" class="w-full md:px-2">
+            <button
+                class='rounded-md p-4 font-semibold mt-4 bg-gradient-to-l from-btn_color_inicio to-btn_color_fim'>Iniciar
+                homologação agora!</button>
         </div>
     </div>
 
 
     {{-- section 1 --}}
-    <div class="relative bg-primary mt-12 mx-6">
+    {{-- <div class="relative bg-primary mt-12 mx-6">
         <p class="md:text-6xl font-bold tracking-tight">PAULA SILVA</p>
         <p class="md:text-2xl tracking-wide mb-12">Soluções para tudo que você precisa!</p>
-    </div>
-    <hr class="border-b-2 border-secondary border-dashed " />
+    </div> --}}
+    {{-- <hr class="border-b-2 border-secondary border-dashed " /> --}}
 
     {{-- section 2 --}}
     {{-- <section class="bg-secondary border-b-2 border-dashed border-primary py-8">
@@ -437,14 +429,14 @@
             </div>
         </div>
     </section> --}}
-    <section class="bg-primary pt-20 pb-2">
+
+    {{-- <section class="bg-primary pt-20 pb-2">
         <div class="container max-w-5xl mx-auto m-8 p-2">
             <h2 class="w-full sm:my-2 md:text-6xl md:mx-2 text-3xl font-bold tracking-tight text-right  ">
                 QUEM EU SOU ?
             </h2>
             <div class="flex">
                 <div class="grow-0 w-7/12">
-                    {{--  --}}
                 </div>
                 <div class="grow w-auto">
                     <div class="font-light text-right md:ml-28">
@@ -489,7 +481,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     {{-- formaçoes e cursos --}}
     <section class="bg-secondary border-b-2 border-dashed py-32">
@@ -505,8 +497,7 @@
             <div class="flex md:flex-nowrap flex-wrap flex-row flex-grow">
                 <div class="w-full sm:w-1/3 bg-primary text-center mx-2 py-6 px-2 rounded-2xl mb-2">
                     {{-- <x-icon name="bookmark-alt" class="md:w-40 md:h-40 my-6 mx-auto justify-center" /> --}}
-                    <img src="{{ asset('Comrpomisso.png') }}" alt=""
-                        class="max-w-max md:px-2 justify-center">
+                    <img src="{{ asset('Comrpomisso.png') }}" alt="" class="max-w-max md:px-2 justify-center">
                     <p class="text-center font-extrabold md:text-2xl mb-6">FORMAÇÂO</p>
                     <p>Total compromisso com sua satisfação</p>
                 </div>
