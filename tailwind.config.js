@@ -23,10 +23,12 @@ export default {
                 Oswald : ['Oswald']
             },
             colors: {
-                primary: '#040C16',
+                // primary: '#040C16',
+                primary: '#07121F',
                 // primary_dark: '#1c2b49',
 
-                secondary: '#07121F',
+                // secondary: '#07121F',
+                secondary: '#040C16',
                 // secondary_dark: '#edd3c9',
 
                 destaque:'#0082C9',
@@ -45,19 +47,6 @@ export default {
                 btn_color_inicio: '#FF792E',
                 btn_color_fim: '#FF8F1C',
 
-                // _primary: {
-                //   50: '#dcf1ff',
-                //   100: '#ccedff',
-                //   200: '#99dbff',
-                //   300: '#66c9ff',
-                //   400: '#1aafff',
-                //   500: '#0095e6',
-                //   600: '#0082C9',
-                //   700: '#0074b3',
-                //   800: '#006399',
-                //   900: '#005380',
-                //   DEFAULT: '#0082C9',
-                // },
               },
         },
     },
