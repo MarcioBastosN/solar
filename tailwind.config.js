@@ -20,7 +20,8 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-                Oswald : ['Oswald']
+                Oswald : ['Oswald'],
+                Poppins : ['Poppins']
             },
             colors: {
                 // primary: '#040C16',
