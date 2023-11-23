@@ -19,64 +19,11 @@
 </head>
 {{-- style="font-family: 'Source Sans Pro', sans-serif;" --}}
 
-<body class="leading-normal tracking-normal text-gray-200 bg-primary ">
+<body class="leading-normal tracking-normal text-gray-200 bg-primary font-Poppins font-medium">
     <!--Nav-->
-    {{-- <nav id="header" class="fixed w-full z-30 top-0">
-        <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
-            <div class="pl-4 flex items-center">
-                <a class="toggleColour no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-                </a>
-            </div>
-            <div class="block lg:hidden pr-4">
-                <button id="nav-toggle"
-                    class="flex items-center p-1 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                    <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <title>Menu</title>
-                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                    </svg>
-                </button>
-            </div>
-            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-primary lg:bg-transparent p-4 lg:p-0 z-20"
-                id="nav-content">
-                <ul class="list-reset lg:flex justify-end flex-1 items-center">
-                    @if (Route::has('login'))
-                        @auth
-                            @hasallroles('user')
-                                <li class="mr-3">
-                                    <a href="{{ route('cliente.home') }}"
-                                        class="font-semibold hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">home</a>
-                                </li>
-                            @endhasallroles
 
-                            @hasallroles('admin')
-                                <li class="mr-3">
-                                    <a href="{{ route('admin.clientes') }}"
-                                        class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">home</a>
-                                </li>
-                            @endhasallroles
-                        @else
-                            <li class="mr-3">
-                                <a href="{{ route('login') }}"
-                                    class="font-semibold hover:text-gray-400 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                                    Log in</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="mr-3">
-                                    <a href="{{ route('register') }}"
-                                        class="font-semibold hover:text-gray-400 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                                </li>
-                            @endif
-                        @endauth
-                    @endif
-
-                </ul>
-            </div>
-        </div>
-    </nav> --}}
-
-
-    <nav class="bg-primary border-gray-200">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav class="bg-primary border-gray-200 m-auto md:w-10/12 w-full">
+        <div class=" flex flex-wrap items-center justify-between  py-4">
             <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('logo.png') }}" class="h-8" alt="paula seilva" />
                 <img src="{{ asset('text_paula.png') }}" class="h-8" alt="paula seilva" />
@@ -118,10 +65,14 @@
                             dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Depoimentos</a>
                     </li>
                     <li>
+
                         <a href="#"
-                            class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
-                            md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500
-                            dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
+                            class=" flex flex-row text-center py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
+                                md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500
+                                dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                            <img src="{{ asset('ico_login.png') }}" class="max-h-4 mr-1 align-middle"
+                                alt="paula seilva" />
+                            Login</a>
                     </li>
                     <li>
                         <a
@@ -135,23 +86,26 @@
     </nav>
 
     {{-- inicio apresentação --}}
-    <div class="relative  h-[500px] w-screen bg-primary">
+    <div class="relative  h-[600px] w-screen bg-primary">
         <img src="{{ asset('LP 800 - Paula Silva 1.png') }}" alt="Imagem" class="absolute h-full w-full object-cover">
-        <div class="absolute top-1/4 left-7  p-4 ml-16 bg-transparent max-w-xl text-white">
-            <h1 class="text-6xl font-bold">Simplifique suas homologações com a gente!</h1>
-            <p class="pt-4 max-w-md mt-4">
-                Economize tempo para investir na aquisição de novos clientes. Deixe a parte complicada comigo e minha
-                equipe.
-            </p>
-            <button
-                class='rounded-md p-4 font-semibold mt-4 bg-gradient-to-l from-btn_color_inicio to-btn_color_fim'>Iniciar
-                homologação agora!</button>
+        <div class="m-auto md:w-10/12">
+            <div class="absolute top-1/4 py-4  bg-transparent max-w-xl text-white">
+                <h1 class="text-6xl font-bold">Simplifique suas homologações com a gente!</h1>
+                <p class="pt-4 max-w-md mt-4">
+                    Economize tempo para investir na aquisição de novos clientes. Deixe a parte complicada comigo e
+                    minha
+                    equipe.
+                </p>
+                <button
+                    class='rounded-md p-4 font-semibold mt-4 bg-gradient-to-l from-btn_color_inicio to-btn_color_fim'>Iniciar
+                    homologação agora!</button>
+            </div>
         </div>
     </div>
 
 
     {{-- formaçoes e cursos --}}
-    <section class="bg-secondary border-b-2 border-dashed py-16">
+    <section class="bg-secondary py-16">
 
         <div class="m-auto md:w-10/12 w-full bg-primary text-center rounded-xl ">
             <p class=" py-12 px-28 ">Sei que você, empresário do setor de energia solar,
@@ -188,22 +142,22 @@
         </div>
     </section>
 
-    {{-- contato --}}
-    <section class="bg-secondary border-b-2 border-dotted py-32">
-        <div class="container max-w-5xl mx-auto m-8">
-            <h2 class="w-full my-2 md:text-6xl  text-5xl font-bold leading-tight text-center ">
-                ENTRE EM CONTATO COMIGO!
+    {{-- timeline --}}
+    <section class="bg-primary py-32">
+        <div class="container m-auto md:w-10/12 w-full">
+            <h2 class="w-full text-4xl font-bold text-center ">
+                Simplificamos o processo par sua comodidade!
             </h2>
-            <div class="w-full mb-2 mt-12 text-center">
-                <button class="bg-primary md:text-3xl  text-2xl font-extrabold rounded-full px-28 py-4">CLICK
-                    AQUI!</button>
-            </div>
         </div>
+        <div class="m-auto md:w-10/12 w-full">
+            {{-- timeline --}}
+            <p>aqui vem a timeline</p>
         </div>
+
     </section>
 
     <!--Footer-->
-    <footer class="bg-primary py-32">
+    <footer class="bg-secondary py-32">
         <div class="container mx-auto px-8">
             <p class="text-6xl text-center font-extrabold mt-16 mb-6">DEIXE SEU EMAIL</p>
             <p class="mx-12 mb-6 text-2xl text-center font-medium">Deixe seu e-mail para que possamos entrar
