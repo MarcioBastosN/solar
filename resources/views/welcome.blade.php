@@ -24,7 +24,7 @@
 
     <nav class="bg-primary border-gray-200 m-auto md:w-10/12 w-full">
         <div class=" flex flex-wrap items-center justify-between  py-4">
-            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse ">
                 <img src="{{ asset('logo.png') }}" class="h-8" alt="paula seilva" />
                 <img src="{{ asset('text_paula.png') }}" class="h-8" alt="paula seilva" />
                 <img src="{{ asset('text_silva.png') }}" class="h-8" alt="paula seilva" />
@@ -143,17 +143,155 @@
     </section>
 
     {{-- timeline --}}
-    <section class="bg-primary py-32">
+    <section class="bg-primary py-16">
         <div class="container m-auto md:w-10/12 w-full">
-            <h2 class="w-full text-4xl font-bold text-center ">
+            <h2 class="w-full text-4xl font-bold text-center my-16">
                 Simplificamos o processo par sua comodidade!
             </h2>
         </div>
         <div class="m-auto md:w-10/12 w-full">
-            {{-- timeline --}}
-            <p>aqui vem a timeline</p>
+            {{-- superior --}}
+            <div class="grid grid-cols-6 gap-2">
+                <div class="  text-center">
+                    <div class=" bg-secondary text-center rounded-2xl p-6">
+                        <p class="mt-4 mx-2  text-[16px]">Solicitação de parecer de
+                            acesso.</p>
+                    </div>
+                </div>
+                <div class=" text-center rounded-2xl ">
+                    {{--  --}}
+                </div>
+                <div class="  text-center">
+                    <div class=" bg-secondary text-center rounded-2xl p-6">
+                        <p class="mt-4 mx-2  text-[16px]">Elaboração do projeto.</p>
+                    </div>
+                </div>
+                <div class="  text-center rounded-2xl ">
+                    {{--  --}}
+                </div>
+                <div class="  text-center">
+                    <div class=" bg-secondary text-center rounded-2xl p-6">
+                        <p class="mt-4 mx-2  text-[16px]">Solicitação de vistoria.</p>
+                    </div>
+                </div>
+                <div class="  text-center rounded-2xl ">
+                    {{--  --}}
+                </div>
+            </div>
+            {{-- dot-super --}}
+            <div class="grid grid-cols-6 gap-2">
+                <div class=" grid grid-rows-2 text-center">
+                    <p class="text-white font-bold mt-2">*</p>
+                </div>
+                <div class=" text-center rounded-2xl ">
+                    {{--  --}}
+                </div>
+                <div class=" grid grid-rows-2 text-center">
+                    <p class="text-white font-bold mt-2">*</p>
+                </div>
+                <div class="  text-center rounded-2xl ">
+                    {{--  --}}
+                </div>
+                <div class=" grid grid-rows-2 text-center">
+                    <p class="text-white font-bold mt-2">*</p>
+                </div>
+                <div class="  text-center rounded-2xl ">
+                    {{--  --}}
+                </div>
+            </div>
+            {{-- centro --}}
+            <div
+                class="grid grid-cols-6 gap-2 rounded-2xl py-2 font-semibold
+                    bg-gradient-to-l from-btn_color_fim to-btn_color_inicio text-center">
+                <div>Etapa 1</div>
+                <div>Etapa 2</div>
+                <div>Etapa 3</div>
+                <div>Etapa 4</div>
+                <div>Etapa 5</div>
+                <div>Etapa 6</div>
+            </div>
+            {{-- baixo --}}
+            {{-- dot-under --}}
+            <div class="grid grid-cols-6 gap-2">
+                <div class="text-center rounded-2xl ">
+                    {{--  --}}
+                </div>
+                <div class=" grid grid-rows-2 text-center">
+                    <p class="text-white font-bold mt-2 ">*</p>
+                </div>
+                <div class="text-center rounded-2xl ">
+                    {{--  --}}
+                </div>
+                <div class=" grid grid-rows-2 text-center">
+                    <p class="text-white font-bold mt-2">*</p>
+                </div>
+                <div class="text-center rounded-2xl ">
+                    {{--  --}}
+                </div>
+                <div class=" grid grid-rows-2 text-center">
+                    <p class="text-white font-bold mt-2">*</p>
+                </div>
+
+            </div>
+            {{-- under --}}
+            <div class="grid grid-cols-6 gap-2">
+                <div class="text-center rounded-2xl ">
+                    {{--  --}}
+                </div>
+                <div class="text-center">
+                    <div class=" bg-secondary text-center rounded-2xl p-6">
+                        <p class="mt-4 mx-2  text-[16px]">Análise da documentação enviada e emissão de ART.</p>
+                    </div>
+                </div>
+                <div class="text-center rounded-2xl ">
+                    {{--  --}}
+                </div>
+                <div class="text-center">
+                    <div class=" bg-secondary text-center rounded-2xl p-6">
+                        <p class="mt-4 mx-2  text-[16px]">Envio de solicitação de parecer de acesso para a
+                            concessionária.</p>
+                    </div>
+                </div>
+                <div class="text-center rounded-2xl ">
+                    {{--  --}}
+                </div>
+                <div class="text-center">
+                    <div class=" bg-secondary text-center rounded-2xl p-6">
+                        <p class="mt-4 mx-2  text-[16px]">Conclusão do projeto.</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
+    </section>
+
+    {{-- video --}}
+    <section class="bg-secondary py-16">
+        <div class="container m-auto md:w-10/12 w-full">
+            <h2 class="w-full text-4xl font-bold text-center my-16 px-96">
+                Conheça um pouco mais sobre mim e minha equipe
+            </h2>
+        </div>
+        <div class="m-auto md:w-10/12 w-full">
+            <img src="{{ asset('Rectangle 17.png') }}" alt="Imagem" class="w-2/4 h-2/4 m-auto">
+        </div>
+    </section>
+
+    {{-- depoimentos --}}
+    <section class="bg-primary py-16">
+        <div class="container m-auto md:w-10/12 w-full">
+            <h2 class="w-full text-4xl font-bold text-center my-16">
+                Veja o que nossos clientes tem a dizer
+            </h2>
+        </div>
+        <div class="m-auto md:w-10/12 w-full">
+            <div class="grid grid-cols-3 gap-2">
+                <div class="bg-gray-200 w-10/12 h-[500px] rounded-lg"></div>
+                <div class="bg-gray-200 w-10/12 h-[500px] rounded-lg"></div>
+                <div class="bg-gray-200 w-10/12 h-[500px] rounded-lg"></div>
+            </div>
+        </div>
     </section>
 
     <!--Footer-->
