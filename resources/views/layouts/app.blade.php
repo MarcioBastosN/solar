@@ -20,7 +20,7 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased ">
+<body class="font-Poppins font-medium antialiased ">
     <x-notifications />
     <x-dialog z-index="z-50" blur="md" align="center" />
     <div class="min-h-screen bg-gray-100">

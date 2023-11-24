@@ -41,7 +41,7 @@
                         d="M1 1h15M1 7h15M1 13h15" />
                 </svg>
             </button>
-            <div class="hidden w-full md:block md:w-auto text-white" id="navbar-default">
+            <div class="hidden w-full md:block md:w-auto sm:text-white text-primary" id="navbar-default">
                 <ul
                     class="font-medium flex flex-col p-4 md:p-0 mt-4
                         border border-gray-100 rounded-lg
@@ -64,16 +64,35 @@
                             md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500
                             dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Depoimentos</a>
                     </li>
-                    <li>
+                    @if (Route::has('login'))
+                        @auth
+                            @hasallroles('user')
+                                <li>
+                                    <a href="{{ route('cliente.home') }}"
+                                        class="font-semibold hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Minha
+                                        area</a>
+                                </li>
+                            @endhasallroles
 
-                        <a href="#"
-                            class=" flex flex-row text-center py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
-                                md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500
-                                dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                            <img src="{{ asset('ico_login.png') }}" class="max-h-4 mr-1 align-middle"
-                                alt="paula seilva" />
-                            Login</a>
-                    </li>
+                            @hasallroles('admin')
+                                <li>
+                                    <a href="{{ route('admin.clientes') }}"
+                                        class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
+                                    md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500
+                                    dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
+                                </li>
+                            @endhasallroles
+                        @else
+                            <li>
+                                <a href="{{ route('login') }}"
+                                    class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
+                            md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500
+                            dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                                    Log in</a>
+                            </li>
+                        @endauth
+                    @endif
+
                     <li>
                         <a
                             href="https://api.whatsapp.com/send?phone=559381009539&text=Ola%20Paula%20Silva,%20gostaria%20de%20solicitar%20um%20projeto">
@@ -90,15 +109,17 @@
         <img src="{{ asset('LP 800 - Paula Silva 1.png') }}" alt="Imagem" class="absolute h-full w-full object-cover">
         <div class="m-auto md:w-10/12">
             <div class="absolute top-1/4 py-4  bg-transparent max-w-xl text-white">
-                <h1 class="text-6xl font-bold">Simplifique suas homologações com a gente!</h1>
+                <h1 class="sm:text-6xl text-lg font-bold">Simplifique suas homologações com a gente!</h1>
                 <p class="pt-4 max-w-md mt-4">
                     Economize tempo para investir na aquisição de novos clientes. Deixe a parte complicada comigo e
                     minha
                     equipe.
                 </p>
-                <button
-                    class='rounded-md p-4 font-semibold mt-4 bg-gradient-to-l from-btn_color_inicio to-btn_color_fim'>Iniciar
-                    homologação agora!</button>
+                <a href="{{ route('register') }}">
+                    <button
+                        class='rounded-md p-4 font-semibold mt-4 bg-gradient-to-l from-btn_color_inicio to-btn_color_fim'>Iniciar
+                        homologação agora!</button>
+                </a>
             </div>
         </div>
     </div>
@@ -269,7 +290,7 @@
     {{-- video --}}
     <section class="bg-secondary py-16">
         <div class="container m-auto md:w-10/12 w-full">
-            <h2 class="w-full text-4xl font-bold text-center my-16 px-96">
+            <h2 class="w-full text-4xl font-bold text-center my-16 px-[22rem]">
                 Conheça um pouco mais sobre mim e minha equipe
             </h2>
         </div>
@@ -295,12 +316,14 @@
     </section>
 
     <!--Footer-->
-    <footer class="bg-secondary py-32">
-        <div class="container mx-auto px-8">
-            <p class="text-6xl text-center font-extrabold mt-16 mb-6">DEIXE SEU EMAIL</p>
-            <p class="mx-12 mb-6 text-2xl text-center font-medium">Deixe seu e-mail para que possamos entrar
-                em contato e melhor lhe atender
-            </p>
+    <footer class="bg-secondary py-16">
+        <div class="container m-auto md:w-10/12 w-full">
+            <p class="text-4xl text-center font-extrabold mt-16 mb-4">Pronto para simplificar suas homologações?</p>
+            <div class="container m-auto md:w-10/12 w-full">
+                <p class="mb-16 mt-2 text-lg text-center px-[22rem]">Agende uma consulta gratuita comigo e desbloqueie
+                    todo o potencial solar de seus projetos.
+                </p>
+            </div>
             <div class="">
                 <form action="" method="post" class="text-center">
                     @csrf
@@ -310,10 +333,8 @@
             </div>
         </div>
     </footer>
-    <!-- jQuery if you need it
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  -->
-    <script>
+
+    {{-- <script>
         var scrollpos = window.scrollY;
         var header = document.getElementById("header");
         var navcontent = document.getElementById("nav-content");
@@ -395,7 +416,7 @@
             }
             return false;
         }
-    </script>
+    </script> --}}
 </body>
 
 </html>
