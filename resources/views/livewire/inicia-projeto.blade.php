@@ -87,7 +87,7 @@
                             <li class="mb-10 ml-6">
                                 <span
                                     class="absolute flex items-center justify-center w-8 h-8 bg-primary
-                                    rounded-full -left-3 ring-8 ring-white text-secondary ">
+                                    rounded-full -left-3 ring-8 ring-white text-white ">
                                     <x-icon name="archive" class="w-5 h-5" />
                                 </span>
                                 <h3 class="flex items-center mb-1 text-lg font-semibold text-primary ml-1">
@@ -106,7 +106,7 @@
                                                     @if (!empty($item['documento']))
                                                         <button wire:click="filedownload('{{ $item['documento'] }}')"
                                                             type="button"
-                                                            class="text-secondary bg-primary hover:bg-blue-800 focus:ring-4 focus:outline-none
+                                                            class="text-white bg-primary hover:bg-blue-800 focus:ring-4 focus:outline-none
                                                                 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 my-1
                                                                 text-center inline-flex items-center mr-2 ">
                                                             <x-icon name="cloud-download" class="w-5 h-5" /> dowload
@@ -121,7 +121,7 @@
                                                 <a class="group/edit invisible hover:bg-primary hover:text-secondary group-hover/item:visible px-4 py-2 rounded-lg"
                                                     href="#"
                                                     wire:click="editarDocumentos({{ $item->projects_id }}, {{ $item->status_project_id }})">
-                                                    <span class="group-hover/edit:text-secondary">Editar</span>
+                                                    <span class="group-hover/edit:text-white">Editar</span>
                                                 </a>
                                             </div>
                                         </div>

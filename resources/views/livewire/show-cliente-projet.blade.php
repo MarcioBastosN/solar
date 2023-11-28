@@ -192,7 +192,7 @@
                 <x-slot name="footer">
                     <div class="flex justify-between items-center">
                         @if (empty($registro->possuiProjeto))
-                            <button class="flex-auto text-secondary text-center bg-primary rounded-md mx-4 py-2 text-lg"
+                            <button class="flex-auto text-secondary text-center bg-white rounded-md mx-4 py-2 text-lg"
                                 wire:click='trabalhar({{ $registro->id }})' wire:loading.attr="disabled">
                                 Pegar o Trabalho</button>
                         @else
@@ -201,14 +201,14 @@
                         @endif
                         @if ($registro->habilitaProjeto())
                             @if (empty($registro->dadosProject->first()))
-                                <button label="Save" class="bg-primary text-secondary rounded-md px-4 py-1 text-lg"
+                                <button label="Save" class="bg-primary text-white rounded-md px-4 py-1 text-lg"
                                     wire:click='InicioProjeto({{ $registro->possuiProjeto->id }}, {{ $registro->id }})'
                                     wire:loading.attr="disabled">
                                     Iniciar projeto
                                 </button>
                                 <p>Projeto id: {{ $registro->possuiProjeto->id }}, resgistro: {{ $registro->id }}</p>
                             @else
-                                <button label="Save" class="bg-primary text-secondary rounded-lg text-md w-32"
+                                <button label="Save" class="bg-primary text-white rounded-lg text-md w-32"
                                     wire:click='viewProjeto({{ $registro->id }})'>
                                     ver detalhes
                                 </button>
@@ -216,7 +216,7 @@
                         @else
                             <p>Verificar Documentos para iniciar</p>
                             @if (empty($registro->dadosProject->first()) && !empty($registro->possuiProjeto))
-                                <button label="Save" class="bg-primary text-secondary w-32 rounded-lg"
+                                <button label="Save" class="bg-primary text-white w-32 rounded-lg"
                                     wire:click='validarTodos({{ $registro->id }})'>
                                     Aprovar todos
                                 </button>
