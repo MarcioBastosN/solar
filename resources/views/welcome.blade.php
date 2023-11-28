@@ -17,12 +17,11 @@
     <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-{{-- style="font-family: 'Source Sans Pro', sans-serif;" --}}
 
 <body class="leading-normal tracking-normal text-gray-200 bg-primary font-Poppins font-medium">
     <!--Nav-->
 
-    <nav class="bg-primary border-gray-200 m-auto md:w-10/12 w-full">
+    <nav class="bg-primary border-gray-200 m-auto sm:w-10/12 w-full" id="menu">
         <div class=" flex flex-wrap items-center justify-between  py-4">
             <a href="{{ route('welcome') }}" class="flex items-center space-x-3 rtl:space-x-reverse ">
                 <img src="{{ asset('logo.png') }}" class="h-8" alt="paula seilva" />
@@ -48,18 +47,18 @@
                         bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0
                         md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
-                        <a href="#" class="block py-2 px-3 rounded md:bg-transparent md:p-0 md:dark:text-blue-500"
+                        <a href="#inicio" class="block py-2 px-3 rounded md:bg-transparent md:p-0 md:dark:text-blue-500"
                             aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="#video"
                             class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
                             md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500
                             dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Quem
                             somos</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="#depoimentos"
                             class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
                             md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500
                             dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Depoimentos</a>
@@ -105,11 +104,13 @@
     </nav>
 
     {{-- inicio apresentação --}}
-    <div class="relative  h-[600px] w-screen bg-primary">
+    <div class="relative  sm:h-[600px] h-[400px] w-screen bg-primary" id="inicio">
         <img src="{{ asset('LP 800 - Paula Silva 1.png') }}" alt="Imagem" class="absolute h-full w-full object-cover">
         <div class="m-auto md:w-10/12">
-            <div class="absolute top-1/4 py-4  bg-transparent max-w-xl text-white">
-                <h1 class="sm:text-6xl text-lg font-bold">Simplifique suas homologações com a gente!</h1>
+            <div
+                class="absolute top-1/4 py-4 pl-4 pr-24 max-w-md text-white
+                sm:bg-transparent sm:max-w-xl sm:py-4 sm:px-0 sm:top-1/4">
+                <h1 class="sm:text-6xl text-2xl font-bold">Simplifique suas homologações com a gente!</h1>
                 <p class="pt-4 max-w-md mt-4">
                     Economize tempo para investir na aquisição de novos clientes. Deixe a parte complicada comigo e
                     minha
@@ -117,19 +118,19 @@
                 </p>
                 <a href="{{ route('register') }}">
                     <button
-                        class='rounded-md p-4 font-semibold mt-4 bg-gradient-to-l from-btn_color_inicio to-btn_color_fim'>Iniciar
+                        class='rounded-md sm:p-4 p-2 sm:text-base text-sm font-semibold mt-4
+                        bg-gradient-to-l from-btn_color_inicio to-btn_color_fim'>Iniciar
                         homologação agora!</button>
                 </a>
             </div>
         </div>
     </div>
 
-
     {{-- formaçoes e cursos --}}
-    <section class="bg-secondary py-16">
+    <section class="bg-secondary py-16" id="cursos">
 
         <div class="m-auto md:w-10/12 w-full bg-primary text-center rounded-xl ">
-            <p class=" py-12 px-28 ">Sei que você, empresário do setor de energia solar,
+            <p class="py-12 sm:px-28 px-4">Sei que você, empresário do setor de energia solar,
                 enfrenta desafios únicos. As regulamentações em constante mudança e a burocracia podem ser frustrantes.
                 Estamos aqui para facilitar esse processo para você.</p>
         </div>
@@ -164,18 +165,18 @@
     </section>
 
     {{-- timeline --}}
-    <section class="bg-primary py-16">
-        <div class="container m-auto md:w-10/12 w-full">
+    <section class="bg-primary py-16 sm:p-0 px-2" id='timeline'>
+        <div class="container m-auto sm:w-10/12 w-full">
             <h2 class="w-full text-4xl font-bold text-center my-16">
                 Simplificamos o processo par sua comodidade!
             </h2>
         </div>
-        <div class="m-auto md:w-10/12 w-full">
+        <div class="m-auto sm:w-10/12 w-full sm:text-base text-xs">
             {{-- superior --}}
             <div class="grid grid-cols-6 gap-2">
                 <div class="  text-center">
-                    <div class=" bg-secondary text-center rounded-2xl p-6">
-                        <p class="mt-4 mx-2  text-[16px]">Solicitação de parecer de
+                    <div class=" bg-secondary text-center rounded-2xl sm:p-6 p-1">
+                        <p class="sm:mt-4 sm:mx-2 m-1sm:text-[16px] text-[12px]">Solicitação de parecer de
                             acesso.</p>
                     </div>
                 </div>
@@ -183,16 +184,16 @@
                     {{--  --}}
                 </div>
                 <div class="  text-center">
-                    <div class=" bg-secondary text-center rounded-2xl p-6">
-                        <p class="mt-4 mx-2  text-[16px]">Elaboração do projeto.</p>
+                    <div class=" bg-secondary text-center rounded-2xl sm:p-6 p-1">
+                        <p class="sm:mt-4 sm:mx-2 m-1 sm:text-[16px] text-[12px]">Elaboração do projeto.</p>
                     </div>
                 </div>
                 <div class="  text-center rounded-2xl ">
                     {{--  --}}
                 </div>
                 <div class="  text-center">
-                    <div class=" bg-secondary text-center rounded-2xl p-6">
-                        <p class="mt-4 mx-2  text-[16px]">Solicitação de vistoria.</p>
+                    <div class=" bg-secondary text-center rounded-2xl sm:p-6 p-1">
+                        <p class="sm:mt-4 sm:mx-2 m-1 sm:text-[16px] text-[12px]">Solicitação de vistoria.</p>
                     </div>
                 </div>
                 <div class="  text-center rounded-2xl ">
@@ -260,16 +261,20 @@
                     {{--  --}}
                 </div>
                 <div class="text-center">
-                    <div class=" bg-secondary text-center rounded-2xl p-6">
-                        <p class="mt-4 mx-2  text-[16px]">Análise da documentação enviada e emissão de ART.</p>
+                    <div class=" bg-secondary text-center rounded-2xl sm:p-6 p-1">
+                        <p class="sm:mt-4 sm:mx-2 m-1 sm:text-[16px] text-[12px]">Análise da documentação enviada e
+                            emissão de
+                            ART.</p>
                     </div>
                 </div>
                 <div class="text-center rounded-2xl ">
                     {{--  --}}
                 </div>
                 <div class="text-center">
-                    <div class=" bg-secondary text-center rounded-2xl p-6">
-                        <p class="mt-4 mx-2  text-[16px]">Envio de solicitação de parecer de acesso para a
+                    <div class=" bg-secondary text-center rounded-2xl sm:p-6 p-1">
+                        <p class="sm:mt-4 sm:mx-2 m-1 sm:text-[16px] text-[12px]">Envio de solicitação de parecer de
+                            acesso para
+                            a
                             concessionária.</p>
                     </div>
                 </div>
@@ -277,8 +282,8 @@
                     {{--  --}}
                 </div>
                 <div class="text-center">
-                    <div class=" bg-secondary text-center rounded-2xl p-6">
-                        <p class="mt-4 mx-2  text-[16px]">Conclusão do projeto.</p>
+                    <div class=" bg-secondary text-center rounded-2xl sm:p-6 p-1">
+                        <p class="sm:mt-4 sm:mx-2 m-1 sm:text-[16px] text-[12px]">Conclusão do projeto.</p>
                     </div>
                 </div>
 
@@ -288,39 +293,57 @@
     </section>
 
     {{-- video --}}
-    <section class="bg-secondary py-16">
+    <section class="bg-secondary py-16" id="video">
         <div class="container m-auto md:w-10/12 w-full">
-            <h2 class="w-full text-4xl font-bold text-center my-16 px-[22rem]">
+            <h2 class="w-full text-4xl font-bold text-center my-16 sm:px-[22rem] px-4">
                 Conheça um pouco mais sobre mim e minha equipe
             </h2>
         </div>
-        <div class="m-auto md:w-10/12 w-full">
-            <img src="{{ asset('Rectangle 17.png') }}" alt="Imagem" class="w-2/4 h-2/4 m-auto">
+        <div class="m-auto sm:w-10/12 w-full">
+            <img src="{{ asset('Rectangle 17.png') }}" alt="Imagem"
+                class="sm:w-2/4 sm:h-2/4 w-10/12 h-10/12 m-auto">
         </div>
     </section>
 
     {{-- depoimentos --}}
-    <section class="bg-primary py-16">
+    <section class="bg-primary py-16" id="depoimentos">
         <div class="container m-auto md:w-10/12 w-full">
-            <h2 class="w-full text-4xl font-bold text-center my-16">
+            <h2 class="w-full text-4xl font-bold text-center my-16 m-auto sm:mx-4">
                 Veja o que nossos clientes tem a dizer
             </h2>
         </div>
-        <div class="m-auto md:w-10/12 w-full">
-            <div class="grid grid-cols-3 gap-2">
-                <div class="bg-gray-200 w-10/12 h-[500px] rounded-lg"></div>
-                <div class="bg-gray-200 w-10/12 h-[500px] rounded-lg"></div>
-                <div class="bg-gray-200 w-10/12 h-[500px] rounded-lg"></div>
+        <div class="m-auto sm:w-10/12 w-full">
+            <div class="m-auto md:w-10/12 w-full ">
+                <div class="flex md:flex-nowrap flex-wrap flex-row flex-grow gap-4">
+                    <div
+                        class="w-full sm:w-1/3 bg-gray-300 sm-w-10/12 sm:h-[300px] h-[400px] text-center py-12 px-2 rounded-2xl ">
+                        {{-- <img src="{{ asset('clock.png') }}" alt="" class="max-w-max mx-auto justify-center"> --}}
+                        {{-- <p class="mt-4 mx-2  text-[16px]">Homologações rápidas e eficientes.</p> --}}
+                    </div>
+                    <div
+                        class="w-full sm:w-1/3 bg-gray-300 sm-w-10/12 sm:h-[300px] h-[400px] text-center py-12 px-2 rounded-2xl ">
+                        {{-- <img src="{{ asset('shilde.png') }}" alt=""
+                            class="max-w-max mx-auto justify-center">
+                        <p class="mt-4 mx-1  text-[16px]">Grantia de conformidade com todas as regulamentações.</p> --}}
+                    </div>
+                    <div
+                        class="w-full sm:w-1/3 bg-gray-300 sm-w-10/12 sm:h-[300px] h-[400px] text-center py-12 px-2 rounded-2xl ">
+                        {{-- <img src="{{ asset('Potencial.png') }}" alt=""
+                            class="max-w-max mx-auto justify-center">
+                        <p class="mt-4 mx-1  text-[16px]">Aproveitamento máximo do potencial solar.</p> --}}
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!--Footer-->
-    <footer class="bg-secondary py-16">
+    <footer class="bg-secondary py-16" id="cadastrar">
         <div class="container m-auto md:w-10/12 w-full">
             <p class="text-4xl text-center font-extrabold mt-16 mb-4">Pronto para simplificar suas homologações?</p>
             <div class="container m-auto md:w-10/12 w-full">
-                <p class="mb-16 mt-2 text-lg text-center px-[22rem]">Agende uma consulta gratuita comigo e desbloqueie
+                <p class="mb-16 mt-2 text-lg text-center sm:px-[22rem] px-4">Agende uma consulta gratuita comigo e
+                    desbloqueie
                     todo o potencial solar de seus projetos.
                 </p>
             </div>
@@ -332,91 +355,34 @@
                 </form>
             </div>
         </div>
+        <div class="container m-auto md:w-1/3 w-full text-center mt-16 mb-4">
+            <div class="mx-auto flex flex-row gap-4 justify-center my-2">
+                <a href="">
+                    <img src="{{ asset('insta_ico.png') }}" class="h-8" alt="instagram" />
+                </a>
+                <a href="">
+                    <img src="{{ asset('face_ico.png') }}" class="h-8" alt="facebook" />
+                </a>
+            </div>
+            <p class='font-bold'>Paula Silva | Todos os direitos reservados.</p>
+        </div>
     </footer>
 
-    {{-- <script>
-        var scrollpos = window.scrollY;
-        var header = document.getElementById("header");
-        var navcontent = document.getElementById("nav-content");
-        var navaction = document.getElementById("navAction");
-        var brandname = document.getElementById("brandname");
-        var toToggle = document.querySelectorAll(".toggleColour");
-
-        document.addEventListener("scroll", function() {
-                    /*Apply classes for slide in bar*/
-                    scrollpos = window.scrollY;
-
-                    if (scrollpos > 10) {
-                        header.classList.add("bg-white");
-                        navaction.classList.remove("bg-white");
-                        // navaction.classList.add("gradient");
-                        navaction.classList.remove("text-gray-800");
-                        navaction.classList.add(");
-                                //Use to switch toggleColour colours
-                                for (var i = 0; i < toToggle.length; i++) {
-                                    toToggle[i].classList.add("text-gray-800");
-                                    toToggle[i].classList.remove(");
-                                    }
-                                    header.classList.add("shadow");
-                                    navcontent.classList.remove("bg-gray-100");
-                                    navcontent.classList.add("bg-white");
-                                } else {
-                                    header.classList.remove("bg-white");
-                                    // navaction.classList.remove("gradient");
-                                    navaction.classList.add("bg-white");
-                                    navaction.classList.remove(");
-                                        navaction.classList.add("text-gray-800");
-                                        //Use to switch toggleColour colours
-                                        for (var i = 0; i < toToggle.length; i++) {
-                                            toToggle[i].classList.add(");
-                                                toToggle[i].classList.remove("text-gray-800");
-                                            }
-
-                                            header.classList.remove("shadow");
-                                            navcontent.classList.remove("bg-white");
-                                            navcontent.classList.add("bg-gray-100");
-                                        }
-                                    });
-    </script>
-    <script>
-        /*Toggle dropdown list*/
-        /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
-
-        var navMenuDiv = document.getElementById("nav-content");
-        var navMenu = document.getElementById("nav-toggle");
-
-        document.onclick = check;
-
-        function check(e) {
-            var target = (e && e.target) || (event && event.srcElement);
-
-            //Nav Menu
-            if (!checkParent(target, navMenuDiv)) {
-                // click NOT on the menu
-                if (checkParent(target, navMenu)) {
-                    // click on the link
-                    if (navMenuDiv.classList.contains("hidden")) {
-                        navMenuDiv.classList.remove("hidden");
-                    } else {
-                        navMenuDiv.classList.add("hidden");
-                    }
-                } else {
-                    // click both outside link and outside menu, hide menu
-                    navMenuDiv.classList.add("hidden");
-                }
-            }
-        }
-
-        function checkParent(t, elm) {
-            while (t.parentNode) {
-                if (t == elm) {
-                    return true;
-                }
-                t = t.parentNode;
-            }
-            return false;
-        }
-    </script> --}}
 </body>
+{{-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    var offset = $('#menu').offset().top;
+    var $meuMenu = $('#menu');
+    $(document).on('scroll', function() {
+        if (offset <= $(window).scrollTop()) {
+            $meuMenu.addClass('fixed');
+            $meuMenu.removeClass('sm:w-10/12');
+        } else {
+            $meuMenu.removeClass('fixed');
+            $meuMenu.addClass('sm:w-10/12');
+        }
+    });
+</script> --}}
 
 </html>
