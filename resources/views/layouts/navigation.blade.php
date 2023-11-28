@@ -5,8 +5,13 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="#">
-                        <x-application-logo class="block h-9 w-auto fill-current text-white" />
+                    <a href="{{ route('welcome') }}">
+                        <a href="" class="flex items-center space-x-3 rtl:space-x-reverse ">
+                            <img src="{{ asset('logo.png') }}" class="h-8 sm:h-6" alt="paula seilva" />
+                            <img src="{{ asset('text_paula.png') }}" class="h-8 sm:h-6" alt="paula seilva" />
+                            <img src="{{ asset('text_silva.png') }}" class="h-8 sm:h-6" alt="paula seilva" />
+                            {{-- <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Paula Silva</span> --}}
+                        </a>
                     </a>
                 </div>
 

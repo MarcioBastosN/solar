@@ -24,7 +24,7 @@
 
     <nav class="bg-primary border-gray-200 m-auto md:w-10/12 w-full">
         <div class=" flex flex-wrap items-center justify-between  py-4">
-            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse ">
+            <a href="{{ route('welcome') }}" class="flex items-center space-x-3 rtl:space-x-reverse ">
                 <img src="{{ asset('logo.png') }}" class="h-8" alt="paula seilva" />
                 <img src="{{ asset('text_paula.png') }}" class="h-8" alt="paula seilva" />
                 <img src="{{ asset('text_silva.png') }}" class="h-8" alt="paula seilva" />
