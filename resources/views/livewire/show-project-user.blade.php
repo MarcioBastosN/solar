@@ -191,7 +191,7 @@
                                                     <span>Aguardando aprovação dos arquivos</span>
                                                 @else
                                                     <button
-                                                        class="bg-primary text-white hover:text-secondary hover:bg-primary w-32
+                                                        class="bg-primary text-white hover:text-gray-400 hover:bg-primary w-32
                                                         font-semibold rounded-xl px-4 py-1"
                                                         wire:click="exbibeDetalhes({{ $item->id }})">
                                                         Detalhes

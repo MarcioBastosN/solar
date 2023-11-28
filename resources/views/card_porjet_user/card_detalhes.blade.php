@@ -3,7 +3,7 @@
         <li class="mb-10 ml-6">
             <span
                 class="absolute flex items-center justify-center w-6 h-6
-                bg-primary rounded-full -left-3 ring-8 ring-gray-200 text-secondary">
+                bg-primary rounded-full -left-3 ring-8 ring-gray-200 text-white">
                 <x-icon name="archive" class="w-5 h-5" />
             </span>
             <h3 class="flex items-center mb-1 text-lg font-semibold text-primary ">
@@ -20,7 +20,7 @@
                             @foreach ($itemData as $item)
                                 @if (!empty($item['documento']))
                                     <button wire:click="filedownload('{{ $item['documento'] }}')" type="button"
-                                        class="text-secondary bg-primary focus:ring-2 focus:outline-none
+                                        class="text-white bg-primary focus:ring-2 focus:outline-none
                                                                 focus:ring-secondary font-medium rounded-lg text-sm px-5 py-2 my-1 text-center inline-flex
                                                                 items-center mr-2 ">
                                         <x-icon name="cloud-download" class="w-5 h-5" /> dowload
