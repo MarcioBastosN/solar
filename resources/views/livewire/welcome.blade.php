@@ -333,14 +333,14 @@
                     @csrf
                     <div class="flex flex-col my-2">
                         <span class="text-start">Nome</span>
-                        <input type="text" name="name" class="rounded-md md:w-full mx-auto">
+                        <input type="text" wire:model='name' class="rounded-md md:w-full mx-auto text-primary">
                     </div>
                     <div class="flex flex-col my-1">
                         <span class="text-start">Email</span>
-                        <input type="text" name="email" class="rounded-md md:w-full mx-auto">
+                        <input type="text" wire:model='email' class="rounded-md md:w-full mx-auto text-primary">
                     </div>
                     <a href="">
-                        <button
+                        <button wire:click='redirectCadastro'
                             class='rounded-md sm:px-8 sm:py-4 p-2 sm:text-base text-sm font-semibold mt-4
                                 bg-gradient-to-l from-btn_color_inicio to-btn_color_fim'>
                             Desbloquear potencial solar!</button>
