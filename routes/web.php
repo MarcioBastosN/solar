@@ -13,6 +13,7 @@ use App\Http\Livewire\{
     ShowStatusProject,
     ShowUsers,
     UpdateDocumentos,
+    Welcome,
 };
 use Illuminate\Support\Facades\Route;
 
@@ -27,9 +28,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('welcome');
+
+Route::get('/', Welcome::class)->name('welcome');
 
 
 Route::middleware('auth')->group(function () {
