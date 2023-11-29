@@ -328,11 +328,23 @@
                     todo o potencial solar de seus projetos.
                 </p>
             </div>
-            <div class="">
-                <form action="" method="post" class="text-center">
+            <div class="container m-auto md:w-1/2 w-full">
+                <form wire:submit.prevent class="text-center flex flex-col">
                     @csrf
-                    <input type="text" name="email" class="rounded-sm md:w-96 mx-auto">
-                    <button type="submit" class="-ml-1 bg-secondary rounded-sm px-6 py-2  font-bold">Email</button>
+                    <div class="flex flex-col my-2">
+                        <span class="text-start">Nome</span>
+                        <input type="text" name="name" class="rounded-md md:w-full mx-auto">
+                    </div>
+                    <div class="flex flex-col my-1">
+                        <span class="text-start">Email</span>
+                        <input type="text" name="email" class="rounded-md md:w-full mx-auto">
+                    </div>
+                    <a href="">
+                        <button
+                            class='rounded-md sm:px-8 sm:py-4 p-2 sm:text-base text-sm font-semibold mt-4
+                                bg-gradient-to-l from-btn_color_inicio to-btn_color_fim'>
+                            Desbloquear potencial solar!</button>
+                    </a>
                 </form>
             </div>
         </div>
