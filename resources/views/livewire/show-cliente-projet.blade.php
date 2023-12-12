@@ -192,7 +192,7 @@
                 <x-slot name="footer">
                     <div class="flex justify-between items-center">
                         @if (empty($registro->possuiProjeto))
-                            <button class="flex-auto text-secondary text-center bg-white rounded-md mx-4 py-2 text-lg"
+                            <button class="flex-auto text-gray-200 text-center bg-primary rounded-md mx-4 py-2 text-lg"
                                 wire:click='trabalhar({{ $registro->id }})' wire:loading.attr="disabled">
                                 Pegar o Trabalho</button>
                         @else

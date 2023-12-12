@@ -1,5 +1,5 @@
 <div>
-    <section class="bg-primary text-secondary ">
+    <section class="bg-primary text-gray-300 ">
         <div class="text-sm mx-2 text-center">
             Você esta Trabalhando no projeto de:
             <div class="flex flex-wrap">
@@ -46,7 +46,7 @@
                         <button type="submit"
                             class="w-full bg-gray-400 h-12 rounded-lg border-spacing-2
                         border-2-secondary text-center shadow-xl ring-4 ring-white
-                        hover:bg-primary hover:text-secondary my-2">
+                        hover:bg-primary hover:text-white my-2">
                             Alterar a fase</button>
                     </form>
                     <form wire:submit.prevent="novoRegistro" class="max-w-xl mx-auto p-4 shadow-xl bg-form_color">
@@ -69,7 +69,7 @@
                         <button type="submit"
                             class="w-full bg-gray-400 h-12 rounded-lg border-spacing-2
                         border-2-secondary text-center shadow-xl ring-4 ring-white
-                        hover:bg-primary hover:text-secondary my-2 "
+                        hover:bg-primary hover:text-white my-2 "
                             wire:loading.attr="disabled">Salvar</button>
 
                         <div wire:loading wire:target="novoRegistro" class="text-center text-primary font-extrabold ">
@@ -118,7 +118,8 @@
                                                 @endforeach
                                             </div>
                                             <div class="flex-auto text-end mx-4 my-auto">
-                                                <a class="group/edit invisible hover:bg-primary hover:text-secondary group-hover/item:visible px-4 py-2 rounded-lg"
+                                                <a class="group/edit invisible hover:bg-primary hover:text-white
+                                                    group-hover/item:visible px-4 py-2 rounded-lg"
                                                     href="#"
                                                     wire:click="editarDocumentos({{ $item->projects_id }}, {{ $item->status_project_id }})">
                                                     <span class="group-hover/edit:text-white">Editar</span>
