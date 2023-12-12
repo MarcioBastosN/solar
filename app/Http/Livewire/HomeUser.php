@@ -27,15 +27,15 @@ class HomeUser extends Component
     public $tipo_pessoa = 'pf';
 
     protected $rules = [
-        'identificacao_pf_pj' => 'required|max:1024',
-        'procuracao' => 'required|max:1024',
-        'fatura_da_uc' => 'required|max:1024',
-        'padrao_de_entrada' => 'required|max:1024',
+        'identificacao_pf_pj' => 'required|max:7168',
+        'procuracao' => 'required|max:7168',
+        'fatura_da_uc' => 'required|max:7168',
+        'padrao_de_entrada' => 'required|max:7168',
         'telefone' => "required|min:10",
         'kwp' => "required",
         'fotovoltaico' => "required",
         'inversor' => "required",
-        'datasheet' => "required|max:1024",
+        'datasheet' => "required|max:7168",
         'dijuntor_id' => "required",
     ];
 

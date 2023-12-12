@@ -54,7 +54,7 @@
                         </span>
                         <h3 class="font-medium leading-tight">Documentos</h3>
                         <p class="text-sm">Arquivos diversos (foto ou
-                            pdf) até 1Mb</p>
+                            pdf) até 7Mb</p>
                         <div class="mt-2 text-gray-700  ">
                             <label
                                 for="file_input_identificacao_pf_pj">{{ $exibir_empresa ? 'CONTRATO SOCIAL (CASO TITULAR SEJA CNPJ)' : 'Identidade ou CNH' }}
