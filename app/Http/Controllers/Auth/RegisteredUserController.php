@@ -59,10 +59,11 @@ class RegisteredUserController extends Controller
                 'message' => "$request->name, se registrou na plataforma",
             ]));
         } catch (Exception $e) {
-            $this->notification()->error(
-                $title = "Error",
-                $description = "Não foi possivel enviar o E-mail"
-            );
+            $e->getMessage();
+            // $this->notification()->error(
+            //     $title = "Error",
+            //     $description = "Não foi possivel enviar o E-mail"
+            // );
         }
 
         Auth::login($user);
