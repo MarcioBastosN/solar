@@ -105,4 +105,19 @@ class Register extends Model
     {
         return $this->hasMany(Procuracao::class, 'register_id');
     }
+
+    public function listDataSheetInversor(): HasMany
+    {
+        return $this->hasMany(DataSheetInversor::class, 'register_id');
+    }
+
+    public function listDataSheetModulo(): HasMany
+    {
+        return $this->hasMany(DataSheetModulo::class, 'register_id');
+    }
+
+    public function listBeneficiaria(): HasMany
+    {
+        return $this->hasMany(FaturaBeneficiaria::class, 'register_id');
+    }
 }

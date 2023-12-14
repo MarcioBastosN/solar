@@ -98,15 +98,14 @@
                                             @endif
                                         @endif
                                     </li>
-                                    <li class="flex items-center">
+                                    {{-- <li class="flex items-center">
                                         <x-icon name="download" class="w-3.5 h-3.5 text-primary dark:text-primary" />
                                         <a href="#" wire:click="export('{{ $registro->padrao_de_entrada }}')"
                                             class="hover:underline">
                                             Padrao de entrada
                                         </a>
                                         @if (!empty($registro->possuiProjeto))
-                                            @if (empty($registro->validaDocumentos->where('documento', 'padrao_de_entrada')->first()) ||
-                                                    $registro->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status_id == 1)
+                                            @if (empty($registro->validaDocumentos->where('documento', 'padrao_de_entrada')->first()) || $registro->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status_id == 1)
                                                 <span
                                                     class="bg-gray-400 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2">
                                                     Não visualizado
@@ -124,16 +123,16 @@
                                                     Avaliar</button>
                                             @endif
                                         @endif
-                                    </li>
+                                    </li> --}}
                                     <li class="flex items-center">
                                         <x-icon name="download" class="w-3.5 h-3.5 text-primary dark:text-primary" />
-                                        <a href="#" wire:click="export('{{ $registro->datasheet }}')"
+                                        <a href="#" wire:click="export('{{ $registro->datasheet_modulo }}')"
                                             class="hover:underline">
-                                            Datasheet
+                                            Datasheet Modulo
                                         </a>
                                         @if (!empty($registro->possuiProjeto))
-                                            @if (empty($registro->validaDocumentos->where('documento', 'datasheet')->first()) ||
-                                                    $registro->validaDocumentos->where('documento', 'datasheet')->first()->status_id == 1)
+                                            @if (empty($registro->validaDocumentos->where('documento', 'datasheet_modulo')->first()) ||
+                                                    $registro->validaDocumentos->where('documento', 'datasheet_modulo')->first()->status_id == 1)
                                                 <span
                                                     class="bg-gray-400 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2">
                                                     Não visualizado
@@ -141,13 +140,13 @@
                                             @else
                                                 <span
                                                     class=" text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2
-                                                    {{ $registro->validaDocumentos->where('documento', 'datasheet')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
-                                                    {{ $registro->validaDocumentos->where('documento', 'datasheet')->first()->status->label }}
+                                                    {{ $registro->validaDocumentos->where('documento', 'datasheet_modulo')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
+                                                    {{ $registro->validaDocumentos->where('documento', 'datasheet_modulo')->first()->status->label }}
                                                 </span>
                                             @endif
-                                            @if ($registro->validaDocumentos->where('documento', 'datasheet')->first()->status_id != 3)
+                                            @if ($registro->validaDocumentos->where('documento', 'datasheet_modulo')->first()->status_id != 3)
                                                 <button class="mx-2"
-                                                    wire:click="validar('datasheet', {{ $registro->id }})">
+                                                    wire:click="validar('datasheet_modulo', {{ $registro->id }})">
                                                     Avaliar</button>
                                             @endif
                                         @endif
