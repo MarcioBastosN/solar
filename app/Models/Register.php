@@ -14,19 +14,24 @@ class Register extends Model
 
     protected $fillable = [
         'user_id',
+        'nome',
         'telefone',
         'tipo_pessoa',
-        'identificacao_pf_pj',
-        'procuracao',
-        'fatura_da_uc',
-        'padrao_de_entrada',
         'dijuntor_id',
         'observacao',
         'kwp',
+        'corrente_disjuntor',
         'fotovoltaico',
         'inversor',
-        'datasheet',
     ];
+    // 'cnh_socio',
+    // 'fatura_beneficiaria'
+    // 'padrao_de_entrada',
+    // 'datasheet_inversor',
+    // 'datasheet_modulo',
+    // 'identificacao_pf_pj',
+    // 'procuracao',
+    // 'fatura_da_uc',
 
     protected $dates = [
         'created_at'
@@ -79,5 +84,25 @@ class Register extends Model
             $validador = true;
         }
         return $validador;
+    }
+
+    public function listFaturas(): HasMany
+    {
+        return $this->hasMany(faturas_uc::class, 'register_id');
+    }
+
+    public function listCnhSocio(): HasMany
+    {
+        return $this->hasMany(Cnh_Socio::class, 'register_id');
+    }
+
+    public function listRgCnh(): HasMany
+    {
+        return $this->hasMany(RG_CNH::class, 'register_id');
+    }
+
+    public function listProcuracao(): HasMany
+    {
+        return $this->hasMany(Procuracao::class, 'register_id');
     }
 }

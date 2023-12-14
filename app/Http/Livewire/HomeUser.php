@@ -3,8 +3,14 @@
 namespace App\Http\Livewire;
 
 use App\Mail\EmailController;
+use App\Models\DataSheetInversor;
+use App\Models\DataSheetModulo;
 use App\Models\Dijuntor;
+use App\Models\FaturaBeneficiaria;
+use App\Models\faturas_uc;
+use App\Models\Procuracao;
 use App\Models\Register;
+use App\Models\RG_CNH;
 use App\Models\StatusProjet;
 use App\Models\UserRequest;
 use App\Models\ValidaDocumento;
@@ -21,44 +27,65 @@ class HomeUser extends Component
 
     public $exibir_empresa = false;
 
-    public $identificacao_pf_pj,  $procuracao, $fatura_da_uc, $padrao_de_entrada, $datasheet;
+    public $nome, $identificacao_pf_pj,  $corrente_disjuntor;
     public $kwp, $fotovoltaico, $inversor, $dijuntor_id, $telefone, $observacao;
+
+    //arquivos
+    public $datasheet_inversor, $datasheet_modulo,
+        $fatura_beneficiaria, $cnh_socio, $procuracao,
+        $fatura_da_uc, $padrao_de_entrada;
 
     public $tipo_pessoa = 'pf';
 
+    // limite arquivos 10MB
     protected $rules = [
-        'identificacao_pf_pj' => 'required|max:7168',
-        'procuracao' => 'required|max:7168',
-        'fatura_da_uc' => 'required|max:7168',
-        'padrao_de_entrada' => 'required|max:7168',
+        'identificacao_pf_pj' => 'required|max:10240',
+        'procuracao' => 'required|max:10240',
+        'fatura_da_uc' => 'required|max:10240',
         'telefone' => "required|min:10",
+        'nome' => "required|min:3",
         'kwp' => "required",
         'fotovoltaico' => "required",
         'inversor' => "required",
-        'datasheet' => "required|max:7168",
-        'dijuntor_id' => "required",
+        'datasheet_inversor' => "required|max:10240",
+        'datasheet_modulo' => "required|max:10240",
+        'fatura_beneficiaria' => "required|max:10240",
+        'cnh_socio' => "max:10240",
+        'corrente_disjuntor' => "required",
     ];
+    // 'padrao_de_entrada' => 'required|max:10240',
+    // 'dijuntor_id' => "required",
 
     protected $messages = [
-        'identificacao_pf_pj.max' => 'Arquivo é maior que 1 mb',
-        'procuracao.max' => 'Arquivo é maior que 1 mb',
-        'fatura_da_uc.max' => 'Arquivo é maior que 1 mb',
-        'padrao_de_entrada.max' => 'Arquivo é maior que 1 mb',
+        'identificacao_pf_pj.max' => 'Arquivo é maior que 10 mb',
+        'procuracao.max' => 'Arquivo é maior que 10 mb',
+        'fatura_da_uc.max' => 'Arquivo é maior que 10 mb',
         'telefone.min' => 'Telefone deve ter no minimo 11 digitos',
-        'datasheet.max' => 'Arquivo é maior que 1 mb',
+        'nome.min' => 'O nome deve possuir no minimo 3(tres) letras',
+        'datasheet_inversor.max' => 'Arquivo é maior que 10 mb',
+        'datasheet_modulo.max' => 'Arquivo é maior que 10 mb',
+        'cnh_socio.max' => 'Arquivo é maior que 10 mb',
+        'fatura_beneficiaria.max' => 'Arquivo é maior que 10 mb',
 
         'identificacao_pf_pj.required' => 'Arquivo é Obrigatório',
         'procuracao.required' => 'Arquivo é Obrigatório',
         'fatura_da_uc.required' => 'Arquivo é Obrigatório',
-        'padrao_de_entrada.required' => 'Arquivo é Obrigatório',
         'telefone.required' => 'Necessario informar o telefone',
+        'nome.required' => 'Necessario informar o nome',
         'kwp.required' => 'Arquivo é Obrigatório',
         'fotovoltaico.required' => 'Arquivo é Obrigatório',
         'inversor.required' => 'Arquivo é Obrigatório',
-        'datasheet.required' => 'Arquivo é Obrigatório',
-        'dijuntor_id.required' => 'Campo Obrigatório',
+
+        'datasheet_inversor.required' => 'Arquivo é Obrigatório',
+        'datasheet_modulo.required' => 'Arquivo é Obrigatório',
+        'fatura_beneficiaria.required' => 'Arquivo é Obrigatório',
+
+        'corrente_disjuntor.required' => 'Campo Obrigatório',
 
     ];
+    // 'padrao_de_entrada.max' => 'Arquivo é maior que 10 mb',
+    // 'padrao_de_entrada.required' => 'Arquivo é Obrigatório',
+    // 'dijuntor_id.required' => 'Campo Obrigatório',
 
     public function trocaStatus()
     {
@@ -80,16 +107,15 @@ class HomeUser extends Component
         $this->validateOnly($fatura_da_uc);
     }
 
+    public function dijuntor($id)
+    {
+        $this->dijuntor_id = $id;
+    }
+
     public function save()
     {
         $caminho = "documentos/" . auth()->user()->id;
         $this->validate();
-
-        $identificacao_pf_pj_path = $this->identificacao_pf_pj->store($caminho);
-        $procuracao_path = $this->procuracao->store($caminho);
-        $fatura_da_uc_path = $this->fatura_da_uc->store($caminho);
-        $padrao_de_entrada_path = $this->padrao_de_entrada->store($caminho);
-        $datasheet_path = $this->datasheet->store($caminho);
 
         DB::beginTransaction();
         try {
@@ -98,18 +124,15 @@ class HomeUser extends Component
 
             $register = Register::create([
                 'user_id' => $user_id,
+                'nome' => $this->nome,
                 'telefone' => $this->telefone,
-                'identificacao_pf_pj' => $identificacao_pf_pj_path,
                 'tipo_pessoa' => $this->tipo_pessoa,
-                'procuracao' => $procuracao_path,
-                'fatura_da_uc' => $fatura_da_uc_path,
-                'padrao_de_entrada' => $padrao_de_entrada_path,
-                'dijuntor_id' => $this->dijuntor_id,
+                'corrente_disjuntor' => $this->corrente_disjuntor,
                 'observacao' => $this->observacao,
                 'kwp' => $this->kwp,
                 'fotovoltaico' => $this->fotovoltaico,
                 'inversor' => $this->inversor,
-                'datasheet' => $datasheet_path,
+                'dijuntor_id' => $this->dijuntor_id,
             ]);
 
             $status_do_projeto = StatusProjet::find(1);
@@ -120,13 +143,61 @@ class HomeUser extends Component
                 'status_id' => $status_do_projeto->id,
             ]);
 
-            $documentos = ['identificacao_pf_pj', 'procuracao', 'padrao_de_entrada', 'fatura_da_uc', 'datasheet'];
+            $documentos = ['identificacao_pf_pj', 'procuracao', 'datasheet_inversor', 'datasheet_modulo', 'fatura_da_uc', 'fatura_beneficiaria'];
 
             foreach ($documentos as $doc) {
                 DB::transaction(fn () => ValidaDocumento::create([
                     'register_id' => $register->id,
                     'documento' => $doc,
                     'status_id' => 1,
+                ]));
+            }
+            // faturas uc
+            foreach ($this->fatura_da_uc as $fatura) {
+                $fatura_path = $fatura->store($caminho);
+                DB::transaction(fn () => faturas_uc::create([
+                    'register_id' => $register->id,
+                    'path' => $fatura_path,
+                ]));
+            }
+            // procuracao
+            foreach ($this->procuracao as $item) {
+                $path = $item->store($caminho);
+                DB::transaction(fn () => Procuracao::create([
+                    'register_id' => $register->id,
+                    'path' => $path,
+                ]));
+            }
+            // identificacao_pf_pj
+            foreach ($this->identificacao_pf_pj as $item) {
+                $path = $item->store($caminho);
+                DB::transaction(fn () => RG_CNH::create([
+                    'register_id' => $register->id,
+                    'path' => $path,
+                ]));
+            }
+            // datasheet_inversor
+            foreach ($this->datasheet_inversor as $item) {
+                $path = $item->store($caminho);
+                DB::transaction(fn () => DataSheetInversor::create([
+                    'register_id' => $register->id,
+                    'path' => $path,
+                ]));
+            }
+            // datasheet_modulo
+            foreach ($this->datasheet_modulo as $item) {
+                $path = $item->store($caminho);
+                DB::transaction(fn () => DataSheetModulo::create([
+                    'register_id' => $register->id,
+                    'path' => $path,
+                ]));
+            }
+            // fatura_beneficiaria
+            foreach ($this->fatura_beneficiaria as $item) {
+                $path = $item->store($caminho);
+                DB::transaction(fn () => FaturaBeneficiaria::create([
+                    'register_id' => $register->id,
+                    'path' => $path,
                 ]));
             }
         } catch (Exception $e) {

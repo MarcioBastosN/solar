@@ -19,7 +19,11 @@ return new class extends Migration
             $table->unsignedInteger('status_id');
             $table->foreign('status_id')->references('id')->on('status_documentos');
 
-            $table->enum('documento', ['identificacao_pf_pj', 'procuracao', 'padrao_de_entrada', 'fatura_da_uc', 'datasheet']);
+            $table->enum('documento', [
+                'identificacao_pf_pj', 'procuracao',
+                'fatura_da_uc', 'datasheet_inversor',
+                'datasheet_modulo', 'fatura_beneficiaria'
+            ]);
             $table->string('obs')->nullable();
             $table->timestamps();
         });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\faturas_uc;
 use App\Models\Project;
 use App\Models\Register;
 use App\Models\StatusProjet;

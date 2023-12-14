@@ -19,26 +19,29 @@ return new class extends Migration
 
             $table->enum('tipo_pessoa', ['pf', 'pj'])->default('pf');
             $table->string('telefone');
+            $table->string('nome');
             // todos os arquivos do cliente
-
-            $table->text('identificacao_pf_pj');
-            // $table->text('rg_cnh')->nullable();
-            $table->text('procuracao');
-            $table->text('fatura_da_uc');
-            $table->text('padrao_de_entrada');
-
-            $table->unsignedInteger('dijuntor_id');
-            $table->foreign('dijuntor_id')->references('id')->on('dijuntors')->onDelete("cascade");
+            $table->text('corrente_disjuntor');
 
             $table->string('kwp')->nullable();
             $table->string('fotovoltaico')->nullable();
             $table->string('inversor')->nullable();
-            $table->string('datasheet')->nullable();
+
+            $table->unsignedInteger('dijuntor_id');
+            $table->foreign('dijuntor_id')->references('id')->on('dijuntors')->onDelete("cascade");
 
             $table->text('observacao')->nullable();
 
             $table->timestamps();
         });
+        // $table->string('datasheet_inversor')->nullable();
+        // $table->string('datasheet_modulo')->nullable();
+        // $table->text('rg_cnh');
+        // $table->text('fatura_da_uc');
+        // $table->text('identificacao_pf_pj');
+        // $table->text('procuracao');
+        // $table->string('fatura_beneficiaria');
+        // $table->string('cnh_socio')->nullable();
     }
 
     /**

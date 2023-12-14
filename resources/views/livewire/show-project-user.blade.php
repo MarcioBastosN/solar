@@ -75,15 +75,25 @@
                                                                 @endif
                                                             </li>
                                                             <li class="flex items-center">
-                                                                <x-icon name="download"
-                                                                    class="w-3.5 h-3.5 text-primary dark:text-primary" />
-                                                                <a href="#"
-                                                                    wire:click="export('{{ $item->fatura_da_uc }}')"
-                                                                    class="hover:underline">
-                                                                    Fatura da Unidade Consumidora
-                                                                </a>
-                                                                @if (empty($item->validaDocumentos->where('documento', 'fatura_da_uc')->first()) ||
-                                                                        $item->validaDocumentos->where('documento', 'fatura_da_uc')->first()->status_id == 1)
+
+                                                                <div class=" flex flex-col">
+                                                                    <p>Fatura da Unidade Consumidora</p>
+                                                                    <div class="flex flex-row gap-1">
+                                                                        @foreach ($item->listFaturas as $fatura)
+                                                                            <div class="flex flex-row">
+                                                                                <a href="#"
+                                                                                    wire:click="export('{{ $fatura->path }}')"
+                                                                                    class="hover:underline">
+                                                                                    <x-icon name="download"
+                                                                                        class="w-3.5 h-3.5 text-primary dark:text-primary" />
+                                                                                    <span>doc-{{ $fatura->id }}</span>
+                                                                                </a>
+                                                                            </div>
+                                                                        @endforeach
+                                                                    </div>
+
+                                                                </div>
+                                                                {{-- @if (empty($item->validaDocumentos->where('documento', 'fatura_da_uc')->first()) || $item->validaDocumentos->where('documento', 'fatura_da_uc')->first()->status_id == 1)
                                                                     <span
                                                                         class="bg-gray-300 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded  mx-2">
                                                                         Não visualizado
@@ -94,9 +104,9 @@
                                                                     {{ $item->validaDocumentos->where('documento', 'fatura_da_uc')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
                                                                         {{ $item->validaDocumentos->where('documento', 'fatura_da_uc')->first()->status->label }}
                                                                     </span>
-                                                                @endif
+                                                                @endif --}}
                                                             </li>
-                                                            <li class="flex items-center">
+                                                            {{-- <li class="flex items-center">
                                                                 <x-icon name="download"
                                                                     class="w-3.5 h-3.5 text-primary dark:text-primary" />
                                                                 <a href="#"
@@ -104,8 +114,7 @@
                                                                     class="hover:underline">
                                                                     Padrao de entrada
                                                                 </a>
-                                                                @if (empty($item->validaDocumentos->where('documento', 'padrao_de_entrada')->first()) ||
-                                                                        $item->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status_id == 1)
+                                                                @if (empty($item->validaDocumentos->where('documento', 'padrao_de_entrada')->first()) || $item->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status_id == 1)
                                                                     <span
                                                                         class="bg-gray-300 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded  mx-2">
                                                                         Não visualizado
@@ -118,17 +127,17 @@
                                                                         {{ $item->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status->label }}
                                                                     </span>
                                                                 @endif
-                                                            </li>
+                                                            </li> --}}
                                                             <li class="flex items-center">
                                                                 <x-icon name="download"
                                                                     class="w-3.5 h-3.5 text-primary dark:text-primary" />
                                                                 <a href="#"
-                                                                    wire:click="export('{{ $item->datasheet }}')"
+                                                                    wire:click="export('{{ $item->datasheet_inversor }}')"
                                                                     class="hover:underline">
-                                                                    Datasheet
+                                                                    Datasheet Inversor
                                                                 </a>
-                                                                @if (empty($item->validaDocumentos->where('documento', 'datasheet')->first()) ||
-                                                                        $item->validaDocumentos->where('documento', 'datasheet')->first()->status_id == 1)
+                                                                @if (empty($item->validaDocumentos->where('documento', 'datasheet_inversor')->first()) ||
+                                                                        $item->validaDocumentos->where('documento', 'datasheet_inversor')->first()->status_id == 1)
                                                                     <span
                                                                         class="bg-gray-300 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded  mx-2">
                                                                         Não visualizado
@@ -136,8 +145,30 @@
                                                                 @else
                                                                     <span
                                                                         class=" text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded  mx-2
-                                                                    {{ $item->validaDocumentos->where('documento', 'datasheet')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
-                                                                        {{ $item->validaDocumentos->where('documento', 'datasheet')->first()->status->label }}
+                                                                    {{ $item->validaDocumentos->where('documento', 'datasheet_inversor')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
+                                                                        {{ $item->validaDocumentos->where('documento', 'datasheet_inversor')->first()->status->label }}
+                                                                    </span>
+                                                                @endif
+                                                            </li>
+                                                            <li class="flex items-center">
+                                                                <x-icon name="download"
+                                                                    class="w-3.5 h-3.5 text-primary dark:text-primary" />
+                                                                <a href="#"
+                                                                    wire:click="export('{{ $item->datasheet_modulo }}')"
+                                                                    class="hover:underline">
+                                                                    Datasheet Modulo
+                                                                </a>
+                                                                @if (empty($item->validaDocumentos->where('documento', 'datasheet_modulo')->first()) ||
+                                                                        $item->validaDocumentos->where('documento', 'datasheet_modulo')->first()->status_id == 1)
+                                                                    <span
+                                                                        class="bg-gray-300 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded  mx-2">
+                                                                        Não visualizado
+                                                                    </span>
+                                                                @else
+                                                                    <span
+                                                                        class=" text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded  mx-2
+                                                                    {{ $item->validaDocumentos->where('documento', 'datasheet_modulo')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
+                                                                        {{ $item->validaDocumentos->where('documento', 'datasheet_modulo')->first()->status->label }}
                                                                     </span>
                                                                 @endif
                                                             </li>
@@ -149,8 +180,8 @@
                                                             Informaçoes do modelo
                                                         </h2>
                                                         <ul class="max-w-md space-y-1 text-primary list-inside">
-                                                            <li class="flex items-center">Disjuntor:
-                                                                {{ $item->disjuntor->name }}
+                                                            <li class="flex items-center">Corrente disjuntor:
+                                                                {{ $item->corrente_disjuntor }}
                                                             </li>
                                                             <li class="flex items-center">
                                                                 KWP: {{ $item->kwp }}
