@@ -142,7 +142,7 @@ class ShowClienteProjet extends Component
         $user_email = User::find($this->user_id)->email;
         try {
             Mail::to($user_email, "Solar-Project")->send(new EmailController([
-                'fromName' => auth()->user()->name,
+                'fromName' => "Solar - Paula Silva",
                 'fromEmail' => auth()->user()->email,
                 'subject' => "Seu projeto foi visualizado e esta sendo iniciado.",
                 'message' => auth()->user()->name . ", deu inicio ao seu projeto",
