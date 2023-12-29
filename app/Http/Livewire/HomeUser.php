@@ -207,7 +207,9 @@ class HomeUser extends Component
         DB::commit();
 
         try {
-            Mail::to("marciobatosn@gmail.com", "Solar-Project")->send(new EmailController([
+            // email do empresa
+
+            Mail::to("suporte@engpaullasilva.com.br", "Solar-Project")->send(new EmailController([
                 'fromName' => auth()->user()->name,
                 'fromEmail' => auth()->user()->email,
                 'subject' => "Um novo projeto foi iniciado!",
@@ -216,7 +218,7 @@ class HomeUser extends Component
 
             Mail::to(auth()->user()->email, "Solar-Project")->send(new EmailController([
                 'fromName' => "Solar-Project",
-                'fromEmail' => "marciobastosn@gmail.com",
+                'fromEmail' => "suporte@engpaullasilva.com.br",
                 'subject' => "Projeto registrado!",
                 'message' => "Aguarde, logo o responsavel iniciara seu projeto",
             ]));
