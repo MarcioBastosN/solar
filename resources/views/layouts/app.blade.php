@@ -18,12 +18,22 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Scripts -->
     @livewireStyles
+
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
+                '(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
 </head>
 
-<body class="font-Poppins font-medium antialiased ">
+<body class="font-Poppins font-medium antialiased">
     <x-notifications />
     <x-dialog z-index="z-50" blur="md" align="center" />
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-gray-100 dark:bg-gray-600">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
