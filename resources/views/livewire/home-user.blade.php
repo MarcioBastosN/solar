@@ -1,5 +1,5 @@
 <div>
-    <div class="bg-white">
+    <div class="bg-white dark:bg-gray-600">
         <form wire:submit.prevent="save" class="max-w-xl mx-auto p-4 shadow-xl bg-form_color">
             <div class="max-w-xl mx-auto">
                 <label class="relative inline-flex items-center cursor-pointer">

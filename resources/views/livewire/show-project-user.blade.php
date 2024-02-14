@@ -6,7 +6,7 @@
             <p>Contate o responsavel para verificar suas pendencias!</p>
         </div>
     @else
-        <section class="bg-white ">
+        <section class="bg-white dark:bg-gray-600">
             <div class="container w-full mx-2 my-2">
                 <div class="flex flex-wrap">
                     <div class="w-full sm:w-1/2 ">

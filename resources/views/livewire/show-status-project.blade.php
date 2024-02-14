@@ -1,5 +1,5 @@
 <div>
-    <section class="bg-white ">
+    <section class="bg-white dark:bg-gray-600">
         <div class="container w-full mx-auto">
             <div class="flex flex-wrap">
                 <div class="w-full sm:w-1/2">
