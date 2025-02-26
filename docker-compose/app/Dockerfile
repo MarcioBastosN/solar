@@ -6,8 +6,7 @@ ARG user
 ARG uid
 
 # Instalando dependências do sistema
-RUN apt-get update && apt-get install -y \
-    git \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     libpng-dev \
     libonig-dev \
@@ -17,9 +16,12 @@ RUN apt-get update && apt-get install -y \
     unzip \
     zlib1g-dev \
     libmcrypt-dev \
-    libpng-dev \
     libzip-dev \
-    libsodium-dev
+    libsodium-dev \
+    nodejs \
+    npm && \
+    docker-php-ext-install pdo pdo_pgsql pgsql mbstring xml exif pcntl bcmath gd zip sodium && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
 # Limpando cache do APT
@@ -31,7 +33,7 @@ RUN docker-php-ext-install pdo pdo_pgsql pgsql mbstring xml exif pcntl bcmath gd
 # Download da ultima versão do Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Criar usuario no sistema para executar o Composer e comandos Artisan  
+# Criar usuario no sistema para executar o Composer e comandos Artisan
 RUN useradd -G www-data,root -u $uid -d /home/$user $user
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
