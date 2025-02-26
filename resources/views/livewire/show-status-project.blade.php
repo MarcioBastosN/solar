@@ -1,5 +1,5 @@
 <div>
-    <section class="bg-white ">
+    <section class="bg-white dark:bg-gray-600">
         <div class="container w-full mx-auto">
             <div class="flex flex-wrap">
                 <div class="w-full sm:w-1/2">
@@ -22,12 +22,10 @@
                                             {{ $status->label }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            <button
-                                                data-modal-target="authentication-modal-project"
+                                            <button data-modal-target="authentication-modal-project"
                                                 data-modal-toggle="authentication-modal-project"
                                                 class="block text-white bg-primary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
-                                                type="button"
-                                                wire:click='showEditStatusProject({{$status->id}})'>
+                                                type="button" wire:click='showEditStatusProject({{ $status->id }})'>
                                                 Açoes
                                             </button>
                                         </td>
@@ -58,12 +56,10 @@
                                             {{ $status->label }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            <button
-                                                data-modal-target="authentication-modal"
+                                            <button data-modal-target="authentication-modal"
                                                 data-modal-toggle="authentication-modal"
                                                 class="block text-white bg-primary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
-                                                type="button"
-                                                wire:click='showEditStatusDoc({{$status->id}})'>
+                                                type="button" wire:click='showEditStatusDoc({{ $status->id }})'>
                                                 Açoes
                                             </button>
                                         </td>
@@ -95,15 +91,13 @@
                 </button>
                 <div class="px-6 py-6 lg:px-8">
                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Editar nome disjuntor</h3>
-                    <form class="space-y-6" action="#"
-                    wire:submit.prevent="editarDoc({{ $id_selecionado }})"
-                    >
+                    <form class="space-y-6" action="#" wire:submit.prevent="editarDoc({{ $id_selecionado }})">
                         <input class="block w-full text-sm text-primary border border-primary rounded-lg cursor-pointer"
                             type="text" wire:model='value'>
                         <button type="submit"
                             class="w-full bg-gray-400 h-12 rounded-lg border-spacing-2
                     border-2-secondary text-center shadow-xl ring-4 ring-white
-                    hover:bg-primary hover:text-secondary"
+                    hover:bg-primary hover:text-white"
                             data-modal-hide="authentication-modal">
                             Editar
                         </button>
@@ -131,15 +125,13 @@
                 </button>
                 <div class="px-6 py-6 lg:px-8">
                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Editar projeto</h3>
-                    <form class="space-y-6" action="#"
-                    wire:submit.prevent="editarProjeto({{ $id_selecionado }})"
-                    >
+                    <form class="space-y-6" action="#" wire:submit.prevent="editarProjeto({{ $id_selecionado }})">
                         <input class="block w-full text-sm text-primary border border-primary rounded-lg cursor-pointer"
                             type="text" wire:model='value'>
                         <button type="submit"
                             class="w-full bg-gray-400 h-12 rounded-lg border-spacing-2
                     border-2-secondary text-center shadow-xl ring-4 ring-white
-                    hover:bg-primary hover:text-secondary"
+                    hover:bg-primary hover:text-white"
                             data-modal-hide="authentication-modal-project">
                             Editar
                         </button>

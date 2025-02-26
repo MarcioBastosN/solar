@@ -88,7 +88,7 @@
         <button type="submit"
             class="w-full bg-gray-400 h-12 rounded-lg border-spacing-2
                 border-2-secondary text-center shadow-xl ring-4 ring-white
-                hover:bg-primary hover:text-secondary my-2">
+                hover:bg-primary hover:text-white my-2">
             Salvar
         </button>
     </form>

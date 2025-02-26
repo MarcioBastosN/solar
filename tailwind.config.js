@@ -3,6 +3,7 @@ import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: 'class',
     presets: [
         require('./vendor/wireui/wireui/tailwind.config.js')
     ],
@@ -15,7 +16,6 @@ export default {
         './vendor/wireui/wireui/ts/**/*.ts',
         './vendor/wireui/wireui/src/View/**/*.php'
     ],
-    darkMode: 'media',
     theme: {
         extend: {
             fontFamily: {

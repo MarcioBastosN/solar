@@ -16,10 +16,8 @@ class DijuntorsSeeders extends Seeder
 
         $dijuntores = [
             'MONOFÁSICO',
-            'BIFÁSICO - 63A',
-            'BIFÁSICO - 70A',
-            'TRIFÁSICO - 70A',
-            'TRIFÁSICO - 100A',
+            'BIFÁSICO',
+            'TRIFÁSICO',
         ];
 
         foreach ($dijuntores as $dijuntor) {

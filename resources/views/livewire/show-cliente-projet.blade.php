@@ -1,11 +1,11 @@
 <div>
-    @foreach ($registros as $registro)
+    @foreach ($registros as $item)
         <div class="my-2 mx-2">
             <x-card
-                title="Registro: {{ $registro->id }} - {{ $registro->user->name }} -
-                {{-- contato - {{ $registro->telefone }} - --}}
-                {{ $registro->tipo_pessoa == 'pf' ? 'Pessoa Fisica' : 'Pessoa Juridica' }} -
-                {{ $registro->created_at->format('d/m/Y') }}">
+                title="Registro: {{ $item->id }} - {{ $item->user->name }} -
+                {{-- contato - {{ $item->telefone }} - --}}
+                {{ $item->tipo_pessoa == 'pf' ? 'Pessoa Fisica' : 'Pessoa Juridica' }} -
+                {{ $item->created_at->format('d/m/Y') }}">
 
                 <div class="bg-white">
                     <div class="container max-w-5xl mx-2">
@@ -15,144 +15,7 @@
                                 <h2 class="mb-2 text-lg font-semibold text-primary ">
                                     Arquivos recebidos
                                 </h2>
-                                <ul class="max-w-md space-y-1 text-gray-400 list-inside ">
-                                    <li class="flex items-center">
-                                        <x-icon name="download" class="w-3.5 h-3.5 text-primary" />
-                                        <a href="#" wire:click="export('{{ $registro->identificacao_pf_pj }}')"
-                                            class="hover:underline">
-                                            {{ $registro->tipo_pessoa == 'pj' ? 'CNPJ' : 'RG ou CNH' }}
-                                        </a>
-                                        @if (!empty($registro->possuiProjeto))
-                                            @if (empty($registro->validaDocumentos->where('documento', 'identificacao_pf_pj')->first()) ||
-                                                    $registro->validaDocumentos->where('documento', 'identificacao_pf_pj')->first()->status_id == 1)
-                                                <span
-                                                    class="bg-gray-400 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2">
-                                                    Não visualizado
-                                                </span>
-                                            @else
-                                                <span
-                                                    class=" text-primary text-xs font-medium
-                                                    mr-2 px-2.5 py-0.5 rounded mx-2
-                                                    {{ $registro->validaDocumentos->where('documento', 'identificacao_pf_pj')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
-                                                    {{ $registro->validaDocumentos->where('documento', 'identificacao_pf_pj')->first()->status->label }}
-                                                </span>
-                                            @endif
-                                            @if ($registro->validaDocumentos->where('documento', 'identificacao_pf_pj')->first()->status_id != 3)
-                                                <button class="mx-2"
-                                                    wire:click="validar('identificacao_pf_pj', {{ $registro->id }})">
-                                                    Avaliar</button>
-                                            @endif
-                                        @endif
-                                    </li>
-                                    <li class="flex items-center">
-                                        <x-icon name="download" class="w-3.5 h-3.5 text-primary dark:text-primary" />
-                                        <a href="#" wire:click="export('{{ $registro->procuracao }}')"
-                                            class="hover:underline">
-                                            Procuração
-                                        </a>
-                                        @if (!empty($registro->possuiProjeto))
-                                            @if (empty($registro->validaDocumentos->where('documento', 'procuracao')->first()) ||
-                                                    $registro->validaDocumentos->where('documento', 'procuracao')->first()->status_id == 1)
-                                                <span
-                                                    class="bg-gray-400 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded  mx-2">
-                                                    Não visualizado
-                                                </span>
-                                            @else
-                                                <span
-                                                    class=" text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2
-                                                    {{ $registro->validaDocumentos->where('documento', 'procuracao')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
-                                                    {{ $registro->validaDocumentos->where('documento', 'procuracao')->first()->status->label }}
-                                                </span>
-                                            @endif
-                                            @if ($registro->validaDocumentos->where('documento', 'procuracao')->first()->status_id != 3)
-                                                <button class="mx-2"
-                                                    wire:click="validar('procuracao', {{ $registro->id }})">
-                                                    Avaliar</button>
-                                            @endif
-                                        @endif
-                                    </li>
-                                    <li class="flex items-center">
-                                        <x-icon name="download" class="w-3.5 h-3.5 text-primary dark:text-primary" />
-                                        <a href="#" wire:click="export('{{ $registro->fatura_da_uc }}')"
-                                            class="hover:underline">
-                                            Fatura da Unidade Consumidora
-                                        </a>
-                                        @if (!empty($registro->possuiProjeto))
-                                            @if (empty($registro->validaDocumentos->where('documento', 'fatura_da_uc')->first()) ||
-                                                    $registro->validaDocumentos->where('documento', 'fatura_da_uc')->first()->status_id == 1)
-                                                <span
-                                                    class="bg-gray-400 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2">
-                                                    Não visualizado
-                                                </span>
-                                            @else
-                                                <span
-                                                    class=" text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2
-                                                    {{ $registro->validaDocumentos->where('documento', 'fatura_da_uc')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
-                                                    {{ $registro->validaDocumentos->where('documento', 'fatura_da_uc')->first()->status->label }}
-                                                </span>
-                                            @endif
-                                            @if ($registro->validaDocumentos->where('documento', 'fatura_da_uc')->first()->status_id != 3)
-                                                <button class="mx-2"
-                                                    wire:click="validar('fatura_da_uc', {{ $registro->id }})">
-                                                    Avaliar</button>
-                                            @endif
-                                        @endif
-                                    </li>
-                                    <li class="flex items-center">
-                                        <x-icon name="download" class="w-3.5 h-3.5 text-primary dark:text-primary" />
-                                        <a href="#" wire:click="export('{{ $registro->padrao_de_entrada }}')"
-                                            class="hover:underline">
-                                            Padrao de entrada
-                                        </a>
-                                        @if (!empty($registro->possuiProjeto))
-                                            @if (empty($registro->validaDocumentos->where('documento', 'padrao_de_entrada')->first()) ||
-                                                    $registro->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status_id == 1)
-                                                <span
-                                                    class="bg-gray-400 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2">
-                                                    Não visualizado
-                                                </span>
-                                            @else
-                                                <span
-                                                    class=" text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2
-                                            {{ $registro->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
-                                                    {{ $registro->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status->label }}
-                                                </span>
-                                            @endif
-                                            @if ($registro->validaDocumentos->where('documento', 'padrao_de_entrada')->first()->status_id != 3)
-                                                <button class="mx-2"
-                                                    wire:click="validar('padrao_de_entrada', {{ $registro->id }})">
-                                                    Avaliar</button>
-                                            @endif
-                                        @endif
-                                    </li>
-                                    <li class="flex items-center">
-                                        <x-icon name="download" class="w-3.5 h-3.5 text-primary dark:text-primary" />
-                                        <a href="#" wire:click="export('{{ $registro->datasheet }}')"
-                                            class="hover:underline">
-                                            Datasheet
-                                        </a>
-                                        @if (!empty($registro->possuiProjeto))
-                                            @if (empty($registro->validaDocumentos->where('documento', 'datasheet')->first()) ||
-                                                    $registro->validaDocumentos->where('documento', 'datasheet')->first()->status_id == 1)
-                                                <span
-                                                    class="bg-gray-400 text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2">
-                                                    Não visualizado
-                                                </span>
-                                            @else
-                                                <span
-                                                    class=" text-primary text-xs font-medium mr-2 px-2.5 py-0.5 rounded mx-2
-                                                    {{ $registro->validaDocumentos->where('documento', 'datasheet')->first()->status_id == 2 ? 'bg-red-500' : 'bg-green-500' }}">
-                                                    {{ $registro->validaDocumentos->where('documento', 'datasheet')->first()->status->label }}
-                                                </span>
-                                            @endif
-                                            @if ($registro->validaDocumentos->where('documento', 'datasheet')->first()->status_id != 3)
-                                                <button class="mx-2"
-                                                    wire:click="validar('datasheet', {{ $registro->id }})">
-                                                    Avaliar</button>
-                                            @endif
-                                        @endif
-                                    </li>
-                                </ul>
+                                @include('meus_modelos.tabela-arquivos')
                             </div>
                             <div class="w-full sm:w-1/2 my-2">
                                 <div class="align-middle">
@@ -161,24 +24,24 @@
                                     </h2>
                                     <ul class="max-w-md space-y-1 text-gray-400 list-inside">
                                         <li class="flex items-center">Disjuntor:
-                                            {{ $registro->disjuntor->name }}
+                                            {{ $item->disjuntor->name }}
                                         </li>
                                         <li class="flex items-center">
-                                            KWP: {{ $registro->kwp }}
+                                            KWP: {{ $item->kwp }}
                                         </li>
                                         <li class="flex items-center">
-                                            fotovoltaico: {{ $registro->fotovoltaico }}
+                                            fotovoltaico: {{ $item->fotovoltaico }}
                                         </li>
                                         <li class="flex items-center">
-                                            inversor: {{ $registro->inversor }}
+                                            inversor: {{ $item->inversor }}
                                         </li>
                                         <li class="flex items-center">
-                                            @if (empty($registro->observacao))
+                                            @if (empty($item->observacao))
                                                 <x-icon name="exclamation" class="w-3.5 h-3.5 text-primary" />
                                                 Não possui observação
                                             @else
                                                 <x-icon name="search" class="w-3.5 h-3.5 text-primary " />
-                                                <a href="#" wire:click="showObs('{{ $registro->observacao }}')">
+                                                <a href="#" wire:click="showObs('{{ $item->observacao }}')">
                                                     Observacao
                                                 </a>
                                             @endif
@@ -191,39 +54,39 @@
                 </div>
                 <x-slot name="footer">
                     <div class="flex justify-between items-center">
-                        @if (empty($registro->possuiProjeto))
-                            <button class="flex-auto text-secondary text-center bg-white rounded-md mx-4 py-2 text-lg"
-                                wire:click='trabalhar({{ $registro->id }})' wire:loading.attr="disabled">
+                        @if (empty($item->possuiProjeto))
+                            <button class="flex-auto text-gray-200 text-center bg-primary rounded-md mx-4 py-2 text-lg"
+                                wire:click='trabalhar({{ $item->id }})' wire:loading.attr="disabled">
                                 Pegar o Trabalho</button>
                         @else
-                            <p class="text-gray-400 "> Responsavel: {{ $registro->possuiProjeto->responsavel->name }}
+                            <p class="text-gray-400 "> Responsavel: {{ $item->possuiProjeto->responsavel->name }}
                             </p>
                         @endif
-                        @if ($registro->habilitaProjeto())
-                            @if (empty($registro->dadosProject->first()))
+                        @if ($item->habilitaProjeto())
+                            @if (empty($item->dadosProject->first()))
                                 <button label="Save" class="bg-primary text-white rounded-md px-4 py-1 text-lg"
-                                    wire:click='InicioProjeto({{ $registro->possuiProjeto->id }}, {{ $registro->id }})'
+                                    wire:click='InicioProjeto({{ $item->possuiProjeto->id }}, {{ $item->id }})'
                                     wire:loading.attr="disabled">
                                     Iniciar projeto
                                 </button>
-                                <p>Projeto id: {{ $registro->possuiProjeto->id }}, resgistro: {{ $registro->id }}</p>
+                                <p>Projeto id: {{ $item->possuiProjeto->id }}, resgistro: {{ $item->id }}</p>
                             @else
                                 <button label="Save" class="bg-primary text-white rounded-lg text-md w-32"
-                                    wire:click='viewProjeto({{ $registro->id }})'>
+                                    wire:click='viewProjeto({{ $item->id }})'>
                                     ver detalhes
                                 </button>
                             @endif
                         @else
                             <p>Verificar Documentos para iniciar</p>
-                            @if (empty($registro->dadosProject->first()) && !empty($registro->possuiProjeto))
+                            @if (empty($item->dadosProject->first()) && !empty($item->possuiProjeto))
                                 <button label="Save" class="bg-primary text-white w-32 rounded-lg"
-                                    wire:click='validarTodos({{ $registro->id }})'>
+                                    wire:click='validarTodos({{ $item->id }})'>
                                     Aprovar todos
                                 </button>
                             @endif
                         @endif
                     </div>
-                    <div wire:loading wire:target="trabalhar({{ $registro->id }})"
+                    <div wire:loading wire:target="trabalhar({{ $item->id }})"
                         class="text-center text-primary font-extrabold ">
                         Aguarde carregando....
                     </div>

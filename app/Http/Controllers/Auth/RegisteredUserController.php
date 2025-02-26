@@ -52,17 +52,18 @@ class RegisteredUserController extends Controller
         $user->assignRole('user');
         // to = pra quem vai ser enviado
         try {
-            Mail::to("marciobastosn@gmail.com", "Solar-Project")->send(new EmailController([
+            Mail::to("suporte@engpaullasilva.com.br", "Solar-Project")->send(new EmailController([
                 'fromName' => $request->name,
                 'fromEmail' => $request->email,
                 'subject' => "Novo Usuario registrado",
                 'message' => "$request->name, se registrou na plataforma",
             ]));
         } catch (Exception $e) {
-            $this->notification()->error(
-                $title = "Error",
-                $description = "Não foi possivel enviar o E-mail"
-            );
+            $e->getMessage();
+            // $this->notification()->error(
+            //     $title = "Error",
+            //     $description = "Não foi possivel enviar o E-mail"
+            // );
         }
 
         Auth::login($user);
