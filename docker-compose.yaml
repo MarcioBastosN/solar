@@ -3,11 +3,11 @@ version: "3.7"
 services:
   app:
     build:
+      context: ./
+      dockerfile: ./docker-compose/app/Dockerfile
       args:
         user: marcio
         uid: 1000
-      context: ./
-      dockerfile: ./docker-compose/app/Dockerfile
     image: solar
     container_name: solar-app
     restart: unless-stopped
@@ -20,12 +20,13 @@ services:
     networks:
       solar:
         ipv4_address: 172.16.17.4
+
   db:
     image: postgres:13-alpine
-    ports:
-      - "5017:5432"
     container_name: solar-db
     restart: unless-stopped
+    ports:
+      - "5017:5432"
     environment:
       POSTGRES_DB: ${DB_DATABASE}
       POSTGRES_USER: ${DB_USERNAME}
@@ -41,8 +42,8 @@ services:
     container_name: solar-nginx
     restart: unless-stopped
     ports:
-      - "8017:80"
-      - "80:80"
+      - "8017:81"
+      - "80:81"
     volumes:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
@@ -57,4 +58,4 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.16.17.0/28
+        - subnet: 172.16.17.0/24

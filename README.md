@@ -1,4 +1,5 @@
 ## About
+<!-- docker-compose up  / para rodar os containeres-->docker exec 
 
 * 1º composer install
 * 2º php artisan key:generate
