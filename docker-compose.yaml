@@ -42,8 +42,8 @@ services:
     container_name: solar-nginx
     restart: unless-stopped
     ports:
-      - "8017:81"
-      - "80:81"
+      - "8017:80"
+      - "80:80"
     volumes:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
