@@ -1,7 +1,7 @@
-============================
-    caso necessario configurar o docker usar o arquivo
-    *install_docker
-============================
+#============================
+    #caso necessario configurar o docker usar o arquivo
+    #./install_docker
+#============================
 
 # Add Docker's official GPG key:
 sudo apt-get update
