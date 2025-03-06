@@ -1,10 +1,31 @@
-## About
-<!-- docker-compose up  / para rodar os containeres-->docker exec 
+<!-- 
+    se for necessarios instalar o docker-compose antes usar o arquivo rode 
+    ./install_docker
+ -->
 
-* 1º composer install
-* 2º php artisan key:generate
-* config .env
-    
+## About
+<!-- docker-compose up  / para rodar os containeres-->
+
+<!-- iniciar o container -->
+* 
+    docker-compose up -d --build
+
+<!-- parando o conainer -->
+    docker-compose down
+
+<!-- ====================================== -->
+
+* 1º 
+    docker-compose exec app composer install
+
+* 2º 
+    docker-compose exec app npm install
+
+* 3º 
+    docker-compose exec app php artisan key:generate
+
+* 3º  
+    config .env
     {
         DB_CONNECTION=pgsql
         DB_HOST=db
@@ -24,20 +45,13 @@
         FILESYSTEM_DISK=public
     }
 
-* 3º npm install
-
-<!-- iniciar o container -->
-* 5° docker compose up -d --build
-
-<!-- parando o conainer -->
-    docker compose down
-====
 <!-- rodando o banco e os seeds -->
-* sudo  docker compose exec app php artisan migrate --seed
+* 4º
+    docker-compose exec app php artisan migrate --seed
 
 <!-- rodando o livewire -->
-* sudo docker compose exec app npm rum build
-
+* 5º
+    docker-compose exec app npm rum build
 
 ======================
 .env
