@@ -1,7 +1,6 @@
 ## About
 <!-- docker-compose up  / para rodar os containeres-->docker exec 
 
-* 1º composer install
 * 2º php artisan key:generate
 * config .env
     
@@ -29,6 +28,8 @@
 <!-- iniciar o container -->
 * 5° docker compose up -d --build
 
+* 6º docker-compose exec app npm install
+
 <!-- parando o conainer -->
     docker compose down
 ====
@@ -38,7 +39,8 @@
 <!-- rodando o livewire -->
 * sudo docker compose exec app npm rum build
 
-
+rodar web 
+http://localhost/
 ======================
 .env
 FILESYSTEM_DISK=public
