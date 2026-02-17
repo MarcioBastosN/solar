@@ -6,7 +6,7 @@ services:
       context: ./
       dockerfile: ./docker-compose/app/Dockerfile
       args:
-        user: marcio
+        user: ${USER}
         uid: 1000
     image: solar
     container_name: solar-app
